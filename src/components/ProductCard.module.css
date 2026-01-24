@@ -1,0 +1,11 @@
+.product_card_box {
+  border: 1px solid #808080;
+  max-width: 320px;
+  position: relative;
+}
+
+.product_card_title::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
