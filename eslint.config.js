@@ -4,6 +4,8 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import tseslint from 'typescript-eslint';
 import { defineConfig, globalIgnores } from 'eslint/config';
 import eslintReact from '@eslint-react/eslint-plugin';
+import pluginQuery from '@tanstack/eslint-plugin-query';
+import jsxA11y from 'eslint-plugin-jsx-a11y';
 
 export default defineConfig([
   globalIgnores(['dist']),
@@ -15,6 +17,8 @@ export default defineConfig([
       tseslint.configs.stylisticTypeChecked,
       reactHooks.configs.flat['recommended-latest'],
       eslintReact.configs['recommended-typescript'],
+      pluginQuery.configs['flat/recommended'],
+      jsxA11y.flatConfigs.recommended,
     ],
     languageOptions: {
       ecmaVersion: 2020,

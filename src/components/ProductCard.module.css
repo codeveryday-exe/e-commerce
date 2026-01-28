@@ -1,11 +1,20 @@
 .product_card_box {
-  border: 1px solid #808080;
-  max-width: 320px;
+  max-width: 380px;
   position: relative;
 }
 
-.product_card_title::after {
+.product_card_text_info {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.title::after {
   content: '';
   position: absolute;
   inset: 0;
+}
+
+.price {
+  font-weight: bold;
 }

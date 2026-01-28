@@ -1,9 +1,7 @@
 .products_container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  border: 1px solid #000000;
-  max-width: 1440px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-rows: repeat(auto-fit, 1fr);
+  gap: 0 8px;
+  max-width: 100%;
 }

@@ -1,0 +1,158 @@
+.product_details_box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.text_info_box {
+  display: flex;
+  /* align-items: center; */
+  flex-direction: column;
+  gap: 36px;
+  max-width: 960px;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.color_title,
+.size_title {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.size_box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.size_item {
+  button {
+    cursor: pointer;
+    border: 1px solid #808080;
+    padding: 8px 16px;
+
+    &:hover {
+      border-color: #000000;
+      background-color: #f2f2f2;
+    }
+  }
+
+  &.selected {
+    outline: 2px solid #b00000;
+    z-index: 1;
+
+    button {
+      border-color: transparent;
+    }
+  }
+
+  &:not(:last-child) button {
+    border-right: none;
+  }
+}
+
+.color_box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.color_item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+
+  &.selected {
+    border: 1.5px solid #000000;
+    border-radius: 100%;
+  }
+
+  button {
+    cursor: pointer;
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.image {
+  height: 100vh;
+  object-fit: cover;
+}
+
+.quantity_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.quantity_box h2 {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.quantity_btn_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+  padding: 8px 16px;
+  max-width: 180px;
+  height: 50px;
+  font-size: 1.1em;
+  border: 1px solid #808080;
+}
+
+.quantity_btn_box button {
+  cursor: pointer;
+  transition: font-size 0.2s ease-in-out;
+
+  &:hover {
+    font-weight: bold;
+    font-size: 1.4em;
+  }
+}
+
+.quantity_btn_box p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+}
+
+.cart_btn {
+  cursor: pointer;
+  max-width: 320px;
+  color: #ffffff;
+  background-color: #000000;
+  padding: 10px;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #2a2a2a;
+  }
+
+  &:active {
+    background-color: #454545;
+  }
+}
+
+.description {
+  line-height: 1.8em;
+  letter-spacing: 0.5px;
+  font-weight: bold;
+}
+
+@media (max-width: 920px) {
+  .product_details_box {
+    grid-template-columns: none;
+    grid-template-rows: 1fr 1fr;
+  }
+}
