@@ -1,7 +1,7 @@
 import { Link } from 'wouter';
 import { z } from 'zod';
 import styles from './ProductCard.module.css';
-import type { ProductNodeSchema } from '../schemas/shop';
+import type { ProductNodeSchema } from '../../schemas/shop';
 
 interface Props {
   product: z.infer<typeof ProductNodeSchema>;

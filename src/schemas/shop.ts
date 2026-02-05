@@ -37,13 +37,6 @@ export const ProductQuerySchema = z.object({
       id: z.string(),
       title: z.string(),
       description: z.string(),
-      featuredImage: z
-        .object({
-          id: z.string(),
-          url: z.url(),
-        })
-        .nullable(),
-
       options: z.array(
         z.object({
           id: z.string(),
@@ -61,7 +54,11 @@ export const ProductQuerySchema = z.object({
           ),
         }),
       ),
-
+      selectedOrFirstAvailableVariant: z
+        .object({
+          id: z.string(),
+        })
+        .nullable(),
       variants: z.object({
         edges: z.array(
           z.object({
@@ -91,4 +88,58 @@ export const ProductQuerySchema = z.object({
       }),
     })
     .nullable(), // product can be null if not found
+});
+
+export const CartCreateResponseSchema = z.object({
+  cartCreate: z.object({
+    cart: z.object({
+      id: z.string(),
+    }),
+  }),
+});
+
+const MoneyV2Schema = z.object({
+  amount: z.string(),
+  currencyCode: z.string(),
+});
+
+const ImageSchema = z.object({
+  id: z.string(),
+  url: z.string(),
+});
+
+const MerchandiseSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  image: ImageSchema.nullable(),
+});
+
+const CartLineNodeSchema = z.object({
+  id: z.string(),
+  merchandise: MerchandiseSchema,
+});
+
+const CartLineEdgeSchema = z.object({
+  node: CartLineNodeSchema,
+});
+
+const CartLinesSchema = z.object({
+  edges: z.array(CartLineEdgeSchema),
+});
+
+const CartCostSchema = z.object({
+  totalAmount: MoneyV2Schema,
+  subtotalAmount: MoneyV2Schema,
+});
+
+export const CartSchema = z.object({
+  id: z.string(),
+  createdAt: z.string(),
+  updatedAt: z.string(),
+  lines: CartLinesSchema,
+  cost: CartCostSchema,
+});
+
+export const CartQueryResponseSchema = z.object({
+  cart: CartSchema,
 });

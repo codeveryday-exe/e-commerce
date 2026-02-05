@@ -1,18 +1,26 @@
 import { Route, Switch } from 'wouter';
+import { Toaster } from 'sonner';
 import styles from './App.module.css';
-import { HomePage } from './components/HomePage';
-import ProductPage from './components/ProductPage';
-import Header from './components/Header';
+import { HomePage } from './components/HomePage/HomePage';
+import ProductPage from './components/ProductPage/ProductPage';
+import Header from './components/Header/Header';
+import LoginPage from './components/LoginPage/LoginPage';
+import ResetPasswordPage from './components/ResetPasswordPage/ResetPasswordPage';
 
 export default function App() {
   return (
-    <main className={styles.app}>
+    <>
+      <Toaster expand={false} position="bottom-right" />
       <Header />
-      <Switch>
-        <Route path="/" component={HomePage} />
-        <Route path="/product/:productId" component={ProductPage} />
-        <Route path="*" component={() => <h1>Page Not Found</h1>} />
-      </Switch>
-    </main>
+      <main className={styles.app}>
+        <Switch>
+          <Route path="/" component={HomePage} />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/reset-password" component={ResetPasswordPage} />
+          <Route path="/product/:productId" component={ProductPage} />
+          <Route path="*" component={() => <h1>Page Not Found</h1>} />
+        </Switch>
+      </main>
+    </>
   );
 }

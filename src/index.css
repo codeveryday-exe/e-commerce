@@ -1,9 +1,11 @@
 @import './reset.css';
+@import '@fontsource-variable/inter';
 
 body {
   display: flex;
   justify-content: center;
-  font-family: sans-serif;
+  font-family: 'Inter Variable', sans-serif;
+  background-color: #f8f8f8;
 }
 
 #root {

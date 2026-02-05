@@ -1,6 +1,6 @@
 .product_card_box {
-  max-width: 380px;
   position: relative;
+  background-color: #ffffff;
 }
 
 .product_card_text_info {

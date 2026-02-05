@@ -5,7 +5,17 @@
   padding: 16px 24px;
 }
 
+.other_box {
+  display: flex;
+  gap: 24px;
+}
+
 .logo_box a {
   font-size: 1.6em;
   font-weight: bold;
+}
+
+.cart_box {
+  /* height: 100vh; */
+  border: 2px solid black;
 }

@@ -1,0 +1,34 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input {
+  border: 1px solid #dbdbdb;
+  height: 46px;
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+.password_box {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+
+  a {
+    color: #696969;
+    font-size: 0.9em;
+    text-decoration: underline;
+  }
+}
+
+.login_btn {
+  max-width: 720px;
+}
+
+@media (max-width: 480px) {
+  .password_box a {
+    font-size: 0.8em;
+  }
+}

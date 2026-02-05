@@ -1,0 +1,27 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input {
+  border: 1px solid #dbdbdb;
+  height: 46px;
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+.name_details_box {
+  display: flex;
+  gap: 24px;
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+}
+
+.register_btn {
+  max-width: 720px;
+}

@@ -1,5 +1,10 @@
 import { request, gql } from 'graphql-request';
-import { ProductQuerySchema, ProductsQuerySchema } from '../schemas/shop';
+import {
+  CartCreateResponseSchema,
+  CartQueryResponseSchema,
+  ProductQuerySchema,
+  ProductsQuerySchema,
+} from '../schemas/shop';
 
 export async function fetchProducts() {
   const query = gql`
@@ -40,10 +45,6 @@ export async function fetchProduct(productId: string) {
         id
         title
         description
-        featuredImage {
-          id
-          url
-        }
         options {
           id
           name
@@ -54,6 +55,9 @@ export async function fetchProduct(productId: string) {
               color
             }
           }
+        }
+        selectedOrFirstAvailableVariant {
+          id
         }
         variants(first: 50) {
           edges {
@@ -84,4 +88,60 @@ export async function fetchProduct(productId: string) {
   console.log(response.product);
 
   return response.product;
+}
+
+export async function getCart(id: string) {
+  const query = gql`
+    query Cart {
+      cart(id: "${id}") {
+        id
+        createdAt
+        updatedAt
+        lines(first: 10) {
+          edges {
+            node {
+              id
+              merchandise {
+                ... on ProductVariant {
+                  id
+                  title
+                  image {
+                    id
+                    url
+                  }
+                }
+              }
+            }
+          }
+        }
+        cost {
+          totalAmount {
+            amount
+            currencyCode
+          }
+          subtotalAmount {
+            amount
+            currencyCode
+          }
+        }
+      }
+    }
+  `;
+
+  const response = CartQueryResponseSchema.parse(await request('https://mock.shop/api', query));
+  return response.cart;
+}
+
+export async function createCart(variantId: string) {
+  const query = gql`
+    mutation CartCreate {
+      cartCreate(input: { lines: [{ quantity: 1, merchandiseId: "gid://shopify/ProductVariant/${variantId}" }] }) {
+        cart {
+          id
+        }
+      }
+    }
+  `;
+  const response = CartCreateResponseSchema.parse(await request('https://mock.shop/api', query));
+  return response.cartCreate.cart;
 }

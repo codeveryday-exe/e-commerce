@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+.item {
+  button {
+    cursor: pointer;
+    border: 1px solid #696969;
+    padding: 8px 16px;
+
+    &:hover {
+      background-color: #eeeeee;
+    }
+  }
+
+  &.selected {
+    outline: 2px solid #b53030;
+    z-index: 1;
+
+    button {
+      border-color: transparent;
+    }
+  }
+}
