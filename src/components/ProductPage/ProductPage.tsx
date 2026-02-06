@@ -9,7 +9,7 @@ import { MinusIcon, PlusIcon } from 'lucide-react';
 import { toast } from 'sonner';
 import SubmitButton from '../SubmitButton/SubmitButton';
 import { useCartId } from '../../hooks/useCartId';
-import Cart from '../Cart';
+import Cart from '../Cart/Cart';
 
 export default function ProductPage() {
   const [searchParams, setSearchParams] = useSearchParams();
