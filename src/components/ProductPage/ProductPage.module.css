@@ -9,6 +9,7 @@
   flex-direction: column;
   gap: 36px;
   max-width: 960px;
+  padding-top: 24px;
 }
 
 .title {

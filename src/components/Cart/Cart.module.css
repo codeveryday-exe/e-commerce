@@ -1,0 +1,47 @@
+.cart_box {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 480px;
+  z-index: 1;
+  padding: 24px 16px;
+  background-color: #ffffff;
+  box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+  transform: translateX(0);
+  transition: transform ease 0.3s;
+
+  @starting-style {
+    transform: translateX(100%);
+  }
+}
+
+.close_btn {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  width: 30px;
+  height: 30px;
+  &:hover {
+    cursor: pointer;
+    color: #696969;
+  }
+}
+
+.cart_title {
+  font-size: 2em;
+  font-weight: 500;
+}
+
+.total_price_box {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+  .cart_box {
+    width: 100%;
+  }
+}
