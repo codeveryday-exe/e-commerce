@@ -5,10 +5,10 @@ export default function RegisterForm() {
   return (
     <form className={styles.form}>
       <label htmlFor="email">Email</label>
-      <input className={styles.input} type="email" name="email" id="email" />
+      <input className={styles.input} type="email" name="email" id="email" required />
 
       <label htmlFor="password">Password</label>
-      <input className={styles.input} type="password" name="password" id="password" />
+      <input className={styles.input} type="password" name="password" id="password" required />
 
       <div className={styles.name_details_box}>
         <div className={styles.field}>
