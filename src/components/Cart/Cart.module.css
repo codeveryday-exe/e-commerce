@@ -29,6 +29,11 @@
   }
 }
 
+.empty_cart_box {
+  font-size: 1.4em;
+  padding: 0 24px;
+}
+
 .close_btn {
   position: absolute;
   top: 18px;

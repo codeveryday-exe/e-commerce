@@ -44,7 +44,11 @@ export default function Cart({ closeCart }: Props) {
           </svg>
         </button>
         <h2 className={styles.cart_title}>Cart</h2>
-        {!cart && <div>your cart is empty</div>}
+        {!cart && (
+          <div className={styles.empty_cart_box}>
+            <p>Your cart is empty</p>
+          </div>
+        )}
         {cart && (
           <>
             <div className={styles.lines_box}>
