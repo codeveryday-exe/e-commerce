@@ -17,6 +17,11 @@
 - [] add color palette (https://coolors.co/).
 - [] add skeleton loaders
 - [] add filtering feature to the Collection/Category
+- [] Footer
+- [] CheckoutPage
+- [] CollectionPage
+- [] CategoryPage
+- [] product searching
 
 https://mock.shop/products
 https://css-tricks.com/auto-sizing-columns-css-grid-auto-fill-vs-auto-fit/
@@ -24,19 +29,13 @@ https://css-tricks.com/auto-sizing-columns-css-grid-auto-fill-vs-auto-fit/
 https://base-ui.com/react/overview/quick-start
 https://base-ui.com/react/handbook/forms
 
-<!--
-user clicks ADD TO CART;
-if there's a cartID in localStorage => check useLocalStorage
-- use cartLinesAdd
-- invalidate cartQuery => (https://tanstack.com/query/v4/docs/framework/react/guides/query-invalidation)
-else
-- use cartCreate
-- add cart's ID in localStorage => check useLocalStorage
--->
+ProductPage show price
+open cart when adding product to the cart
+delete button for each line in cart
+edit quantity for each line in cart
 
 ---
 
 # QUESTIONS
 
-div onClick problem
 effects do not look as good as centra, e.g. blur, open-close cart

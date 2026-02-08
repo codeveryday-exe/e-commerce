@@ -1,6 +1,7 @@
 import { request, gql } from 'graphql-request';
 import {
   CartCreateResponseSchema,
+  CartLinesAddResponseSchema,
   CartQueryResponseSchema,
   ProductQuerySchema,
   ProductsQuerySchema,
@@ -90,48 +91,52 @@ export async function fetchProduct(productId: string) {
   return response.product;
 }
 
-export async function getCart(id: string) {
-  const query = gql`
-    query Cart {
-      cart(id: "${id}") {
+const cartFragment = `
+  id
+  createdAt
+  updatedAt
+  lines(first: 10) {
+    edges {
+      node {
         id
-        createdAt
-        updatedAt
-        lines(first: 10) {
-          edges {
-            node {
-              id
-              quantity
-              cost {
-                totalAmount {
-                  amount
-                  currencyCode
-                }
-              }
-              merchandise {
-                ... on ProductVariant {
-                  id
-                  title
-                  image {
-                    id
-                    url
-                    altText
-                  }
-                }
-              }
-            }
-          }
-        }
+        quantity
         cost {
           totalAmount {
             amount
             currencyCode
           }
-          subtotalAmount {
-            amount
-            currencyCode
+        }
+        merchandise {
+          ... on ProductVariant {
+            id
+            title
+            image {
+              id
+              url
+              altText
+            }
           }
         }
+      }
+    }
+  }
+  cost {
+    totalAmount {
+      amount
+      currencyCode
+    }
+    subtotalAmount {
+      amount
+      currencyCode
+    }
+  }
+`;
+
+export async function getCart(id: string) {
+  const query = gql`
+    query Cart {
+      cart(id: "${id}") {
+        ${cartFragment}
       }
     }
   `;
@@ -140,16 +145,40 @@ export async function getCart(id: string) {
   return response.cart;
 }
 
-export async function createCart(variantId: string) {
+export async function createCart({ variantId, quantity }: { variantId: string; quantity: number }) {
   const query = gql`
     mutation CartCreate {
-      cartCreate(input: { lines: [{ quantity: 1, merchandiseId: "gid://shopify/ProductVariant/${variantId}" }] }) {
+      cartCreate(input: { lines: [{ quantity: ${quantity}, merchandiseId: "gid://shopify/ProductVariant/${variantId}" }] }) {
         cart {
           id
         }
       }
     }
   `;
+
   const response = CartCreateResponseSchema.parse(await request('https://mock.shop/api', query));
   return response.cartCreate.cart;
+}
+
+export async function addLinesToCart({
+  cartId,
+  variantId,
+  quantity,
+}: {
+  cartId: string;
+  variantId: string;
+  quantity: number;
+}) {
+  const query = gql`
+    mutation CartLinesAdd {
+      cartLinesAdd(cartId: "${cartId}", lines: [{ quantity: ${quantity}, merchandiseId: "gid://shopify/ProductVariant/${variantId}" }]) {
+        cart {
+          ${cartFragment}
+        }
+      }
+    }
+  `;
+
+  const response = CartLinesAddResponseSchema.parse(await request('https://mock.shop/api', query));
+  return response.cartLinesAdd.cart;
 }

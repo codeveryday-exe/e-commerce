@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useParams, useSearchParams } from 'wouter';
 import styles from './ProductPage.module.css';
 import { addLinesToCart, createCart, fetchProduct } from '../../services/mock-shop';
@@ -9,18 +9,20 @@ import { MinusIcon, PlusIcon } from 'lucide-react';
 import { toast } from 'sonner';
 import SubmitButton from '../SubmitButton/SubmitButton';
 import { useCartId } from '../../hooks/useCartId';
+import { cartQuery } from '../Cart/Cart';
 
 export default function ProductPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [cartId, setCartId] = useCartId();
   const [quantity, setQuantity] = useState(1);
+  const queryClient = useQueryClient();
 
   const createCartMutation = useMutation({
-    mutationFn: (variantId: string) => createCart(variantId),
+    mutationFn: createCart,
   });
 
   const addLinesToCartMutation = useMutation({
-    mutationFn: () => addLinesToCart(),
+    mutationFn: addLinesToCart,
   });
 
   const { productId } = useParams<{ productId: string }>();
@@ -56,16 +58,29 @@ export default function ProductPage() {
     }
 
     if (cartId) {
-      addLinesToCartMutation.mutate();
+      addLinesToCartMutation.mutate(
+        { cartId, quantity, variantId: selectedVariantId },
+        {
+          onError: () => {
+            toast.error('Something went wrong');
+          },
+          onSuccess: (cart, variables) => {
+            queryClient.setQueryData(cartQuery(variables.cartId).queryKey, cart);
+          },
+        },
+      );
     } else {
-      createCartMutation.mutate(selectedVariantId, {
-        onError: () => {
-          toast.error('Something went wrong');
+      createCartMutation.mutate(
+        { variantId: selectedVariantId, quantity },
+        {
+          onError: () => {
+            toast.error('Something went wrong');
+          },
+          onSuccess: (cart) => {
+            setCartId(cart.id);
+          },
         },
-        onSuccess: (cart) => {
-          setCartId(cart.id);
-        },
-      });
+      );
     }
   }
 

@@ -3,9 +3,15 @@ import CartButton from '../CartButton/CartButton';
 import styles from './Header.module.css';
 import { useState } from 'react';
 import LoginLink from '../LoginLink/LoginLink';
-import Cart from '../Cart/Cart';
+import Cart, { cartQuery } from '../Cart/Cart';
+import { useCartId } from '../../hooks/useCartId';
+import { useQuery } from '@tanstack/react-query';
 
 export default function Header() {
+  const [cartId] = useCartId();
+
+  useQuery(cartQuery(cartId));
+
   const [isCartOpen, setIsCartOpen] = useState(false);
   return (
     <header className={styles.header}>

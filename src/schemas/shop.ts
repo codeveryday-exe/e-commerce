@@ -148,3 +148,9 @@ export const CartSchema = z.object({
 export const CartQueryResponseSchema = z.object({
   cart: CartSchema,
 });
+
+export const CartLinesAddResponseSchema = z.object({
+  cartLinesAdd: z.object({
+    cart: CartSchema,
+  }),
+});
