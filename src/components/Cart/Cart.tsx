@@ -51,37 +51,43 @@ export default function Cart({ setIsCartOpen }: Props) {
         </svg>
       </button>
       <h2 className={styles.cart_title}>Cart</h2>
-      <div>
-        {/* Product cards, example here */}
-        <img src="" alt="" />
-        <div>
-          <h3>Title</h3>
-          {cart.lines.edges.map((line) => {
-            return <div key={line.node.id}>{line.node.merchandise.title}</div>;
-          })}
-          <div>
-            <p>Size</p>
-            <p>{/* Size value here */}</p>
-          </div>
-          <div>
-            <p>Color</p>
-            <p>{/* Color value here */}</p>
-          </div>
-          <div>
-            <p>Quantity</p>
-            <p>{/* Quantity value here */}</p>
-          </div>
-          <div>
-            <p>Total (price)</p>
-            <p>{/* Product price here */}</p>
-          </div>
-        </div>
-        <div className={styles.total_price_box}>
-          <p>TOTAL</p>
-          <p>{/* all total price here */}00.0 CAD</p>
-        </div>
-        <SubmitButton type="button">CHECKOUT</SubmitButton>
+      <div className={styles.lines_box}>
+        {cart.lines.edges.map((line) => {
+          return (
+            <div className={styles.line_box} key={line.node.id}>
+              <div className={styles.line_image_box}>
+                <img src={line.node.merchandise.image?.url} alt={line.node.merchandise.title} />
+              </div>
+              <div className={styles.line_details_box}>
+                <div className={styles.variant_box}>
+                  <p>Variant</p>
+                  <p>{line.node.merchandise.title}</p>
+                </div>
+                <div className={styles.quantity_box}>
+                  <p>Quantity</p>
+                  <p>{/* Quantity value here */}</p>
+                </div>
+                <div className={styles.line_price_box}>
+                  <p>Total</p>
+                  <p>
+                    {line.node.merchandise.price.amount} {line.node.merchandise.price.currencyCode}
+                  </p>
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </div>
+      <div className={styles.total_price_box}>
+        <p>TOTAL</p>
+        <p className={styles.total_price_text}>
+          {/* should use subTotalAmount or totalAmount? */}
+          {cart.cost.totalAmount.amount} {cart.cost.totalAmount.currencyCode}
+        </p>
+      </div>
+      <SubmitButton className={styles.checkout_btn} type="button">
+        CHECKOUT
+      </SubmitButton>
     </div>
   );
 }
