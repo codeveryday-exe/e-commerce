@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { useParams, useSearchParams } from 'wouter';
 import styles from './ProductPage.module.css';
-import { createCart, fetchProduct } from '../../services/mock-shop';
+import { addLinesToCart, createCart, fetchProduct } from '../../services/mock-shop';
 import { useState } from 'react';
 import clsx from 'clsx';
 import ButtonGroup from '../ButtonGroup/ButtonGroup';
@@ -9,7 +9,6 @@ import { MinusIcon, PlusIcon } from 'lucide-react';
 import { toast } from 'sonner';
 import SubmitButton from '../SubmitButton/SubmitButton';
 import { useCartId } from '../../hooks/useCartId';
-import Cart from '../Cart/Cart';
 
 export default function ProductPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -18,6 +17,10 @@ export default function ProductPage() {
 
   const createCartMutation = useMutation({
     mutationFn: (variantId: string) => createCart(variantId),
+  });
+
+  const addLinesToCartMutation = useMutation({
+    mutationFn: () => addLinesToCart(),
   });
 
   const { productId } = useParams<{ productId: string }>();
@@ -52,18 +55,8 @@ export default function ProductPage() {
       return;
     }
 
-    /* const fetch = createCart(selectedVariantId);
-    fetch
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((err: unknown) => {
-        toast.error('Something went wrong');
-        console.log(err);
-      }); */
-
     if (cartId) {
-      /*  */
+      addLinesToCartMutation.mutate();
     } else {
       createCartMutation.mutate(selectedVariantId, {
         onError: () => {
@@ -213,11 +206,15 @@ export default function ProductPage() {
         {/* <button onClick={onSubmit} className={styles.cart_btn} type="button">
           ADD TO CART
         </button> */}
-        <SubmitButton onClick={onSubmit} type="button" className={styles.cart_btn}>
-          ADD TO CART
+        <SubmitButton
+          onClick={onSubmit}
+          type="button"
+          className={styles.cart_btn}
+          disabled={createCartMutation.isPending}
+        >
+          {createCartMutation.isPending ? 'LOADING' : 'ADD TO CART'}
         </SubmitButton>
         <p className={styles.description}>{product.description}</p>
-        <Cart />
       </div>
     </div>
   );

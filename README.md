@@ -24,10 +24,6 @@ https://css-tricks.com/auto-sizing-columns-css-grid-auto-fill-vs-auto-fit/
 https://base-ui.com/react/overview/quick-start
 https://base-ui.com/react/handbook/forms
 
-- [x] Create SubmitButton component
-- [x] Create LoginForm & RegisterForm components
-- [x] Add folders for components
-
 <!--
 user clicks ADD TO CART;
 if there's a cartID in localStorage => check useLocalStorage
@@ -41,3 +37,6 @@ else
 ---
 
 # QUESTIONS
+
+div onClick problem
+effects do not look as good as centra, e.g. blur, open-close cart

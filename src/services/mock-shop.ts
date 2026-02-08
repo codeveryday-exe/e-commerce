@@ -101,6 +101,13 @@ export async function getCart(id: string) {
           edges {
             node {
               id
+              quantity
+              cost {
+                totalAmount {
+                  amount
+                  currencyCode
+                }
+              }
               merchandise {
                 ... on ProductVariant {
                   id
@@ -108,6 +115,7 @@ export async function getCart(id: string) {
                   image {
                     id
                     url
+                    altText
                   }
                 }
               }

@@ -106,6 +106,7 @@ const MoneyV2Schema = z.object({
 const ImageSchema = z.object({
   id: z.string(),
   url: z.string(),
+  altText: z.string().nullable(),
 });
 
 const MerchandiseSchema = z.object({
@@ -116,6 +117,10 @@ const MerchandiseSchema = z.object({
 
 const CartLineNodeSchema = z.object({
   id: z.string(),
+  quantity: z.number(),
+  cost: z.object({
+    totalAmount: MoneyV2Schema,
+  }),
   merchandise: MerchandiseSchema,
 });
 

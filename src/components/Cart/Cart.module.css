@@ -1,3 +1,12 @@
+.backdrop_box {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  backdrop-filter: blur(3px);
+  transition: backdrop-filter ease 0.3s;
+}
+
 .cart_box {
   display: flex;
   flex-direction: column;
@@ -8,7 +17,7 @@
   height: 100vh;
   width: 480px;
   z-index: 999;
-  padding: 16px 24px;
+  padding: 16px;
   background-color: #ffffff;
   box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
   transform: translateX(0);
@@ -67,6 +76,11 @@
   .total_price_text {
     font-weight: 600;
   }
+}
+
+.checkout_btn_box {
+  display: grid;
+  padding: 0 24px;
 }
 
 @media (max-width: 768px) {

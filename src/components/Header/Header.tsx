@@ -24,7 +24,7 @@ export default function Header() {
       </div>
       {isCartOpen && (
         <Cart
-          setIsCartOpen={() => {
+          closeCart={() => {
             setIsCartOpen(false);
           }}
         />
