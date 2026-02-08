@@ -133,94 +133,96 @@ export default function ProductPage() {
           />
         </div>
       )}
-      <div className={styles.text_info_box}>
+      <div className={styles.text_box}>
         <h1 className={styles.title}>{product.title.toUpperCase()}</h1>
-        {sizeOptions && (
-          <div className={styles.size_info_box}>
-            <h2 className={styles.size_title}>SIZES: </h2>
-            <ButtonGroup
-              options={sizeOptions.optionValues}
-              selectedOption={selectedSize}
-              onSelect={(size) => {
-                selectVariant(selectedColor, size);
-              }}
-            />
-          </div>
-        )}
-        {colorOptions && (
-          <div className={styles.color_info_box}>
-            <h2 className={styles.color_title}>COLORS: </h2>
-            {hasNullSwatch ? (
+        <p className={styles.price}>
+          {selectedVariant?.node.price.amount} {selectedVariant?.node.price.currencyCode}
+        </p>
+        <div className={styles.text_info_box}>
+          {sizeOptions && (
+            <div className={styles.size_info_box}>
+              <h2 className={styles.size_title}>SIZES: </h2>
               <ButtonGroup
-                options={colorOptions.optionValues}
-                selectedOption={selectedColor}
-                onSelect={(color) => {
-                  selectVariant(color, selectedSize);
+                options={sizeOptions.optionValues}
+                selectedOption={selectedSize}
+                onSelect={(size) => {
+                  selectVariant(selectedColor, size);
                 }}
               />
-            ) : (
-              <ul className={styles.color_box}>
-                {colorOptions.optionValues.map((optionValue) => {
-                  return (
-                    <li
-                      className={clsx(styles.color_item, {
-                        [styles.selected]: selectedColor === optionValue.name,
-                      })}
-                      key={optionValue.id}
-                    >
-                      <button
-                        title={optionValue.name}
-                        style={
-                          optionValue.swatch?.color
-                            ? {
-                                backgroundColor: optionValue.swatch.color,
-                              }
-                            : {}
-                        }
-                        onClick={() => {
-                          selectVariant(optionValue.name, selectedSize);
-                        }}
-                        type="button"
+            </div>
+          )}
+          {colorOptions && (
+            <div className={styles.color_info_box}>
+              <h2 className={styles.color_title}>COLORS: </h2>
+              {hasNullSwatch ? (
+                <ButtonGroup
+                  options={colorOptions.optionValues}
+                  selectedOption={selectedColor}
+                  onSelect={(color) => {
+                    selectVariant(color, selectedSize);
+                  }}
+                />
+              ) : (
+                <ul className={styles.color_box}>
+                  {colorOptions.optionValues.map((optionValue) => {
+                    return (
+                      <li
+                        className={clsx(styles.color_item, {
+                          [styles.selected]: selectedColor === optionValue.name,
+                        })}
+                        key={optionValue.id}
                       >
-                        <span className={'sr-only'}>{optionValue.name}</span>
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
-            )}
-          </div>
-        )}
-        <div className={styles.quantity_box}>
-          <h2>QUANTITY: </h2>
-          <div className={styles.quantity_btn_box}>
-            <button
-              title="Decrease"
-              onClick={() => {
-                setQuantity((prev) => prev - 1);
-              }}
-              type="button"
-              disabled={quantity === 1}
-            >
-              <MinusIcon size={16} />
-              <span className="sr-only">Decrease</span>
-            </button>
-            <p>{quantity}</p>
-            <button
-              title="Increase"
-              onClick={() => {
-                setQuantity((prev) => prev + 1);
-              }}
-              type="button"
-            >
-              <PlusIcon size={16} />
-              <span className="sr-only">Increase</span>
-            </button>
+                        <button
+                          title={optionValue.name}
+                          style={
+                            optionValue.swatch?.color
+                              ? {
+                                  backgroundColor: optionValue.swatch.color,
+                                }
+                              : {}
+                          }
+                          onClick={() => {
+                            selectVariant(optionValue.name, selectedSize);
+                          }}
+                          type="button"
+                        >
+                          <span className={'sr-only'}>{optionValue.name}</span>
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </div>
+          )}
+          <div className={styles.quantity_box}>
+            <h2>QUANTITY: </h2>
+            <div className={styles.quantity_btn_box}>
+              <button
+                title="Decrease"
+                onClick={() => {
+                  setQuantity((prev) => prev - 1);
+                }}
+                type="button"
+                disabled={quantity === 1}
+              >
+                <MinusIcon size={16} />
+                <span className="sr-only">Decrease</span>
+              </button>
+              <p>{quantity}</p>
+              <button
+                title="Increase"
+                onClick={() => {
+                  setQuantity((prev) => prev + 1);
+                }}
+                type="button"
+              >
+                <PlusIcon size={16} />
+                <span className="sr-only">Increase</span>
+              </button>
+            </div>
           </div>
         </div>
-        {/* <button onClick={onSubmit} className={styles.cart_btn} type="button">
-          ADD TO CART
-        </button> */}
         <SubmitButton
           onClick={onSubmit}
           type="button"
