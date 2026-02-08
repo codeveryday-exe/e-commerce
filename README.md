@@ -10,7 +10,6 @@
 - [x] get a product with the first 3 variants
 - [x] fix types
 - [x] product detail page => https://demostore.mock.shop/products/hoodie-old
-- [] look grid, auto-fill, auto-fit,
 - [x] use searchParams for selected variant state, don't use useState for selected variant (can look animeDB)
 - [] add header & footer
 - [x] find a font from fonts.google.com and use it in index.css
@@ -22,14 +21,14 @@
 - [] CollectionPage
 - [] CategoryPage
 - [] product searching
+- [] use library for better effects
 
 https://mock.shop/products
-https://css-tricks.com/auto-sizing-columns-css-grid-auto-fill-vs-auto-fit/
+look grid, auto-fill, auto-fit => https://css-tricks.com/auto-sizing-columns-css-grid-auto-fill-vs-auto-fit/
 
 https://base-ui.com/react/overview/quick-start
 https://base-ui.com/react/handbook/forms
 
-ProductPage show price
 open cart when adding product to the cart
 delete button for each line in cart
 edit quantity for each line in cart
@@ -37,5 +36,3 @@ edit quantity for each line in cart
 ---
 
 # QUESTIONS
-
-effects do not look as good as centra, e.g. blur, open-close cart

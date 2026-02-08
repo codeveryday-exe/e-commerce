@@ -46,6 +46,11 @@
   }
 }
 
+.lines_box {
+  display: grid;
+  gap: 24px;
+}
+
 .line_box {
   display: grid;
   grid-template-columns: 1fr 1fr;
