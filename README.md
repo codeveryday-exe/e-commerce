@@ -29,6 +29,7 @@ look grid, auto-fill, auto-fit => https://css-tricks.com/auto-sizing-columns-css
 https://base-ui.com/react/overview/quick-start
 https://base-ui.com/react/handbook/forms
 
+edit mock-shop variable syntax
 open cart when adding product to the cart
 delete button for each line in cart
 edit quantity for each line in cart

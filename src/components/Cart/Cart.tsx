@@ -3,10 +3,7 @@ import { getCart } from '../../services/mock-shop';
 import { useCartId } from '../../hooks/useCartId';
 import SubmitButton from '../SubmitButton/SubmitButton';
 import styles from './Cart.module.css';
-
-interface Props {
-  closeCart?: () => void;
-}
+import { useCartPanel } from '../../contexts/CartPanelContext';
 
 export const cartQuery = (id: string | null) =>
   queryOptions({
@@ -14,10 +11,14 @@ export const cartQuery = (id: string | null) =>
     queryFn: id ? () => getCart(id) : skipToken,
   });
 
-export default function Cart({ closeCart }: Props) {
+export default function Cart() {
   const [cartId] = useCartId();
-
   const { data: cart, isLoading } = useQuery(cartQuery(cartId));
+  const { setIsCartOpen } = useCartPanel();
+
+  const closeCart = () => {
+    setIsCartOpen(false);
+  };
 
   if (isLoading) {
     return (

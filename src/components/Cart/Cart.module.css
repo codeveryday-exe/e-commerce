@@ -77,6 +77,13 @@
   font-weight: 500;
 }
 
+.remove_line_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+}
+
 .total_price_box {
   display: flex;
   justify-content: space-between;
@@ -96,11 +103,5 @@
 @media (max-width: 768px) {
   .cart_box {
     width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  .line_box {
-    grid-template-columns: 1fr;
   }
 }

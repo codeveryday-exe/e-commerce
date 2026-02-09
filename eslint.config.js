@@ -20,6 +20,9 @@ export default defineConfig([
       pluginQuery.configs['flat/recommended'],
       jsxA11y.flatConfigs.recommended,
     ],
+    rules: {
+      '@eslint-react/no-use-context': 'off',
+    },
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,

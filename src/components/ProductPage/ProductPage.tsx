@@ -10,11 +10,13 @@ import { toast } from 'sonner';
 import SubmitButton from '../SubmitButton/SubmitButton';
 import { useCartId } from '../../hooks/useCartId';
 import { cartQuery } from '../Cart/Cart';
+import { useCartPanel } from '../../contexts/CartPanelContext';
 
 export default function ProductPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [cartId, setCartId] = useCartId();
   const [quantity, setQuantity] = useState(1);
+  const { setIsCartOpen } = useCartPanel();
   const queryClient = useQueryClient();
 
   const createCartMutation = useMutation({
@@ -66,6 +68,7 @@ export default function ProductPage() {
           },
           onSuccess: (cart, variables) => {
             queryClient.setQueryData(cartQuery(variables.cartId).queryKey, cart);
+            setIsCartOpen(true);
           },
         },
       );

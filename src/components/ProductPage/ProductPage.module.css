@@ -23,11 +23,9 @@
 .title {
   font-weight: bold;
   font-size: 2em;
-  padding: 0 16px;
 }
 
 .price {
-  padding: 0 24px;
   font-size: 1.1em;
   font-weight: 500;
 }
@@ -131,7 +129,7 @@
     grid-template-rows: 1fr 1fr;
   }
 
-  .text_info_box {
-    padding: 0 24px;
+  .text_box {
+    padding: 0 8px;
   }
 }
