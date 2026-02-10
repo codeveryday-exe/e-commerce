@@ -1,8 +1,8 @@
 import { Link } from 'wouter';
 import styles from './LoginForm.module.css';
-import SubmitButton from '../SubmitButton/SubmitButton';
+import { SubmitButton } from '../SubmitButton/SubmitButton';
 
-export default function LoginForm() {
+export function LoginForm() {
   return (
     <form className={styles.form}>
       <label htmlFor="email">Email</label>

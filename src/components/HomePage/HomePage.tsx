@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import styles from './HomePage.module.css';
-import ProductCard from '../ProductCard/ProductCard';
+import { ProductCard } from '../ProductCard/ProductCard';
 import { fetchProducts } from '../../services/mock-shop';
 
 export function HomePage() {

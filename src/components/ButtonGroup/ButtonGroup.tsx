@@ -10,7 +10,7 @@ interface Props {
   onSelect: (newSelected: string) => void;
 }
 
-export default function ButtonGroup({ options, selectedOption, onSelect }: Props) {
+export function ButtonGroup({ options, selectedOption, onSelect }: Props) {
   return (
     <ul className={styles.container}>
       {options.map((optionValue) => {

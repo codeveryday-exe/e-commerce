@@ -7,7 +7,7 @@ interface Props {
   product: z.infer<typeof ProductNodeSchema>;
 }
 
-export default function ProductCard({ product }: Props) {
+export function ProductCard({ product }: Props) {
   const firstVariantPrice = product.selectedOrFirstAvailableVariant?.price ?? {
     amount: '?',
     currencyCode: '?',

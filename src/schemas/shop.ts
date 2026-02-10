@@ -154,3 +154,9 @@ export const CartLinesAddResponseSchema = z.object({
     cart: CartSchema,
   }),
 });
+
+export const CartLinesRemoveResponseSchema = z.object({
+  cartLinesRemove: z.object({
+    cart: CartSchema,
+  }),
+});

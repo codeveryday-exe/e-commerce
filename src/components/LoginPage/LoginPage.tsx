@@ -1,8 +1,8 @@
 import styles from './LoginPage.module.css';
-import LoginForm from './LoginForm';
-import RegisterForm from './RegisterForm';
+import { LoginForm } from './LoginForm';
+import { RegisterForm } from './RegisterForm';
 
-export default function LoginPage() {
+export function LoginPage() {
   return (
     <div className={styles.main_box}>
       <div className={styles.form_box}>

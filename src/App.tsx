@@ -2,12 +2,12 @@ import { Route, Switch } from 'wouter';
 import { Toaster } from 'sonner';
 import styles from './App.module.css';
 import { HomePage } from './components/HomePage/HomePage';
-import ProductPage from './components/ProductPage/ProductPage';
-import Header from './components/Header/Header';
-import LoginPage from './components/LoginPage/LoginPage';
-import ResetPasswordPage from './components/ResetPasswordPage/ResetPasswordPage';
+import { ProductPage } from './components/ProductPage/ProductPage';
+import { Header } from './components/Header/Header';
+import { LoginPage } from './components/LoginPage/LoginPage';
+import { ResetPasswordPage } from './components/ResetPasswordPage/ResetPasswordPage';
 
-export default function App() {
+export function App() {
   return (
     <>
       <Toaster expand={false} position="bottom-right" />

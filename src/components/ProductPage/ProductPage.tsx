@@ -4,15 +4,15 @@ import styles from './ProductPage.module.css';
 import { addLinesToCart, createCart, fetchProduct } from '../../services/mock-shop';
 import { useState } from 'react';
 import clsx from 'clsx';
-import ButtonGroup from '../ButtonGroup/ButtonGroup';
+import { ButtonGroup } from '../ButtonGroup/ButtonGroup';
 import { MinusIcon, PlusIcon } from 'lucide-react';
 import { toast } from 'sonner';
-import SubmitButton from '../SubmitButton/SubmitButton';
+import { SubmitButton } from '../SubmitButton/SubmitButton';
 import { useCartId } from '../../hooks/useCartId';
 import { cartQuery } from '../Cart/Cart';
 import { useCartPanel } from '../../contexts/CartPanelContext';
 
-export default function ProductPage() {
+export function ProductPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [cartId, setCartId] = useCartId();
   const [quantity, setQuantity] = useState(1);

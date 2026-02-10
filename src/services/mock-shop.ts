@@ -2,6 +2,7 @@ import { request, gql } from 'graphql-request';
 import {
   CartCreateResponseSchema,
   CartLinesAddResponseSchema,
+  CartLinesRemoveResponseSchema,
   CartQueryResponseSchema,
   ProductQuerySchema,
   ProductsQuerySchema,
@@ -181,4 +182,19 @@ export async function addLinesToCart({
 
   const response = CartLinesAddResponseSchema.parse(await request('https://mock.shop/api', query));
   return response.cartLinesAdd.cart;
+}
+
+export async function removeLinesFromCart(variables: { cartId: string; lineId: string }) {
+  const query = gql`
+    mutation CartLinesRemove($cartId: ID!, $lineId: ID!) {
+      cartLinesRemove(cartId: $cartId, lineIds: [$lineId]) {
+        cart {
+          ${cartFragment}
+        }
+      }
+    }
+  `;
+  const response = await request('https://mock.shop/api', query, variables);
+  const parsedResponse = CartLinesRemoveResponseSchema.parse(response);
+  return parsedResponse.cartLinesRemove.cart;
 }

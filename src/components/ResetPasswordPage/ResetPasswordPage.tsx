@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from './ResetPasswordPage.module.css';
 
-export default function ResetPasswordPage() {
+export function ResetPasswordPage() {
   const [email, setEmail] = useState('');
   const [submittedEmail, setSubmittedEmail] = useState('');
 

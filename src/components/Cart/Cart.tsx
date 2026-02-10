@@ -1,8 +1,9 @@
 import { queryOptions, skipToken, useQuery } from '@tanstack/react-query';
 import { getCart } from '../../services/mock-shop';
 import { useCartId } from '../../hooks/useCartId';
-import SubmitButton from '../SubmitButton/SubmitButton';
+import { SubmitButton } from '../SubmitButton/SubmitButton';
 import styles from './Cart.module.css';
+import { RemoveLineButton } from '../RemoveLineButton/RemoveLineButton';
 import { useCartPanel } from '../../contexts/CartPanelContext';
 
 export const cartQuery = (id: string | null) =>
@@ -11,7 +12,7 @@ export const cartQuery = (id: string | null) =>
     queryFn: id ? () => getCart(id) : skipToken,
   });
 
-export default function Cart() {
+export function Cart() {
   const [cartId] = useCartId();
   const { data: cart, isLoading } = useQuery(cartQuery(cartId));
   const { setIsCartOpen } = useCartPanel();
@@ -74,6 +75,9 @@ export default function Cart() {
                           {line.node.cost.totalAmount.amount} {line.node.cost.totalAmount.currencyCode}
                         </p>
                       </div>
+                      <div className={styles.remove_line_box}>
+                        <RemoveLineButton lineId={line.node.id} />
+                      </div>
                     </div>
                   </div>
                 );
@@ -82,7 +86,6 @@ export default function Cart() {
             <div className={styles.total_price_box}>
               <p>TOTAL</p>
               <p className={styles.total_price_text}>
-                {/* should use subTotalAmount or totalAmount? */}
                 {cart.cost.totalAmount.amount} {cart.cost.totalAmount.currencyCode}
               </p>
             </div>

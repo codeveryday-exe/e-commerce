@@ -1,7 +1,7 @@
-import SubmitButton from '../SubmitButton/SubmitButton';
+import { SubmitButton } from '../SubmitButton/SubmitButton';
 import styles from './RegisterForm.module.css';
 
-export default function RegisterForm() {
+export function RegisterForm() {
   return (
     <form className={styles.form}>
       <label htmlFor="email">Email</label>

@@ -4,7 +4,7 @@ interface Props {
   onClick: () => void;
 }
 
-export default function CartButton({ onClick }: Props) {
+export function CartButton({ onClick }: Props) {
   return (
     <button
       onClick={() => {

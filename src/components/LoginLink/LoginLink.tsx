@@ -1,7 +1,7 @@
 import { Link } from 'wouter';
 import styles from './LoginLink.module.css';
 
-export default function LoginLink() {
+export function LoginLink() {
   return (
     <Link title="Login" className={styles.link} href="/login">
       <svg

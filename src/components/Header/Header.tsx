@@ -1,13 +1,13 @@
 import { Link } from 'wouter';
-import CartButton from '../CartButton/CartButton';
+import { CartButton } from '../CartButton/CartButton';
 import styles from './Header.module.css';
-import LoginLink from '../LoginLink/LoginLink';
-import Cart, { cartQuery } from '../Cart/Cart';
+import { LoginLink } from '../LoginLink/LoginLink';
+import { Cart, cartQuery } from '../Cart/Cart';
 import { useCartId } from '../../hooks/useCartId';
 import { useQuery } from '@tanstack/react-query';
 import { useCartPanel } from '../../contexts/CartPanelContext';
 
-export default function Header() {
+export function Header() {
   const [cartId] = useCartId();
 
   useQuery(cartQuery(cartId));
