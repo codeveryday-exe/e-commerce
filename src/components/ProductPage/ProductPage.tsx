@@ -23,6 +23,7 @@ export function ProductPage() {
     mutationFn: createCart,
     onSuccess: (cart) => {
       setCartId(cart.id);
+      setIsCartOpen(true);
     },
   });
 
