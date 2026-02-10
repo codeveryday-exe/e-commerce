@@ -1,13 +1,10 @@
 .cart {
+  width: 25px;
+  height: 25px;
   color: #000000;
 
   &:hover {
     cursor: pointer;
     color: #606060;
   }
-}
-
-.cart svg {
-  width: 25px;
-  height: 25px;
 }

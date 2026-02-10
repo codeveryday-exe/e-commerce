@@ -5,6 +5,7 @@ import { SubmitButton } from '../SubmitButton/SubmitButton';
 import styles from './Cart.module.css';
 import { RemoveLineButton } from '../RemoveLineButton/RemoveLineButton';
 import { useCartPanel } from '../../contexts/CartPanelContext';
+import { X } from 'lucide-react';
 
 export const cartQuery = (id: string | null) =>
   queryOptions({
@@ -34,16 +35,7 @@ export function Cart() {
       <div aria-hidden onClick={closeCart} className={styles.backdrop_box} />
       <div className={styles.cart_box}>
         <button onClick={closeCart} className={styles.close_btn} type="button">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="size-6"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-          </svg>
+          <X size={28} />
         </button>
         <h2 className={styles.cart_title}>Cart</h2>
         {!cart && (
