@@ -21,10 +21,17 @@ export function ProductPage() {
 
   const createCartMutation = useMutation({
     mutationFn: createCart,
+    onSuccess: (cart) => {
+      setCartId(cart.id);
+    },
   });
 
   const addLinesToCartMutation = useMutation({
     mutationFn: addLinesToCart,
+    onSuccess: (cart, variables) => {
+      queryClient.setQueryData(cartQuery(variables.cartId).queryKey, cart);
+      setIsCartOpen(true);
+    },
   });
 
   const { productId } = useParams<{ productId: string }>();
@@ -66,10 +73,6 @@ export function ProductPage() {
           onError: () => {
             toast.error('Something went wrong');
           },
-          onSuccess: (cart, variables) => {
-            queryClient.setQueryData(cartQuery(variables.cartId).queryKey, cart);
-            setIsCartOpen(true);
-          },
         },
       );
     } else {
@@ -78,9 +81,6 @@ export function ProductPage() {
         {
           onError: () => {
             toast.error('Something went wrong');
-          },
-          onSuccess: (cart) => {
-            setCartId(cart.id);
           },
         },
       );

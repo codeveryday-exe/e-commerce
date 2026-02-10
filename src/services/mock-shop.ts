@@ -3,6 +3,7 @@ import {
   CartCreateResponseSchema,
   CartLinesAddResponseSchema,
   CartLinesRemoveResponseSchema,
+  CartLinesUpdateSchema,
   CartQueryResponseSchema,
   ProductQuerySchema,
   ProductsQuerySchema,
@@ -197,4 +198,20 @@ export async function removeLinesFromCart(variables: { cartId: string; lineId: s
   const response = await request('https://mock.shop/api', query, variables);
   const parsedResponse = CartLinesRemoveResponseSchema.parse(response);
   return parsedResponse.cartLinesRemove.cart;
+}
+
+export async function editLinesFromCart(variables: { cartId: string; lineId: string }) {
+  const query = gql`
+    mutation CartLinesUpdate($cartId: ID!, $line: ID!) {
+      cartLinesUpdate(cartId: $cartId, lines: [$line]) {
+        cart {
+          ${cartFragment}
+        }
+      }
+    }
+  `;
+
+  const response = await request('https://mock.shop/api', query, variables);
+  const parsedResponse = CartLinesUpdateSchema.parse(response);
+  return parsedResponse.cartLinesUpdate.cart;
 }
