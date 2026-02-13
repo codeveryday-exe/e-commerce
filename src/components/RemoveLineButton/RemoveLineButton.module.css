@@ -1,16 +1,13 @@
 .remove_line_btn {
   padding: 3px;
-  border-radius: 3px;
   cursor: pointer;
-  border: 1.5px solid #121212;
+  border-radius: 3px;
   transition:
     background-color ease 0.2s,
-    color ease 0.2s,
-    border-color ease 0.2s;
+    color ease 0.2s;
 
   &:hover {
     color: #ffffff;
     background-color: #b53030;
-    border-color: #b53030;
   }
 }

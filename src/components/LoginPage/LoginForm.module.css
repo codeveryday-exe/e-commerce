@@ -18,7 +18,7 @@
 
   a {
     color: #696969;
-    font-size: 0.9em;
+    font-size: 0.8rem;
     text-decoration: underline;
   }
 }
@@ -29,6 +29,6 @@
 
 @media (max-width: 480px) {
   .password_box a {
-    font-size: 0.8em;
+    font-size: 0.64rem;
   }
 }
