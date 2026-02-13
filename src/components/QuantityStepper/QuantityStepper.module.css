@@ -1,0 +1,20 @@
+.quantity_btn_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  padding: 4px;
+  font-size: 0.9rem;
+  border: 1px solid #696969;
+
+  button {
+    cursor: pointer;
+  }
+
+  p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+  }
+}

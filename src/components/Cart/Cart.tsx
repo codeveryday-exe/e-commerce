@@ -6,6 +6,7 @@ import styles from './Cart.module.css';
 import { RemoveLineButton } from '../RemoveLineButton/RemoveLineButton';
 import { useCartPanel } from '../../contexts/CartPanelContext';
 import { X } from 'lucide-react';
+import { QuantityStepper } from '../QuantityStepper/QuantityStepper';
 
 export const cartQuery = (id: string | null) =>
   queryOptions({
@@ -17,6 +18,8 @@ export function Cart() {
   const [cartId] = useCartId();
   const { data: cart, isLoading } = useQuery(cartQuery(cartId));
   const { setIsCartOpen } = useCartPanel();
+
+  const hasItems = !!cart && cart.lines.edges.length > 0;
 
   const closeCart = () => {
     setIsCartOpen(false);
@@ -36,14 +39,15 @@ export function Cart() {
       <div className={styles.cart_box}>
         <button onClick={closeCart} className={styles.close_btn} type="button">
           <X size={28} />
+          <span className="sr-only">Close cart</span>
         </button>
         <h2 className={styles.cart_title}>Cart</h2>
-        {!cart && (
+        {!hasItems && (
           <div className={styles.empty_cart_box}>
             <p>Your cart is empty</p>
           </div>
         )}
-        {cart && (
+        {hasItems && (
           <>
             <div className={styles.lines_box}>
               {cart.lines.edges.map((line) => {
@@ -69,6 +73,7 @@ export function Cart() {
                       </div>
                       <div className={styles.remove_line_box}>
                         <RemoveLineButton lineId={line.node.id} />
+                        <QuantityStepper lineId={line.node.id} initialQuantity={line.node.quantity} />
                       </div>
                     </div>
                   </div>

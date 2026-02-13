@@ -2,9 +2,8 @@
   position: fixed;
   inset: 0;
   z-index: 999;
-  /* background-color: rgba(0, 0, 0, 0.5); */
-  backdrop-filter: blur(3px);
-  transition: backdrop-filter ease 0.3s;
+  backdrop-filter: blur(2px);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .cart_box {
@@ -17,12 +16,11 @@
   height: 100vh;
   width: 480px;
   z-index: 999;
-  padding: 16px;
+  padding: 16px 0 16px 16px;
   background-color: #ffffff;
   box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
   transform: translateX(0);
   transition: transform ease 0.3s;
-  overflow: auto;
 
   @starting-style {
     transform: translateX(100%);
@@ -37,7 +35,7 @@
 .close_btn {
   position: absolute;
   top: 24px;
-  right: 16px;
+  right: 26px;
   width: 25px;
   height: 25px;
   &:hover {
@@ -47,21 +45,36 @@
 }
 
 .lines_box {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 24px;
+  padding-right: 16px;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #121212 transparent;
 }
 
 .line_box {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
-  padding: 0 24px;
+  border: 1px solid #121212;
+  border-radius: 4px;
+}
+
+.line_image_box {
+  display: flex;
+
+  img {
+    border-radius: 4px 0 0 4px;
+  }
 }
 
 .line_details_box {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  padding: 16px;
 }
 
 .variant_box,
@@ -79,16 +92,17 @@
 
 .remove_line_box {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  width: fit-content;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .total_price_box {
   display: flex;
   justify-content: space-between;
   margin-top: 24px;
-  padding: 0 24px;
+  padding: 0 16px;
 
   .total_price_text {
     font-weight: 600;
@@ -97,7 +111,7 @@
 
 .checkout_btn_box {
   display: grid;
-  padding: 0 24px;
+  padding: 0 16px;
 }
 
 @media (max-width: 768px) {
