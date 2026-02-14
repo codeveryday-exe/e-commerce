@@ -7,6 +7,7 @@ import { RemoveLineButton } from '../RemoveLineButton/RemoveLineButton';
 import { useCartPanel } from '../../contexts/CartPanelContext';
 import { X } from 'lucide-react';
 import { QuantityStepper } from '../QuantityStepper/QuantityStepper';
+import clsx from 'clsx';
 
 export const cartQuery = (id: string | null) =>
   queryOptions({
@@ -35,7 +36,7 @@ export function Cart() {
 
   return (
     <>
-      <div aria-hidden onClick={closeCart} className={styles.backdrop_box} />
+      <div aria-hidden onClick={closeCart} className={clsx(styles.backdrop_box, 'cart-open')} />
       <div className={styles.cart_box}>
         <button onClick={closeCart} className={styles.close_btn} type="button">
           <X size={28} />
