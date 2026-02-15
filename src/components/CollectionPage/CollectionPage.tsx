@@ -38,7 +38,6 @@ export function CollectionPage() {
       <div className={styles.description_box}>
         <p className={styles.collection_description}>{collection.description}</p>
       </div>
-      <img className={styles.collection_image} src={collection.image?.url} alt={collection.title} />
       <ul className={styles.products_container}>
         {collection.products.edges.map((edge) => {
           return (
