@@ -13,7 +13,7 @@ export function CollectionPage() {
     isError,
   } = useQuery({
     queryKey: ['collection', collectionId],
-    queryFn: () => getCollectionProducts(collectionId),
+    queryFn: () => getCollectionProducts(`gid://shopify/Collection/${collectionId}`),
   });
 
   if (isLoading) {

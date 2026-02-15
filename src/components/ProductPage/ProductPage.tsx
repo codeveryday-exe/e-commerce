@@ -43,7 +43,7 @@ export function ProductPage() {
     isError,
   } = useQuery({
     queryKey: ['product', productId],
-    queryFn: () => fetchProduct(productId),
+    queryFn: () => fetchProduct({ productId: `gid://shopify/Product/${productId}` }),
   });
 
   if (isLoading) {
@@ -67,9 +67,11 @@ export function ProductPage() {
       return;
     }
 
+    const newLine = { merchandiseId: `gid://shopify/ProductVariant/${selectedVariantId}`, quantity };
+
     if (cartId) {
       addLinesToCartMutation.mutate(
-        { cartId, line: { merchandiseId: `gid://shopify/ProductVariant/${selectedVariantId}`, quantity } },
+        { cartId, line: newLine },
         {
           onError: () => {
             toast.error('Something went wrong');
@@ -78,7 +80,7 @@ export function ProductPage() {
       );
     } else {
       createCartMutation.mutate(
-        { variantId: selectedVariantId, quantity },
+        { lines: [newLine] },
         {
           onError: () => {
             toast.error('Something went wrong');
