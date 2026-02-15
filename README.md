@@ -11,17 +11,17 @@
 - [x] fix types
 - [x] product detail page => https://demostore.mock.shop/products/hoodie-old
 - [x] use searchParams for selected variant state, don't use useState for selected variant (can look animeDB)
-- [] add header & footer
+<!-- - [] add header & footer -->
 - [x] find a font from fonts.google.com and use it in index.css
-- [] add color palette (https://coolors.co/).
-- [] add skeleton loaders
-- [] add filtering feature to the Collection/Category
-- [] Footer
-- [] CheckoutPage
+  <!-- - [] add color palette (https://coolors.co/) -->
+    <!-- - [] add skeleton loaders -->
+    <!-- - [] add filtering feature to the Collection/Category -->
+    <!-- - [] Footer -->
+    <!-- - [] CheckoutPage -->
 - [] CollectionPage
 - [] CategoryPage
 - [] product searching
-- [] use library for better effects
+<!-- - [] use library for better effects -->
 
 https://mock.shop/products
 look grid, auto-fill, auto-fit => https://css-tricks.com/auto-sizing-columns-css-grid-auto-fill-vs-auto-fit/
@@ -29,13 +29,8 @@ look grid, auto-fill, auto-fit => https://css-tricks.com/auto-sizing-columns-css
 https://base-ui.com/react/overview/quick-start
 https://base-ui.com/react/handbook/forms
 
-look for react debounce
-edit mock-shop variable syntax
-open cart when adding product to the cart
-delete button for each line in cart
-edit quantity for each line in cart
+- [] edit mock-shop variable syntax
 
 ---
 
-line gets removed but need to reload for seeing changes in the UI, why is that?
-how does the relationship of arguments, functions and mutation functions work on fetching in mock-shop?
+# Questions

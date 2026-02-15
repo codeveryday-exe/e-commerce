@@ -1,0 +1,10 @@
+.collection_box {
+  display: flex;
+  gap: 36px;
+  font-weight: 500;
+  color: #121212;
+
+  a:hover {
+    text-decoration: underline;
+  }
+}

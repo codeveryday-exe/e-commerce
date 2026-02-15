@@ -166,3 +166,49 @@ export const CartLinesUpdateSchema = z.object({
     cart: CartSchema,
   }),
 });
+
+export const CollectionsQuerySchema = z.object({
+  collections: z.object({
+    edges: z.array(
+      z.object({
+        cursor: z.string(),
+        node: z.object({
+          id: z.string(),
+          handle: z.string(),
+          title: z.string(),
+          description: z.string(),
+          image: z
+            .object({
+              id: z.string(),
+              url: z.url(),
+            })
+            .nullable(),
+        }),
+      }),
+    ),
+  }),
+});
+
+export const CollectionProductsSchema = z.object({
+  collection: z
+    .object({
+      id: z.string(),
+      handle: z.string(),
+      title: z.string(),
+      description: z.string(),
+      image: z
+        .object({
+          id: z.string(),
+          url: z.url(),
+        })
+        .nullable(),
+      products: z.object({
+        edges: z.array(
+          z.object({
+            node: ProductNodeSchema,
+          }),
+        ),
+      }),
+    })
+    .nullable(), // collection can be null if not found
+});

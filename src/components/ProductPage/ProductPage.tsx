@@ -69,7 +69,7 @@ export function ProductPage() {
 
     if (cartId) {
       addLinesToCartMutation.mutate(
-        { cartId, quantity, variantId: selectedVariantId },
+        { cartId, line: { merchandiseId: `gid://shopify/ProductVariant/${selectedVariantId}`, quantity } },
         {
           onError: () => {
             toast.error('Something went wrong');

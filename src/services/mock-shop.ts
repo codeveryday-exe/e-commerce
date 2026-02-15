@@ -5,9 +5,28 @@ import {
   CartLinesRemoveResponseSchema,
   CartLinesUpdateSchema,
   CartQueryResponseSchema,
+  CollectionProductsSchema,
+  CollectionsQuerySchema,
   ProductQuerySchema,
   ProductsQuerySchema,
 } from '../schemas/shop';
+
+const listProductFragment = `
+  id
+  tags
+  title
+  featuredImage {
+    id
+    url
+    altText
+  }
+  selectedOrFirstAvailableVariant {
+    price {
+      amount
+      currencyCode
+    }
+  }
+`;
 
 export async function fetchProducts() {
   const query = gql`
@@ -15,20 +34,7 @@ export async function fetchProducts() {
       products(first: 20) {
         edges {
           node {
-            id
-            tags
-            title
-            featuredImage {
-              id
-              url
-              altText
-            }
-            selectedOrFirstAvailableVariant {
-              price {
-                amount
-                currencyCode
-              }
-            }
+            ${listProductFragment}
           }
         }
       }
@@ -162,18 +168,16 @@ export async function createCart({ variantId, quantity }: { variantId: string; q
   return response.cartCreate.cart;
 }
 
-export async function addLinesToCart({
-  cartId,
-  variantId,
-  quantity,
-}: {
+export async function addLinesToCart(variables: {
   cartId: string;
-  variantId: string;
-  quantity: number;
+  line: {
+    merchandiseId: string;
+    quantity: number;
+  };
 }) {
   const query = gql`
-    mutation CartLinesAdd {
-      cartLinesAdd(cartId: "${cartId}", lines: [{ quantity: ${quantity}, merchandiseId: "gid://shopify/ProductVariant/${variantId}" }]) {
+    mutation CartLinesAdd($cartId: ID!, $line: CartLineInput!) {
+      cartLinesAdd(cartId: $cartId, lines: [$line]) {
         cart {
           ${cartFragment}
         }
@@ -181,8 +185,9 @@ export async function addLinesToCart({
     }
   `;
 
-  const response = CartLinesAddResponseSchema.parse(await request('https://mock.shop/api', query));
-  return response.cartLinesAdd.cart;
+  const response = await request('https://mock.shop/api', query, variables);
+  const parsedResponse = CartLinesAddResponseSchema.parse(response);
+  return parsedResponse.cartLinesAdd.cart;
 }
 
 export async function removeLinesFromCart(variables: { cartId: string; lineId: string }) {
@@ -200,9 +205,9 @@ export async function removeLinesFromCart(variables: { cartId: string; lineId: s
   return parsedResponse.cartLinesRemove.cart;
 }
 
-export async function editLinesFromCart(variables: { cartId: string; lineId: string }) {
+export async function editLinesFromCart(variables: { cartId: string; line: { id: string; quantity: number } }) {
   const query = gql`
-    mutation CartLinesUpdate($cartId: ID!, $line: ID!) {
+    mutation CartLinesUpdate($cartId: ID!, $line: CartLineUpdateInput!) {
       cartLinesUpdate(cartId: $cartId, lines: [$line]) {
         cart {
           ${cartFragment}
@@ -213,5 +218,58 @@ export async function editLinesFromCart(variables: { cartId: string; lineId: str
 
   const response = await request('https://mock.shop/api', query, variables);
   const parsedResponse = CartLinesUpdateSchema.parse(response);
+  console.log('edit line response: ', parsedResponse);
   return parsedResponse.cartLinesUpdate.cart;
+}
+
+export async function getCollections() {
+  const query = gql`
+    {
+      collections(first: 10) {
+        edges {
+          cursor
+          node {
+            id
+            handle
+            title
+            description
+            image {
+              id
+              url
+            }
+          }
+        }
+      }
+    }
+  `;
+  const response = CollectionsQuerySchema.parse(await request('https://mock.shop/api', query));
+  console.log(response.collections);
+  return response.collections;
+}
+
+export async function getCollectionProducts(variantId: string) {
+  const query = gql`
+    {
+      collection(id: "gid://shopify/Collection/${variantId}") {
+        id
+        handle
+        title
+        description
+        image {
+          id
+          url
+        }
+        products(first: 20) {
+          edges {
+            node {
+              ${listProductFragment}
+            }
+          }
+        }
+      }
+    }
+  `;
+  const response = CollectionProductsSchema.parse(await request('https://mock.shop/api', query));
+  console.log(response.collection);
+  return response.collection;
 }

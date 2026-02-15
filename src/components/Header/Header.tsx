@@ -6,6 +6,7 @@ import { Cart, cartQuery } from '../Cart/Cart';
 import { useCartId } from '../../hooks/useCartId';
 import { useQuery } from '@tanstack/react-query';
 import { useCartPanel } from '../../contexts/CartPanelContext';
+import { CollectionList } from '../CollectionList/CollectionList';
 
 export function Header() {
   const [cartId] = useCartId();
@@ -19,9 +20,11 @@ export function Header() {
       <div className={styles.logo_box}>
         <Link href="/">TITLE</Link>
       </div>
-      <nav className={styles.navbar}>{/* titles here e.g. WOMEN MEN KIDS HOME BEAUTY */}</nav>
+      <nav className={styles.navbar}>
+        <CollectionList />
+      </nav>
       <div className={styles.other_box}>
-        {/* search bar here OPTIONAL */}
+        {/* search bar here */}
         <LoginLink />
         <CartButton
           onClick={() => {
