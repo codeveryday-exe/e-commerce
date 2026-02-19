@@ -8,7 +8,7 @@
 
 .other_box {
   display: flex;
-  gap: 24px;
+  gap: 16px;
 }
 
 .logo_box a {

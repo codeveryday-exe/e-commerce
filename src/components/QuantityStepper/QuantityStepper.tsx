@@ -77,30 +77,3 @@ export function QuantityStepper({ lineId, initialQuantity }: Props) {
     </div>
   );
 }
-
-{
-  /* <div className={clsx(styles.quantity_btn_box, className)}>
-  <button
-    title="Decrease"
-    onClick={() => {
-      setQuantity(quantity - 1);
-    }}
-    type="button"
-    disabled={quantity === 1}
-  >
-    <MinusIcon size={16} />
-    <span className="sr-only">Decrease</span>
-  </button>
-  <p>{quantity}</p>
-  <button
-    title="Increase"
-    onClick={() => {
-      setQuantity(quantity + 1);
-    }}
-    type="button"
-  >
-    <PlusIcon size={16} />
-    <span className="sr-only">Increase</span>
-  </button>
-</div> */
-}

@@ -1,0 +1,20 @@
+.form {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.search_input {
+  border-bottom: 2px solid #121212;
+  padding: 0 5px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.search_btn:hover {
+  cursor: pointer;
+  color: #606060;
+}

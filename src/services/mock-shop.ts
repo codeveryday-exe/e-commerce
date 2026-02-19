@@ -9,6 +9,7 @@ import {
   CollectionsQuerySchema,
   ProductQuerySchema,
   ProductsQuerySchema,
+  SearchProductsSchema,
 } from '../schemas/shop';
 
 const listProductFragment = `
@@ -277,4 +278,25 @@ export async function getCollectionProducts(collectionId: string) {
   const parsedResponse = CollectionProductsSchema.parse(response);
   console.log(parsedResponse.collection);
   return parsedResponse.collection;
+}
+
+export async function getSearchProducts(searchInput: string) {
+  const query = gql`
+    query Search($query: String!, $first: Int!) {
+      search(query: $query, first: $first, types: PRODUCT) {
+        edges {
+          node {
+            ... on Product {
+              ${listProductFragment}
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  const response = await request('https://mock.shop/api', query, { query: searchInput, first: 12 });
+  const parsedResponse = SearchProductsSchema.parse(response);
+  console.log(parsedResponse.search);
+  return parsedResponse.search;
 }

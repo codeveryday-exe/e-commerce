@@ -1,0 +1,28 @@
+.main_box {
+  width: 100%;
+}
+
+.title {
+  font-size: 3.2rem;
+  font-weight: 500;
+  padding-left: 24px;
+  margin-bottom: 16px;
+}
+
+.info_text {
+  font-size: 1.6rem;
+  padding-left: 48px;
+}
+
+.search_value {
+  color: #b53030;
+}
+
+.products_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px 16px;
+  max-width: 100%;
+  padding-bottom: 24px;
+  margin-top: 48px;
+}

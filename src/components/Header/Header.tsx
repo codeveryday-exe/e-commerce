@@ -7,12 +7,11 @@ import { useCartId } from '../../hooks/useCartId';
 import { useQuery } from '@tanstack/react-query';
 import { useCartPanel } from '../../contexts/CartPanelContext';
 import { CollectionList } from '../CollectionList/CollectionList';
+import { SearchForm } from '../SearchForm/SearchForm';
 
 export function Header() {
   const [cartId] = useCartId();
-
   useQuery(cartQuery(cartId));
-
   const { isCartOpen, setIsCartOpen } = useCartPanel();
 
   return (
@@ -24,7 +23,7 @@ export function Header() {
         <CollectionList />
       </nav>
       <div className={styles.other_box}>
-        {/* search bar here */}
+        <SearchForm />
         <LoginLink />
         <CartButton
           onClick={() => {

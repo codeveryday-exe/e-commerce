@@ -7,6 +7,7 @@ import { Header } from './components/Header/Header';
 import { LoginPage } from './components/LoginPage/LoginPage';
 import { ResetPasswordPage } from './components/ResetPasswordPage/ResetPasswordPage';
 import { CollectionPage } from './components/CollectionPage/CollectionPage';
+import { SearchPage } from './components/SearchPage/SearchPage';
 
 export function App() {
   return (
@@ -19,6 +20,7 @@ export function App() {
           <Route path="/login" component={LoginPage} />
           <Route path="/reset-password" component={ResetPasswordPage} />
           <Route path="/collection/:collectionId" component={CollectionPage} />
+          <Route path="/search" component={SearchPage} />
           <Route path="/product/:productId" component={ProductPage} />
           <Route path="*" component={() => <h1>Page Not Found</h1>} />
         </Switch>

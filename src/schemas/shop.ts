@@ -212,3 +212,13 @@ export const CollectionProductsSchema = z.object({
     })
     .nullable(), // collection can be null if not found
 });
+
+export const SearchProductsSchema = z.object({
+  search: z.object({
+    edges: z.array(
+      z.object({
+        node: ProductNodeSchema,
+      }),
+    ),
+  }),
+});
