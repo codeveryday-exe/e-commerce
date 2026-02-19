@@ -2,8 +2,9 @@ import { Link } from 'wouter';
 import styles from './CollectionList.module.css';
 import { useQuery } from '@tanstack/react-query';
 import { getCollections } from '../../services/mock-shop';
+import clsx from 'clsx';
 
-export function CollectionList() {
+export function CollectionList({ className }: { className?: string }) {
   const {
     data: collections,
     isLoading,
@@ -30,7 +31,7 @@ export function CollectionList() {
   }
 
   return (
-    <ul className={styles.collection_box}>
+    <ul className={clsx(styles.collection_box, styles[className ?? ''])}>
       {collections.edges.map((edge) => {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         const collectionId = edge.node.id.split('/').at(-1)!;
@@ -45,7 +46,9 @@ export function CollectionList() {
           //   <p>title: {edge.node.title}</p>
           // </div>
           <li key={edge.node.id}>
-            <Link href={`/collection/${collectionId}`}>{edge.node.title}</Link>
+            <Link href={`/collection/${collectionId}`}>
+              {className ? edge.node.title : edge.node.title.toUpperCase()}
+            </Link>
           </li>
         );
       })}

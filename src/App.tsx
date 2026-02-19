@@ -8,6 +8,14 @@ import { LoginPage } from './components/LoginPage/LoginPage';
 import { ResetPasswordPage } from './components/ResetPasswordPage/ResetPasswordPage';
 import { CollectionPage } from './components/CollectionPage/CollectionPage';
 import { SearchPage } from './components/SearchPage/SearchPage';
+import { Footer } from './components/Footer/Footer';
+import { ShippingPage } from './components/Footer/PlaceholderPages/ShippingPage';
+import { AboutPage } from './components/Footer/PlaceholderPages/AboutPage';
+import { ExchangeAndReturnsPage } from './components/Footer/PlaceholderPages/ExchangeAndReturnsPage';
+import { ContactPage } from './components/Footer/PlaceholderPages/ContactPage';
+import { PrivacyPolicyPage } from './components/Footer/PlaceholderPages/PrivacyPolicyPage';
+import { TermsPage } from './components/Footer/PlaceholderPages/TermsPage';
+import { CookiePolicyPage } from './components/Footer/PlaceholderPages/CookiePolicyPage';
 
 export function App() {
   return (
@@ -22,9 +30,17 @@ export function App() {
           <Route path="/collection/:collectionId" component={CollectionPage} />
           <Route path="/search" component={SearchPage} />
           <Route path="/product/:productId" component={ProductPage} />
+          <Route path="/shipping" component={ShippingPage} />
+          <Route path="/returns" component={ExchangeAndReturnsPage} />
+          <Route path="/contact" component={ContactPage} />
+          <Route path="/privacy" component={PrivacyPolicyPage} />
+          <Route path="/terms" component={TermsPage} />
+          <Route path="/cookies" component={CookiePolicyPage} />
+          <Route path="/about" component={AboutPage} />
           <Route path="*" component={() => <h1>Page Not Found</h1>} />
         </Switch>
       </main>
+      <Footer />
     </>
   );
 }
