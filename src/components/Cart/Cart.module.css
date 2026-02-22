@@ -27,11 +27,6 @@
   }
 }
 
-.empty_cart_box {
-  font-size: 1.4rem;
-  padding: 0 24px;
-}
-
 .close_btn {
   position: absolute;
   top: 24px;
@@ -44,69 +39,9 @@
   }
 }
 
-.lines_box {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  padding-right: 16px;
-  overflow: auto;
-  scrollbar-width: thin;
-  scrollbar-color: #121212 transparent;
-}
-
-.line_box {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  border: 1px solid #121212;
-  border-radius: 4px;
-}
-
-.line_image_box {
-  display: flex;
-
-  img {
-    border-radius: 4px 0 0 4px;
-  }
-}
-
-.line_details_box {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  padding: 16px;
-}
-
-.variant_box,
-.quantity_box,
-.line_price_box {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.8rem;
-}
-
 .cart_title {
   font-size: 2rem;
   font-weight: 500;
-}
-
-.remove_line_box {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.total_price_box {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 24px;
-  padding: 0 16px;
-
-  .total_price_text {
-    font-weight: 600;
-  }
 }
 
 .checkout_btn_box {

@@ -1,20 +1,25 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 16px;
+}
+
+.column_box {
+  display: flex;
+  flex-direction: column;
 }
 
 .input {
-  border: 1px solid #dbdbdb;
+  border: 1px solid #121212;
   height: 46px;
-  padding: 24px;
+  padding: 8px;
   margin-bottom: 16px;
 }
 
-.password_box {
+.additional_title {
   display: flex;
   justify-content: space-between;
-  gap: 15px;
+  gap: 8px;
 
   a {
     color: #696969;

@@ -7,7 +7,7 @@ export function Footer() {
     <footer className={styles.footer}>
       <div className={styles.box}>
         <h2 className={styles.title}>Shop</h2>
-        <CollectionList className="footer" />
+        <CollectionList isInFooter />
       </div>
 
       <div className={styles.box}>

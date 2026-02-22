@@ -20,17 +20,18 @@ export function ResetPasswordPage() {
         </div>
       )}
       <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email</label>
-        <input
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-          value={email}
-          type="email"
-          name="email"
-          id="email"
-          required
-        />
+        <label className={styles.column_box}>
+          <span>Email</span>
+          <input
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+            value={email}
+            type="email"
+            name="email"
+            required
+          />
+        </label>
         <button type="submit">RESET PASSWORD</button>
       </form>
     </div>

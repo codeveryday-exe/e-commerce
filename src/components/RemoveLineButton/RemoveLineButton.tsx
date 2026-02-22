@@ -4,7 +4,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { removeLinesFromCart } from '../../services/mock-shop';
 import { toast } from 'sonner';
 import { useCartId } from '../../hooks/useCartId';
-import { cartQuery } from '../Cart/Cart';
+import { cartQuery } from '../CartLines/CartLines';
 
 export function RemoveLineButton({ lineId }: { lineId: string }) {
   const queryClient = useQueryClient();

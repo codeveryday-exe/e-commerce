@@ -1,0 +1,55 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background-color: #f1f0f0;
+}
+
+.title {
+  font-size: 2.225rem;
+  font-weight: 500;
+}
+
+.country_selector {
+  display: flex;
+  height: 45px;
+  padding: 5px 8px;
+  font-size: 0.9rem;
+  border: 1px solid #696969;
+}
+
+.checkout_info_btn {
+  font-size: 1rem;
+}
+
+.row_box {
+  display: flex;
+  gap: 16px;
+
+  @media (max-width: 580px) {
+    flex-direction: column;
+  }
+}
+
+.column_box {
+  display: flex;
+  flex-direction: column;
+}
+
+.country_info_box {
+  gap: 24px;
+}
+
+@media (max-width: 480px) {
+  .input,
+  .country_selector {
+    height: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .checkout_info_btn {
+    font-size: 0.8rem;
+    height: 40px;
+  }
+}

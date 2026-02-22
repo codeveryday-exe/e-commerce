@@ -1,0 +1,48 @@
+.main_box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.logo_box {
+  padding: 16px 0;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.form_box {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background-color: #f1f0f0;
+  padding-bottom: 64px;
+}
+
+.cart_lines_title {
+  font-size: 2.225rem;
+  font-weight: 500;
+}
+
+.form_sub_box,
+.cart_lines_sub_box {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.cart_lines_box {
+  max-width: 500px;
+  margin: 64px auto;
+}
+
+@media (max-width: 1024px) {
+  .main_box {
+    grid-template-columns: 1fr;
+  }
+
+  .column_box {
+    width: 300px;
+  }
+}

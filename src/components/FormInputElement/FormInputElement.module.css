@@ -1,0 +1,34 @@
+.column_box {
+  display: flex;
+  flex-direction: column;
+}
+
+.optional_title {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.notifier_text {
+  color: #696969;
+  font-size: 0.8rem !important;
+}
+
+.input {
+  height: 45px;
+  padding: 5px 8px;
+  font-size: 0.9rem;
+  border: 1px solid #696969;
+}
+
+@media (max-width: 480px) {
+  .input {
+    height: 35px;
+  }
+
+  .column_box {
+    span {
+      font-size: 0.86rem;
+    }
+  }
+}

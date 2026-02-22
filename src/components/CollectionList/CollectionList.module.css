@@ -7,7 +7,7 @@
     text-decoration: underline;
   }
 
-  &.footer {
+  &.is_column {
     flex-direction: column;
     gap: 8px;
     font-size: 1.125rem;

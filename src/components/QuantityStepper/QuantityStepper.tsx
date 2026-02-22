@@ -3,7 +3,7 @@ import { MinusIcon, PlusIcon } from 'lucide-react';
 import styles from './QuantityStepper.module.css';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { editLinesFromCart } from '../../services/mock-shop';
-import { cartQuery } from '../Cart/Cart';
+import { cartQuery } from '../CartLines/CartLines';
 import { useCartId } from '../../hooks/useCartId';
 import { useCallback, useState } from 'react';
 import { toast } from 'sonner';

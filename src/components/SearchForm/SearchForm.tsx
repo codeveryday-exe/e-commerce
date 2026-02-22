@@ -9,16 +9,18 @@ export function SearchForm() {
   const [searchValue, setSearchValue] = useState('');
   const [, setLocation] = useLocation();
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     if (!searchValue.trim()) return;
     setSearchValue('');
-    setLocation(`/search?searchValue=${searchValue}`);
+    setLocation(`/search?q=${encodeURIComponent(searchValue)}`);
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form action="/search" className={styles.form} onSubmit={handleSubmit}>
       {isSearchPanelOpen && (
         <input
+          name="q"
           onChange={(e) => {
             setSearchValue(e.target.value);
           }}

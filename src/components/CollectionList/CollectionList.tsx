@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { getCollections } from '../../services/mock-shop';
 import clsx from 'clsx';
 
-export function CollectionList({ className }: { className?: string }) {
+export function CollectionList({ isInFooter = false }: { isInFooter?: boolean }) {
   const {
     data: collections,
     isLoading,
@@ -31,7 +31,7 @@ export function CollectionList({ className }: { className?: string }) {
   }
 
   return (
-    <ul className={clsx(styles.collection_box, styles[className ?? ''])}>
+    <ul className={clsx(styles.collection_box, { [styles.is_column]: isInFooter })}>
       {collections.edges.map((edge) => {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         const collectionId = edge.node.id.split('/').at(-1)!;
@@ -47,7 +47,7 @@ export function CollectionList({ className }: { className?: string }) {
           // </div>
           <li key={edge.node.id}>
             <Link href={`/collection/${collectionId}`}>
-              {className ? edge.node.title : edge.node.title.toUpperCase()}
+              {isInFooter ? edge.node.title : edge.node.title.toUpperCase()}
             </Link>
           </li>
         );

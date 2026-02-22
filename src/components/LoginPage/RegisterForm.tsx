@@ -1,25 +1,17 @@
+import { FormInputElement } from '../FormInputElement/FormInputElement';
 import { SubmitButton } from '../SubmitButton/SubmitButton';
 import styles from './RegisterForm.module.css';
 
 export function RegisterForm() {
   return (
     <form className={styles.form}>
-      <label htmlFor="email">Email</label>
-      <input className={styles.input} type="email" name="email" id="email" required />
+      <FormInputElement labelText="Email" inputType="email" inputName="email" isRequired={true} />
 
-      <label htmlFor="password">Password</label>
-      <input className={styles.input} type="password" name="password" id="password" required />
+      <FormInputElement labelText="Password" inputType="password" inputName="password" isRequired={true} />
 
-      <div className={styles.name_details_box}>
-        <div className={styles.field}>
-          <label htmlFor="firstName">First Name</label>
-          <input className={styles.input} type="text" name="firstName" id="firstName" />
-        </div>
-
-        <div className={styles.field}>
-          <label htmlFor="lastName">Last Name</label>
-          <input className={styles.input} type="text" name="lastName" id="lastName" />
-        </div>
+      <div className={styles.row_box}>
+        <FormInputElement labelText="First name" inputType="text" inputName="firstName" isRequired={true} />
+        <FormInputElement labelText="Last name" inputType="text" inputName="lastName" isRequired={true} />
       </div>
 
       <SubmitButton type="submit" className={styles.register_btn}>

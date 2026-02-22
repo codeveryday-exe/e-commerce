@@ -2,12 +2,13 @@ import { Link } from 'wouter';
 import { CartButton } from '../CartButton/CartButton';
 import styles from './Header.module.css';
 import { LoginLink } from '../LoginLink/LoginLink';
-import { Cart, cartQuery } from '../Cart/Cart';
+import { cartQuery } from '../CartLines/CartLines';
 import { useCartId } from '../../hooks/useCartId';
 import { useQuery } from '@tanstack/react-query';
 import { useCartPanel } from '../../contexts/CartPanelContext';
 import { CollectionList } from '../CollectionList/CollectionList';
 import { SearchForm } from '../SearchForm/SearchForm';
+import { Cart } from '../Cart/Cart';
 
 export function Header() {
   const [cartId] = useCartId();

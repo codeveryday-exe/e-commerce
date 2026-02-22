@@ -1,7 +1,7 @@
 .footer {
   display: grid;
-  grid-template-columns: auto auto auto max-content;
-  gap: 64px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px 64px;
   padding: 36px;
   background-color: #ffffff;
   color: #121212;
