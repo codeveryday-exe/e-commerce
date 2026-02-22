@@ -7,7 +7,7 @@ import payPalLogo from '../../assets/paypal-logo.png';
 import clsx from 'clsx';
 import { Lock } from 'lucide-react';
 
-export function CheckoutPaymentForm({ onSubmitButtonClicked }: { onSubmitButtonClicked: () => void }) {
+export function CheckoutPaymentForm({ onSubmit }: { onSubmit: () => void }) {
   return (
     <>
       <h2 className={styles.title}>Payment</h2>
@@ -66,7 +66,7 @@ export function CheckoutPaymentForm({ onSubmitButtonClicked }: { onSubmitButtonC
           isRequired={true}
         />
 
-        <SubmitButton className={styles.payment_info_btn} onClick={onSubmitButtonClicked} type="submit">
+        <SubmitButton className={styles.payment_info_btn} onClick={onSubmit} type="submit">
           <Lock size={18} />
           Pay
         </SubmitButton>

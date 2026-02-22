@@ -1,9 +1,9 @@
 .remove_line_btn {
   padding: 3px;
   cursor: pointer;
-  border-radius: 3px;
+  border-radius: 4px;
   transition:
-    background-color ease 0.2s,
+    background-color ease-in-out 0.2s,
     color ease 0.2s;
 
   &:hover {

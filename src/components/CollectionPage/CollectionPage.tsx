@@ -35,9 +35,18 @@ export function CollectionPage() {
   return (
     <div className={styles.main_box}>
       <h2 className={styles.collection_title}>{collection.title.toUpperCase()}</h2>
+
       <div className={styles.description_box}>
         <p className={styles.collection_description}>{collection.description}</p>
       </div>
+
+      <form className={styles.filter_form}>
+        <label className={styles.filter_section}>
+          <span>Filter:</span>
+          <input className={styles.filter_input} type="text" name="filter" />
+        </label>
+      </form>
+
       <ul className={styles.products_container}>
         {collection.products.edges.map((edge) => {
           return (

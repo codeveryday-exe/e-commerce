@@ -9,7 +9,7 @@
   flex-direction: column;
   gap: 8px;
   max-width: 960px;
-  padding-top: 24px;
+  padding: 24px 16px;
 }
 
 .text_info_box {
@@ -98,6 +98,7 @@
   height: 50px;
   font-size: 1.1rem;
   border: 1px solid #696969;
+  border-radius: 6px;
 
   button {
     cursor: pointer;

@@ -1,35 +1,31 @@
 import { FormInputElement } from '../FormInputElement/FormInputElement';
 import { SubmitButton } from '../SubmitButton/SubmitButton';
 import styles from './CheckoutAddressForm.module.css';
+import { checkoutInfoSchema, type CheckoutInfoFormData } from './schema';
 
-export function CheckoutAddressForm({ onSubmitButtonClicked }: { onSubmitButtonClicked: () => void }) {
+export function CheckoutAddressForm({ onSubmit }: { onSubmit: (data: CheckoutInfoFormData) => void }) {
+  const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const parsedFormData = checkoutInfoSchema.parse(Object.fromEntries(formData.entries()));
+    onSubmit(parsedFormData);
+  };
+
   return (
     <>
       <h2 className={styles.title}>Checkout</h2>
-      <form className={styles.form}>
-        <FormInputElement labelText="Email" inputType="email" inputName="email" isRequired={true} />
-        <FormInputElement labelText="Phone number" inputType="tel" inputName="phone" isRequired={false} />
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <FormInputElement labelText="Email" inputType="email" inputName="email" isRequired />
+        <FormInputElement labelText="Phone number" inputType="tel" inputName="phone" />
 
         <div className={styles.row_box}>
-          <FormInputElement labelText="First name" inputType="text" inputName="firstName" isRequired={true} />
-          <FormInputElement labelText="Last name" inputType="text" inputName="lastName" isRequired={true} />
+          <FormInputElement labelText="First name" inputName="firstName" isRequired />
+          <FormInputElement labelText="Last name" inputName="lastName" isRequired />
         </div>
 
-        <FormInputElement
-          labelText="Company (required for business addresses)"
-          inputType="text"
-          inputName="company"
-          isRequired={false}
-        />
-
-        <FormInputElement labelText="Address" inputType="text" inputName="address" isRequired={true} />
-
-        <FormInputElement
-          labelText="Address continued"
-          inputType="text"
-          inputName="additionalAddress"
-          isRequired={false}
-        />
+        <FormInputElement labelText="Company (required for business addresses)" inputName="company" />
+        <FormInputElement labelText="Address" inputName="address" isRequired />
+        <FormInputElement labelText="Address continued" inputName="additionalAddress" />
 
         <label className={styles.column_box}>
           <span>Country</span>
@@ -55,11 +51,11 @@ export function CheckoutAddressForm({ onSubmitButtonClicked }: { onSubmitButtonC
         </label>
 
         <div className={styles.row_box}>
-          <FormInputElement labelText="City" inputType="text" inputName="city" isRequired={true} />
-          <FormInputElement labelText="Zip code" inputType="text" inputName="zip" isRequired={true} />
+          <FormInputElement labelText="City" inputName="city" isRequired />
+          <FormInputElement labelText="Zip code" inputName="zip" isRequired />
         </div>
 
-        <SubmitButton className={styles.checkout_info_btn} onClick={onSubmitButtonClicked} type="submit">
+        <SubmitButton className={styles.checkout_info_btn} type="submit">
           Continue
         </SubmitButton>
       </form>

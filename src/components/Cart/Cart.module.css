@@ -17,7 +17,7 @@
   width: 480px;
   z-index: 999;
   padding: 16px 0 16px 16px;
-  background-color: #ffffff;
+  background-color: #f3f3f3;
   box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
   transform: translateX(0);
   transition: transform ease 0.3s;
@@ -46,7 +46,7 @@
 
 .checkout_btn_box {
   display: grid;
-  padding: 0 16px;
+  padding: 0 36px 0 24px;
 }
 
 @media (max-width: 768px) {

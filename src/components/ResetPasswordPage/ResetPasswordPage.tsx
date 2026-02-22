@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import styles from './ResetPasswordPage.module.css';
+import { SubmitButton } from '../SubmitButton/SubmitButton';
 
 export function ResetPasswordPage() {
   const [email, setEmail] = useState('');
   const [submittedEmail, setSubmittedEmail] = useState('');
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmittedEmail(email);
     setEmail('');
@@ -32,7 +33,7 @@ export function ResetPasswordPage() {
             required
           />
         </label>
-        <button type="submit">RESET PASSWORD</button>
+        <SubmitButton type="submit">RESET PASSWORD</SubmitButton>
       </form>
     </div>
   );

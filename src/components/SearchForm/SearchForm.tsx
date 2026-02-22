@@ -9,7 +9,7 @@ export function SearchForm() {
   const [searchValue, setSearchValue] = useState('');
   const [, setLocation] = useLocation();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!searchValue.trim()) return;
     setSearchValue('');

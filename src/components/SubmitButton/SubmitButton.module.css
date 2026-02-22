@@ -5,13 +5,10 @@
   font-size: 0.8rem;
   font-weight: 600;
   transition: background-color ease-in-out 0.2s;
+  border-radius: 6px;
 
   &:hover {
     cursor: pointer;
-    background-color: #202020;
-  }
-
-  &:active {
-    background-color: #303030;
+    background-color: #2f2f2f;
   }
 }

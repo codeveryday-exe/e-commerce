@@ -1,8 +1,24 @@
+.main_box {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 1440px;
+  min-height: 60vh;
+  gap: 24px;
+  padding: 36px;
+}
+
 .products_container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px 16px;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(180px, 25%, 280px), 1fr));
+  gap: 14px;
   max-width: 100%;
   padding-bottom: 24px;
   margin-top: 48px;
+}
+
+@media (max-width: 660px) {
+  .products_container {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

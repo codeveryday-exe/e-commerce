@@ -30,13 +30,13 @@ https://base-ui.com/react/handbook/forms
 
 - [] simple filtering in CollectionPage
 - [] update collections in footer
-- [x] finish CheckoutPage
-- [x] use FormInputElement in Login page & ForgotPassword page
+- [x] add personal information entered at the success section in CheckoutPage
+- [] add link to product details page in cart
+- [] search component style is too disgusting => do panel
+- [] LoginPage firstName lastName input bug
+- [] CheckoutPage payment section responsive bug
+- [] CheckoutPage 4k screen bug
 
 ---
 
 # Questions
-
-- [] should i add personal information entered at the success section in CheckoutPage
-- [] can not go to the product details page from products in cart
-- [] search component style is too disgusting => do panel

@@ -1,44 +1,22 @@
 import clsx from 'clsx';
 import styles from './FormInputElement.module.css';
 
-type inputType =
-  | 'button'
-  | 'checkbox'
-  | 'color'
-  | 'date'
-  | 'datetime-local'
-  | 'email'
-  | 'file'
-  | 'hidden'
-  | 'image'
-  | 'month'
-  | 'number'
-  | 'password'
-  | 'radio'
-  | 'range'
-  | 'reset'
-  | 'search'
-  | 'submit'
-  | 'tel'
-  | 'text'
-  | 'time'
-  | 'url'
-  | 'week';
+type InputType = 'email' | 'password' | 'tel' | 'text';
 
 export function FormInputElement({
   className,
   labelText,
-  inputType,
+  inputType = 'text',
   inputName,
   placeholder,
-  isRequired,
+  isRequired = false,
 }: {
   className?: string;
   labelText: string;
-  inputType: inputType;
-  inputName: string;
+  inputType?: InputType;
+  inputName?: string;
   placeholder?: string;
-  isRequired: boolean;
+  isRequired?: boolean;
 }) {
   return (
     <label className={clsx(styles.column_box, className)}>

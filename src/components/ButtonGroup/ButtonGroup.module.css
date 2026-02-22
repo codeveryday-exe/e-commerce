@@ -8,8 +8,9 @@
 .item {
   button {
     cursor: pointer;
-    border: 1px solid #696969;
     padding: 8px 16px;
+    border: 1px solid #696969;
+    border-radius: 6px;
 
     &:hover {
       background-color: #eeeeee;
@@ -17,8 +18,9 @@
   }
 
   &.selected {
-    outline: 2px solid #b53030;
     z-index: 1;
+    outline: 2px solid #b53030;
+    border-radius: 6px;
 
     button {
       border-color: transparent;

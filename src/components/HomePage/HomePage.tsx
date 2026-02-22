@@ -30,12 +30,14 @@ export function HomePage() {
   }
 
   return (
-    <ul className={styles.products_container}>
-      {products.map((product) => (
-        <li key={product.id}>
-          <ProductCard product={product} />
-        </li>
-      ))}
-    </ul>
+    <div className={styles.main_box}>
+      <ul className={styles.products_container}>
+        {products.map((product) => (
+          <li key={product.id}>
+            <ProductCard product={product} />
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

@@ -11,7 +11,7 @@ export const cartQuery = (id: string | null) =>
     queryFn: id ? () => getCart(id) : skipToken,
   });
 
-export function CartLines() {
+export function CartLines({ isReadOnly = false }: { isReadOnly?: boolean }) {
   const [cartId] = useCartId();
   const { data: cart, isLoading } = useQuery(cartQuery(cartId));
 
@@ -56,10 +56,12 @@ export function CartLines() {
                         {line.node.cost.totalAmount.amount} {line.node.cost.totalAmount.currencyCode}
                       </p>
                     </div>
-                    <div className={styles.remove_line_box}>
-                      <RemoveLineButton lineId={line.node.id} />
-                      <QuantityStepper lineId={line.node.id} initialQuantity={line.node.quantity} />
-                    </div>
+                    {!isReadOnly && (
+                      <div className={styles.remove_line_box}>
+                        <RemoveLineButton lineId={line.node.id} />
+                        <QuantityStepper lineId={line.node.id} initialQuantity={line.node.quantity} />
+                      </div>
+                    )}
                   </div>
                 </div>
               );
