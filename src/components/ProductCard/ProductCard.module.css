@@ -1,6 +1,13 @@
 .product_card_box {
+  display: flex;
+  flex-direction: column;
   position: relative;
-  background-color: #ffffff;
+  background-color: #f3f3f3;
+  border-radius: 16px;
+}
+
+.product_card_image {
+  border-radius: 16px 16px 0 0;
 }
 
 .product_card_text_info {
@@ -16,6 +23,7 @@
 }
 
 .price {
+  padding-top: 8px;
   font-weight: bold;
   font-size: 0.85rem;
 }

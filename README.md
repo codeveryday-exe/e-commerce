@@ -13,13 +13,13 @@
 - [x] use searchParams for selected variant state, don't use useState for selected variant
 - [x] add Header & Footer
 - [x] find a font from fonts.google.com and use it in index.css
-  <!-- - [] add color palette (https://coolors.co/) -->
-    <!-- - [] add skeleton loaders -->
-    <!-- - [] add filtering feature to the Collection/Category -->
-- [] CheckoutPage
 - [x] CollectionPage
 - [x] Search
-- [x] Homepage
+  <!-- - [] add color palette (https://coolors.co/) -->
+    <!-- - [] add skeleton loaders -->
+    <!-- - [] add filtering feature to the CollectionPage -->
+- [] CheckoutPage
+- [] Homepage
 - [] Filtering in CollectionPage
 <!-- - [] use library for better effects -->
 
@@ -28,12 +28,15 @@ look grid, auto-fill, auto-fit => https://css-tricks.com/auto-sizing-columns-css
 https://base-ui.com/react/overview/quick-start
 https://base-ui.com/react/handbook/forms
 
-- [] add checkout page
+- [] simple filtering in CollectionPage
+- [] update collections in footer
+- [x] finish CheckoutPage
+- [x] use FormInputElement in Login page & ForgotPassword page
 
 ---
 
 # Questions
 
+- [] should i add personal information entered at the success section in CheckoutPage
 - [] can not go to the product details page from products in cart
-- [] search component style is too disgusting
-- [] when entering a search value page goes to 2 paths, one is searchValue query path and other is (?) what's wrong
+- [] search component style is too disgusting => do panel
