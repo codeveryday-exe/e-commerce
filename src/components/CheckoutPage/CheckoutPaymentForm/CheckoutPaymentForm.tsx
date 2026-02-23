@@ -1,9 +1,9 @@
-import { FormInputElement } from '../FormInputElement/FormInputElement';
-import { SubmitButton } from '../SubmitButton/SubmitButton';
+import { FormInputElement } from '../../FormInputElement/FormInputElement';
+import { SubmitButton } from '../../SubmitButton/SubmitButton';
 import styles from './CheckoutPaymentForm.module.css';
-import amazonPayLogo from '../../assets/amazon-pay-logo.png';
-import applePayLogo from '../../assets/apple-pay-logo.png';
-import payPalLogo from '../../assets/paypal-logo.png';
+import amazonPayLogo from '../../../assets/amazon-pay-logo.png';
+import applePayLogo from '../../../assets/apple-pay-logo.png';
+import payPalLogo from '../../../assets/paypal-logo.png';
 import clsx from 'clsx';
 import { Lock } from 'lucide-react';
 

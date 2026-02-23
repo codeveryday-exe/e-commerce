@@ -1,7 +1,7 @@
-import { FormInputElement } from '../FormInputElement/FormInputElement';
-import { SubmitButton } from '../SubmitButton/SubmitButton';
+import { FormInputElement } from '../../FormInputElement/FormInputElement';
+import { SubmitButton } from '../../SubmitButton/SubmitButton';
 import styles from './CheckoutAddressForm.module.css';
-import { checkoutInfoSchema, type CheckoutInfoFormData } from './schema';
+import { checkoutInfoSchema, type CheckoutInfoFormData } from '../schema';
 
 export function CheckoutAddressForm({ onSubmit }: { onSubmit: (data: CheckoutInfoFormData) => void }) {
   const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {

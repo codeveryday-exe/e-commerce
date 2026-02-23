@@ -2,10 +2,10 @@ import { Link } from 'wouter';
 import { CartLines } from '../CartLines/CartLines';
 import styles from './CheckoutPage.module.css';
 import { useState } from 'react';
-import { CheckoutAddressForm } from '../CheckoutAddressForm/CheckoutAddressForm';
-import { CheckoutPaymentForm } from '../CheckoutPaymentForm/CheckoutPaymentForm';
-import { CheckoutSuccessSection } from '../CheckoutSuccessSection/CheckoutSuccessSection';
-import type { CheckoutInfoFormData } from '../CheckoutAddressForm/schema';
+import { CheckoutAddressForm } from './CheckoutAddressForm/CheckoutAddressForm';
+import { CheckoutPaymentForm } from './CheckoutPaymentForm/CheckoutPaymentForm';
+import { CheckoutSuccessSection } from './CheckoutSuccessSection/CheckoutSuccessSection';
+import type { CheckoutInfoFormData } from './schema';
 
 export function CheckoutPage() {
   const [step, setStep] = useState<'address' | 'payment' | 'success'>('address');

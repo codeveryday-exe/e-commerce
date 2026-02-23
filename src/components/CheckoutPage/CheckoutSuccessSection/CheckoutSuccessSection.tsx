@@ -1,5 +1,5 @@
 import { Link } from 'wouter';
-import type { CheckoutInfoFormData } from '../CheckoutAddressForm/schema';
+import type { CheckoutInfoFormData } from '../schema';
 import styles from './CheckoutSuccessSection.module.css';
 import { CircleCheckBig } from 'lucide-react';
 
