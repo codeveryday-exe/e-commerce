@@ -18,6 +18,7 @@ export function CheckoutPage() {
           <div className={styles.logo_box}>
             <Link href="/">TITLE</Link>
           </div>
+          <h2 className={styles.title}>Checkout</h2>
           {step === 'address' ? (
             <CheckoutAddressForm
               onSubmit={(data) => {

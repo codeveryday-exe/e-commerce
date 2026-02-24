@@ -9,6 +9,11 @@
   font-weight: bold;
 }
 
+.title {
+  font-size: 2.225rem;
+  font-weight: 500;
+}
+
 .form_box {
   display: flex;
   flex-direction: column;

@@ -2,6 +2,10 @@ import { FormInputElement } from '../../FormInputElement/FormInputElement';
 import { SubmitButton } from '../../SubmitButton/SubmitButton';
 import styles from './CheckoutAddressForm.module.css';
 import { checkoutInfoSchema, type CheckoutInfoFormData } from '../schema';
+import clsx from 'clsx';
+import amazonPayLogo from '../../../assets/amazon-pay-logo.png';
+import applePayLogo from '../../../assets/apple-pay-logo.png';
+import payPalLogo from '../../../assets/paypal-logo.png';
 
 export function CheckoutAddressForm({ onSubmit }: { onSubmit: (data: CheckoutInfoFormData) => void }) {
   const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
@@ -13,8 +17,25 @@ export function CheckoutAddressForm({ onSubmit }: { onSubmit: (data: CheckoutInf
 
   return (
     <>
-      <h2 className={styles.title}>Checkout</h2>
+      <fieldset className={styles.payment_btn_box}>
+        <legend>Express checkout</legend>
+        <button className={clsx(styles.pay_btn, styles.amazon_btn)} type="button">
+          <img className={styles.btn_image} src={amazonPayLogo} alt="amazon-pay-logo" />
+        </button>
+        <button className={clsx(styles.pay_btn, styles.apple_btn)} type="button">
+          <img className={styles.btn_image} src={applePayLogo} alt="apple-pay-logo" />
+        </button>
+        <button className={clsx(styles.pay_btn, styles.paypal_btn)} type="button">
+          <img className={styles.btn_image} src={payPalLogo} alt="paypal-logo" />
+        </button>
+      </fieldset>
+
+      <div className={styles.divider}>
+        <span>OR CONTINUE BELOW TO PAY WITH A CREDIT CARD</span>
+      </div>
+
       <form onSubmit={handleSubmit} className={styles.form}>
+        <h3 className={styles.title}>Address Information</h3>
         <FormInputElement labelText="Email" inputType="email" inputName="email" isRequired />
         <FormInputElement labelText="Phone number" inputType="tel" inputName="phone" />
 
