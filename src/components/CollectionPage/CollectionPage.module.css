@@ -26,26 +26,6 @@
   line-height: 2rem;
 }
 
-.filter_form {
-  .filter_section {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding-left: 16px;
-
-    span {
-      font-size: 1.2rem;
-    }
-
-    .filter_input {
-      height: 35px;
-      padding: 5px 8px;
-      border: 1px solid #696969;
-      border-radius: 6px;
-    }
-  }
-}
-
 .products_container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(clamp(180px, 25%, 280px), 1fr));

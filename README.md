@@ -15,28 +15,32 @@
 - [x] find a font from fonts.google.com and use it in index.css
 - [x] CollectionPage
 - [x] Search
-  <!-- - [] add color palette (https://coolors.co/) -->
-    <!-- - [] add skeleton loaders -->
-    <!-- - [] add filtering feature to the CollectionPage -->
-- [] CheckoutPage
+- [x] CheckoutPage
+- [x] add personal information entered at the success section in CheckoutPage
+- [?] Filtering in CollectionPage
+- [] change Header layout
+- [] make search component a panel
 - [] Homepage
-- [] Filtering in CollectionPage
-<!-- - [] use library for better effects -->
+- [] add link to product details page in cart
+- [] fix style of ProductPage
+- [] update collections in footer
+- [] add skeleton loaders
+- [] use library for better effects
+- [] add color palette (https://coolors.co/)
+
+---
+
+# Notes
 
 look grid, auto-fill, auto-fit => https://css-tricks.com/auto-sizing-columns-css-grid-auto-fill-vs-auto-fit/
 
 https://base-ui.com/react/overview/quick-start
 https://base-ui.com/react/handbook/forms
 
-- [] simple filtering in CollectionPage
-- [] update collections in footer
-- [x] add personal information entered at the success section in CheckoutPage
-- [] add link to product details page in cart
-- [] search component style is too disgusting => do panel
-- [] LoginPage firstName lastName input bug
-- [] CheckoutPage payment section responsive bug
-- [] CheckoutPage 4k screen bug
-
 ---
 
 # Questions
+
+- [] LoginPage firstName lastName input bug
+- [] CheckoutPage payment section responsive bug
+- [] CheckoutPage 4k screen bug

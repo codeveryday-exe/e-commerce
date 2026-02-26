@@ -1,0 +1,29 @@
+.filter_form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  .filter_section {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-left: 16px;
+
+    span {
+      font-size: 1.2rem;
+    }
+
+    .filter_input {
+      height: 35px;
+      padding: 5px 8px;
+      border: 1px solid #696969;
+      border-radius: 6px;
+    }
+  }
+
+  .reset_btn {
+    max-width: 100px;
+    margin-left: 16px;
+    padding: 5px 8px;
+    height: 35px;
+  }
+}

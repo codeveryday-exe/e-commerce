@@ -29,10 +29,10 @@ const listProductFragment = `
   }
 `;
 
-export async function fetchProducts() {
+export async function fetchProducts(filterQuery?: string) {
   const query = gql`
-    query Products {
-      products(first: 20) {
+    query Products($query: String) {
+      products(first: 20, query: $query) {
         edges {
           node {
             ${listProductFragment}
@@ -42,10 +42,11 @@ export async function fetchProducts() {
     }
   `;
 
-  const response = ProductsQuerySchema.parse(await request('https://mock.shop/api', query));
+  const response = await request('https://mock.shop/api', query, { query: filterQuery });
+  const parsedResponse = ProductsQuerySchema.parse(response);
 
-  console.log(response.products.edges);
-  return response.products.edges.map((edge) => edge.node);
+  console.log(parsedResponse.products.edges);
+  return parsedResponse.products.edges.map((edge) => edge.node);
 }
 
 export async function fetchProduct(variables: { productId: string }) {
