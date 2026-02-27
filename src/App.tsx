@@ -17,12 +17,14 @@ import { PrivacyPolicyPage } from './components/Footer/PlaceholderPages/PrivacyP
 import { TermsPage } from './components/Footer/PlaceholderPages/TermsPage';
 import { CookiePolicyPage } from './components/Footer/PlaceholderPages/CookiePolicyPage';
 import { CheckoutPage } from './components/CheckoutPage/CheckoutPage';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 export function App() {
   const [location] = useLocation();
 
   return (
     <>
+      <ScrollToTop />
       <Toaster expand={false} position="bottom-right" />
       {location !== '/checkout' && <Header />}
       <main className={styles.app}>
