@@ -35,3 +35,28 @@
     color: #606060;
   }
 }
+
+@media (max-width: 768px) {
+  .other_box {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 8px 12px;
+  }
+
+  .logo_box a {
+    font-size: 1.8rem;
+  }
+
+  .other_box {
+    gap: 12px;
+
+    svg {
+      aspect-ratio: 1;
+      width: 1.225rem;
+    }
+  }
+}

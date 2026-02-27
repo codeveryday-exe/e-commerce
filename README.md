@@ -20,11 +20,11 @@
 - [?] Filtering in CollectionPage
 - [x] change Header layout
 - [x] make search component a panel
-- [] Homepage
 - [] add link to product details page in cart
 - [] fix style of ProductPage
 - [] update collections in footer
 - [] add skeleton loaders
+- [] Homepage
 - [] use library for better effects
 - [] add color palette (https://coolors.co/)
 

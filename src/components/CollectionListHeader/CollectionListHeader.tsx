@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { getCollections } from '../../services/mock-shop';
 import { ChevronDown } from 'lucide-react';
 import { useState } from 'react';
+import { ScrollLock } from '../ScrollLock/ScrollLock';
 
 export function CollectionListHeader() {
   const [isCollectionsOpen, setIsCollectionsOpen] = useState(false);
@@ -36,13 +37,16 @@ export function CollectionListHeader() {
   return (
     <>
       <button
+        className={styles.discover_button}
+        onTouchStart={() => {
+          setIsCollectionsOpen((prev) => !prev);
+        }}
         onMouseEnter={() => {
           setIsCollectionsOpen(true);
         }}
         onMouseLeave={() => {
           setIsCollectionsOpen(false);
         }}
-        className={styles.discover_button}
         type="button"
       >
         <span>Discover</span>
@@ -63,6 +67,7 @@ export function CollectionListHeader() {
             const collectionId = edge.node.id.split('/').at(-1)!;
             return (
               <li className={styles.collection_list} key={edge.node.id}>
+                <ScrollLock />
                 <div className={styles.image_box}>
                   <img className={styles.collection_image} src={edge.node.image?.url} alt={edge.node.title} />
                 </div>
