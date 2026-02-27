@@ -7,13 +7,16 @@ import { useCartId } from '../../hooks/useCartId';
 import { useQuery } from '@tanstack/react-query';
 import { useCartPanel } from '../../contexts/CartPanelContext';
 import { CollectionListHeader } from '../CollectionListHeader/CollectionListHeader';
-import { SearchForm } from '../SearchForm/SearchForm';
 import { Cart } from '../Cart/Cart';
+import { Search } from 'lucide-react';
+import { useState } from 'react';
+import { SearchPanel } from '../SearchPanel/SearchPanel';
 
 export function Header() {
   const [cartId] = useCartId();
   useQuery(cartQuery(cartId));
   const { isCartOpen, setIsCartOpen } = useCartPanel();
+  const [isSearchPanelOpen, setIsSearchPanelOpen] = useState(false);
 
   return (
     <header className={styles.header}>
@@ -24,7 +27,17 @@ export function Header() {
         <Link href="/">allShop</Link>
       </div>
       <div className={styles.other_box}>
-        <SearchForm />
+        <button
+          className={styles.search_btn}
+          onClick={() => {
+            setIsSearchPanelOpen((prev) => !prev);
+          }}
+          type="button"
+          title="Search"
+        >
+          <Search className={styles.search_btn} size={24} />
+          <span className="sr-only">Search</span>
+        </button>
         <LoginLink />
         <CartButton
           onClick={() => {
@@ -33,6 +46,14 @@ export function Header() {
         />
       </div>
       {isCartOpen && <Cart />}
+      {isSearchPanelOpen && (
+        <SearchPanel
+          isSearchPanelOpen={isSearchPanelOpen}
+          closeSearchPanel={() => {
+            setIsSearchPanelOpen(false);
+          }}
+        />
+      )}
     </header>
   );
 }

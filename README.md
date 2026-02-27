@@ -19,7 +19,7 @@
 - [x] add personal information entered at the success section in CheckoutPage
 - [?] Filtering in CollectionPage
 - [x] change Header layout
-- [] make search component a panel
+- [x] make search component a panel
 - [] Homepage
 - [] add link to product details page in cart
 - [] fix style of ProductPage

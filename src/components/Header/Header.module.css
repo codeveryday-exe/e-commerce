@@ -26,3 +26,12 @@
   justify-content: space-between;
   color: #121212;
 }
+
+.search_btn {
+  cursor: pointer;
+  color: #121212;
+
+  &:hover {
+    color: #606060;
+  }
+}
