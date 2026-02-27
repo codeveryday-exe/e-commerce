@@ -31,8 +31,12 @@ export function SearchPanel({
           <X size={28} />
           <span className="sr-only">Close cart</span>
         </button>
+        <h2 className={styles.title}>Search</h2>
         <div className={styles.content_box}>
-          <h2 className={styles.title}>Search</h2>
+          <button className={styles.search_btn} type={searchValue !== '' ? 'submit' : 'button'} title="Search">
+            <Search strokeWidth={1.25} className={styles.search_btn} size={24} />
+            <span className="sr-only">Search</span>
+          </button>
           <form action="/search" className={styles.form} onSubmit={handleSubmit}>
             {isSearchPanelOpen && (
               <input
@@ -43,15 +47,12 @@ export function SearchPanel({
                 className={styles.search_input}
                 value={searchValue}
                 type="text"
+                placeholder="Search"
                 // eslint-disable-next-line jsx-a11y/no-autofocus
                 autoFocus
                 required
               />
             )}
-            <button className={styles.search_btn} type={searchValue !== '' ? 'submit' : 'button'} title="Search">
-              <Search className={styles.search_btn} size={24} />
-              <span className="sr-only">Search</span>
-            </button>
           </form>
         </div>
       </div>

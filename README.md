@@ -21,7 +21,7 @@
 - [x] change Header layout
 - [x] make search component a panel
 - [x] fix style of ProductPage
-- [] update collections in footer
+- [x] update collections in footer
 - [] Homepage
 - [] add link to product details page in cart
 - [] use library for better effects
