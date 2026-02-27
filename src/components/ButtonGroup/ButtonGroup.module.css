@@ -2,24 +2,27 @@
   display: flex;
   flex-flow: row wrap;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
 }
 
 .item {
   button {
     cursor: pointer;
-    padding: 8px 16px;
+    padding: 5px 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
     border: 1px solid #696969;
     border-radius: 6px;
+    background-color: #ececec;
 
     &:hover {
-      background-color: #eeeeee;
+      background-color: #e0dfdf;
     }
   }
 
   &.selected {
     z-index: 1;
-    outline: 2px solid #b53030;
+    outline: 2px solid #121212;
     border-radius: 6px;
 
     button {

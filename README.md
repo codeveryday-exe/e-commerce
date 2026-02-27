@@ -20,12 +20,12 @@
 - [?] Filtering in CollectionPage
 - [x] change Header layout
 - [x] make search component a panel
-- [] add link to product details page in cart
-- [] fix style of ProductPage
+- [x] fix style of ProductPage
 - [] update collections in footer
-- [] add skeleton loaders
 - [] Homepage
+- [] add link to product details page in cart
 - [] use library for better effects
+- [] add skeleton loaders
 - [] add color palette (https://coolors.co/)
 
 ---
@@ -45,3 +45,5 @@ https://base-ui.com/react/handbook/forms
 - [] CheckoutPage payment section responsive bug
 - [] CheckoutPage 4k screen bug
 - [] can we make collection section's style better
+- [] products_list distort in responsive
+- [] cannot fetch title from CartLines
