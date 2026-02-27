@@ -5,6 +5,8 @@ import { getCollections } from '../../services/mock-shop';
 import { ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { ScrollLock } from '../ScrollLock/ScrollLock';
+import clsx from 'clsx';
+import { SubmitButton } from '../SubmitButton/SubmitButton';
 
 export function CollectionListHeader() {
   const [isCollectionsOpen, setIsCollectionsOpen] = useState(false);
@@ -36,32 +38,42 @@ export function CollectionListHeader() {
 
   return (
     <>
-      <button
+      <SubmitButton
         className={styles.discover_button}
-        onTouchStart={() => {
+        onClick={() => {
           setIsCollectionsOpen((prev) => !prev);
         }}
-        onMouseEnter={() => {
-          setIsCollectionsOpen(true);
-        }}
-        onMouseLeave={() => {
-          setIsCollectionsOpen(false);
+        onTouchStart={() => {
+          setIsCollectionsOpen((prev) => !prev);
         }}
         type="button"
       >
         <span>Discover</span>
-        <ChevronDown className={styles.arrow} size={16} strokeWidth={2.75} />
-      </button>
+        <ChevronDown
+          className={clsx(styles.arrow, { [styles.rotate]: isCollectionsOpen })}
+          size={14}
+          strokeWidth={2.75}
+        />
+      </SubmitButton>
+      {/* <button
+        className={styles.discover_button}
+        onClick={() => {
+          setIsCollectionsOpen((prev) => !prev);
+        }}
+        onTouchStart={() => {
+          setIsCollectionsOpen((prev) => !prev);
+        }}
+        type="button"
+      >
+        <span>Discover</span>
+        <ChevronDown
+          className={clsx(styles.arrow, { [styles.rotate]: isCollectionsOpen })}
+          size={16}
+          strokeWidth={2.75}
+        />
+      </button> */}
       {isCollectionsOpen && (
-        <ul
-          className={styles.collection_box}
-          onMouseEnter={() => {
-            setIsCollectionsOpen(true);
-          }}
-          onMouseLeave={() => {
-            setIsCollectionsOpen(false);
-          }}
-        >
+        <ul className={styles.collection_box}>
           {collections.edges.map((edge) => {
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             const collectionId = edge.node.id.split('/').at(-1)!;
