@@ -1,5 +1,5 @@
 import { Link } from 'wouter';
-import { CollectionList } from '../CollectionList/CollectionList';
+import { CollectionListFooter } from '../CollectionListFooter/CollectionListFooter';
 import styles from './Footer.module.css';
 
 export function Footer() {
@@ -7,7 +7,7 @@ export function Footer() {
     <footer className={styles.footer}>
       <div className={styles.box}>
         <h2 className={styles.title}>Shop</h2>
-        <CollectionList isInFooter />
+        <CollectionListFooter />
       </div>
 
       <div className={styles.box}>

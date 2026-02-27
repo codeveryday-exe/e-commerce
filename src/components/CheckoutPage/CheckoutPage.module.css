@@ -4,9 +4,11 @@
 }
 
 .logo_box {
-  padding: 16px 0;
-  font-size: 1.6rem;
-  font-weight: bold;
+  font-size: 2.225rem;
+  font-weight: 600;
+  font-family: Birthstone, sans-serif;
+  color: #121212;
+  margin-top: 16px;
 }
 
 .title {

@@ -18,7 +18,7 @@
 - [x] CheckoutPage
 - [x] add personal information entered at the success section in CheckoutPage
 - [?] Filtering in CollectionPage
-- [] change Header layout
+- [x] change Header layout
 - [] make search component a panel
 - [] Homepage
 - [] add link to product details page in cart
@@ -44,3 +44,4 @@ https://base-ui.com/react/handbook/forms
 - [] LoginPage firstName lastName input bug
 - [] CheckoutPage payment section responsive bug
 - [] CheckoutPage 4k screen bug
+- [] can we make collection section's style better

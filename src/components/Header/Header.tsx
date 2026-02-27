@@ -6,7 +6,7 @@ import { cartQuery } from '../CartLines/CartLines';
 import { useCartId } from '../../hooks/useCartId';
 import { useQuery } from '@tanstack/react-query';
 import { useCartPanel } from '../../contexts/CartPanelContext';
-import { CollectionList } from '../CollectionList/CollectionList';
+import { CollectionListHeader } from '../CollectionListHeader/CollectionListHeader';
 import { SearchForm } from '../SearchForm/SearchForm';
 import { Cart } from '../Cart/Cart';
 
@@ -17,12 +17,12 @@ export function Header() {
 
   return (
     <header className={styles.header}>
-      <div className={styles.logo_box}>
-        <Link href="/">TITLE</Link>
-      </div>
       <nav className={styles.navbar}>
-        <CollectionList />
+        <CollectionListHeader />
       </nav>
+      <div className={styles.logo_box}>
+        <Link href="/">allShop</Link>
+      </div>
       <div className={styles.other_box}>
         <SearchForm />
         <LoginLink />

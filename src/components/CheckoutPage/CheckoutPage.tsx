@@ -16,7 +16,7 @@ export function CheckoutPage() {
       <div className={styles.form_box}>
         <div className={styles.form_sub_box}>
           <div className={styles.logo_box}>
-            <Link href="/">TITLE</Link>
+            <Link href="/">allShop</Link>
           </div>
           <h2 className={styles.title}>Checkout</h2>
           {step === 'address' ? (
