@@ -24,7 +24,7 @@ export function Cart() {
           <span className="sr-only">Close cart</span>
         </button>
         <h2 className={styles.cart_title}>Cart</h2>
-        <CartLines />
+        <CartLines closeCart={closeCart} />
         <div className={styles.checkout_btn_box}>
           <SubmitButton
             onClick={() => {

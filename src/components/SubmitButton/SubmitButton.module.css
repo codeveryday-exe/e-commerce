@@ -1,5 +1,8 @@
 .submit_button {
-  color: #f8f8f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f3f3f3;
   background-color: #121212;
   height: 46px;
   font-size: 0.8rem;

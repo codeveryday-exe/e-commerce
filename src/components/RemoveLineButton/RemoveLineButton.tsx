@@ -38,7 +38,7 @@ export function RemoveLineButton({ lineId }: { lineId: string }) {
 
   return (
     <button onClick={removeLine} className={styles.remove_line_btn} type="button" title="Remove item">
-      <Trash2Icon size={20} />
+      <Trash2Icon strokeWidth={1.5} size={20} />
       <span className="sr-only">Remove item</span>
     </button>
   );

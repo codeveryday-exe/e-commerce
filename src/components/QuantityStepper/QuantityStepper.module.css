@@ -19,3 +19,10 @@
     width: 30px;
   }
 }
+
+@media (max-width: 480px) {
+  .quantity_btn_box {
+    gap: 24px;
+    font-size: 0.8rem;
+  }
+}

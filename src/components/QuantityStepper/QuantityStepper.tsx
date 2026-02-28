@@ -59,7 +59,7 @@ export function QuantityStepper({ lineId, initialQuantity }: Props) {
         type="button"
         disabled={quantity === 1}
       >
-        <MinusIcon size={16} />
+        <MinusIcon strokeWidth={1.5} size={16} />
         <span className="sr-only">Decrease</span>
       </button>
       <p>{quantity}</p>
@@ -71,7 +71,7 @@ export function QuantityStepper({ lineId, initialQuantity }: Props) {
         }}
         type="button"
       >
-        <PlusIcon size={16} />
+        <PlusIcon strokeWidth={1.5} size={16} />
         <span className="sr-only">Increase</span>
       </button>
     </div>
