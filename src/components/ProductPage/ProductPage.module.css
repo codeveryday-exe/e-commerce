@@ -6,14 +6,17 @@
 }
 
 .text_box {
+  background-color: #ece9e2;
+  border-radius: 16px 0 0 16px;
+  box-shadow: 0 3px 3px 3px rgba(0, 0, 0, 0.1);
+}
+
+.text_sub_box {
   display: flex;
   flex-direction: column;
   gap: 8px;
   max-width: 960px;
   padding: 48px;
-  background-color: #ece9e2;
-  border-radius: 16px 0 0 16px;
-  box-shadow: 0 3px 3px 3px rgba(0, 0, 0, 0.1);
 }
 
 .image_box {
@@ -139,10 +142,13 @@
   }
 
   .text_box {
-    padding: 24px;
     box-shadow: none;
     border-radius: 0;
     box-shadow: 3px -3px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .text_sub_box {
+    padding: 24px;
   }
 }
 
