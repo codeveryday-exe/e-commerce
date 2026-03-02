@@ -1,7 +1,7 @@
 import { Link } from 'wouter';
 import { CartLines } from '../CartLines/CartLines';
 import styles from './CheckoutPage.module.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CheckoutAddressForm } from './CheckoutAddressForm/CheckoutAddressForm';
 import { CheckoutPaymentForm } from './CheckoutPaymentForm/CheckoutPaymentForm';
 import { CheckoutSuccessSection } from './CheckoutSuccessSection/CheckoutSuccessSection';
@@ -10,6 +10,10 @@ import type { CheckoutInfoFormData } from './schema';
 export function CheckoutPage() {
   const [step, setStep] = useState<'address' | 'payment' | 'success'>('address');
   const [shippingInfo, setShippingInfo] = useState<CheckoutInfoFormData>();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [step]);
 
   return (
     <div className={styles.main_box}>
