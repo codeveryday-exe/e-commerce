@@ -1,11 +1,11 @@
 import { SubmitButton } from '../SubmitButton/SubmitButton';
 import styles from './Cart.module.css';
 import { useCartPanel } from '../../contexts/CartPanelContext';
-import { X } from 'lucide-react';
 import { ScrollLock } from '../ScrollLock/ScrollLock';
 import { CartLines } from '../CartLines/CartLines';
 import { useLocation } from 'wouter';
 import { ClosePanelButton } from '../ClosePanelButton/ClosePanelButton';
+import { Backdrop } from '../Backdrop/Backdrop';
 
 export function Cart() {
   const [, setLocation] = useLocation();
@@ -17,7 +17,7 @@ export function Cart() {
 
   return (
     <>
-      <div aria-hidden onClick={closeCart} className={styles.backdrop_box} />
+      <Backdrop onClick={closeCart} />
       <ScrollLock />
       <div className={styles.cart_box}>
         <ClosePanelButton

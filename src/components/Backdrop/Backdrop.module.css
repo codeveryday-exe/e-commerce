@@ -1,0 +1,7 @@
+.backdrop_box {
+  position: fixed;
+  inset: 0;
+  z-index: 998;
+  backdrop-filter: blur(2px);
+  background-color: rgba(0, 0, 0, 0.2);
+}

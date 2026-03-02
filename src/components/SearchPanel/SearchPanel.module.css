@@ -1,11 +1,3 @@
-.backdrop_box {
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-  backdrop-filter: blur(2px);
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
 .search_panel {
   display: flex;
   flex-direction: column;

@@ -4,6 +4,7 @@ import { useLocation } from 'wouter';
 import { Search } from 'lucide-react';
 import { ScrollLock } from '../ScrollLock/ScrollLock';
 import { ClosePanelButton } from '../ClosePanelButton/ClosePanelButton';
+import { Backdrop } from '../Backdrop/Backdrop';
 
 export function SearchPanel({
   isSearchPanelOpen,
@@ -25,13 +26,10 @@ export function SearchPanel({
 
   return (
     <>
-      <div aria-hidden onClick={closeSearchPanel} className={styles.backdrop_box} />
+      <Backdrop onClick={closeSearchPanel} />
       <ScrollLock />
       <div className={styles.search_panel}>
-        <button onClick={closeSearchPanel} className={styles.close_btn} type="button">
-          <X size={28} />
-          <span className="sr-only">Close cart</span>
-        </button>
+        <ClosePanelButton onClick={closeSearchPanel} />
         <h2 className={styles.title}>Search</h2>
         <div className={styles.content_box}>
           <button className={styles.search_btn} type={searchValue !== '' ? 'submit' : 'button'} title="Search">
