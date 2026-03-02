@@ -41,8 +41,7 @@
 .title {
   font-size: 2rem;
   font-weight: 500;
-  padding-top: 24px;
-  padding-left: 24px;
+  padding: 24px 0 0 16px;
 }
 
 .form {
