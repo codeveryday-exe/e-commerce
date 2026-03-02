@@ -1,0 +1,12 @@
+.close_panel_button {
+  position: absolute;
+  top: 28px;
+  right: 50px;
+  width: 25px;
+  height: 25px;
+
+  &:hover {
+    cursor: pointer;
+    color: #696969;
+  }
+}

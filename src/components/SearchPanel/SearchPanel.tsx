@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import styles from './SearchPanel.module.css';
 import { useLocation } from 'wouter';
-import { Search, X } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { ScrollLock } from '../ScrollLock/ScrollLock';
+import { ClosePanelButton } from '../ClosePanelButton/ClosePanelButton';
 
 export function SearchPanel({
   isSearchPanelOpen,

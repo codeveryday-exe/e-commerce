@@ -5,6 +5,7 @@ import { X } from 'lucide-react';
 import { ScrollLock } from '../ScrollLock/ScrollLock';
 import { CartLines } from '../CartLines/CartLines';
 import { useLocation } from 'wouter';
+import { ClosePanelButton } from '../ClosePanelButton/ClosePanelButton';
 
 export function Cart() {
   const [, setLocation] = useLocation();
@@ -19,10 +20,11 @@ export function Cart() {
       <div aria-hidden onClick={closeCart} className={styles.backdrop_box} />
       <ScrollLock />
       <div className={styles.cart_box}>
-        <button onClick={closeCart} className={styles.close_btn} type="button">
-          <X size={28} />
-          <span className="sr-only">Close cart</span>
-        </button>
+        <ClosePanelButton
+          onClick={() => {
+            setIsCartOpen(false);
+          }}
+        />
         <h2 className={styles.cart_title}>Cart</h2>
         <CartLines closeCart={closeCart} />
         <div className={styles.checkout_btn_box}>
