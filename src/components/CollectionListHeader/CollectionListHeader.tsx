@@ -6,7 +6,6 @@ import { ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { ScrollLock } from '../ScrollLock/ScrollLock';
 import clsx from 'clsx';
-import { SubmitButton } from '../SubmitButton/SubmitButton';
 
 export function CollectionListHeader() {
   const [isCollectionsOpen, setIsCollectionsOpen] = useState(false);
@@ -38,7 +37,7 @@ export function CollectionListHeader() {
 
   return (
     <>
-      <SubmitButton
+      <button
         className={styles.discover_button}
         onClick={() => {
           setIsCollectionsOpen((prev) => !prev);
@@ -54,24 +53,7 @@ export function CollectionListHeader() {
           size={14}
           strokeWidth={2.75}
         />
-      </SubmitButton>
-      {/* <button
-        className={styles.discover_button}
-        onClick={() => {
-          setIsCollectionsOpen((prev) => !prev);
-        }}
-        onTouchStart={() => {
-          setIsCollectionsOpen((prev) => !prev);
-        }}
-        type="button"
-      >
-        <span>Discover</span>
-        <ChevronDown
-          className={clsx(styles.arrow, { [styles.rotate]: isCollectionsOpen })}
-          size={16}
-          strokeWidth={2.75}
-        />
-      </button> */}
+      </button>
       {isCollectionsOpen && (
         <ul className={styles.collection_box}>
           {collections.edges.map((edge) => {
