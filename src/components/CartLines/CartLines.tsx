@@ -5,7 +5,6 @@ import styles from './CartLines.module.css';
 import { getCart } from '../../services/mock-shop';
 import { useCartId } from '../../hooks/useCartId';
 import { Link } from 'wouter';
-import { Equal } from 'lucide-react';
 
 export const cartQuery = (id: string | null) =>
   queryOptions({
@@ -37,6 +36,7 @@ export function CartLines({ isReadOnly = false, closeCart }: { isReadOnly?: bool
       {hasItems && (
         <>
           <div className={styles.lines_box}>
+            <h2 className={styles.cart_title}>Cart</h2>
             {cart.lines.edges.map((line) => {
               // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
               const productId = line.node.merchandise.product.id.split('/').at(-1)!;
@@ -52,23 +52,19 @@ export function CartLines({ isReadOnly = false, closeCart }: { isReadOnly?: bool
                         {line.node.merchandise.product.title.toUpperCase()}
                       </Link>
                     </div>
-                    <div className={styles.variant_box}>
-                      <p>Variant</p>
-                      <Equal size={14} strokeWidth={1.5} />
-                      <p>{line.node.merchandise.title}</p>
+                    <div className={styles.text_info_box}>
+                      <div className={styles.variant_box}>
+                        <p>Variant: </p>
+                        <p>{line.node.merchandise.title}</p>
+                      </div>
+                      <div className={styles.line_price_box}>
+                        <p>Price: </p>
+                        <p>
+                          {line.node.cost.totalAmount.amount} {line.node.cost.totalAmount.currencyCode}
+                        </p>
+                      </div>
                     </div>
-                    <div className={styles.quantity_box}>
-                      <p>Quantity</p>
-                      <Equal size={14} strokeWidth={1.5} />
-                      <p>{line.node.quantity}</p>
-                    </div>
-                    <div className={styles.line_price_box}>
-                      <p>Price</p>
-                      <Equal size={14} strokeWidth={1.5} />
-                      <p>
-                        {line.node.cost.totalAmount.amount} {line.node.cost.totalAmount.currencyCode}
-                      </p>
-                    </div>
+
                     {!isReadOnly && (
                       <div className={styles.remove_line_box}>
                         <RemoveLineButton lineId={line.node.id} />

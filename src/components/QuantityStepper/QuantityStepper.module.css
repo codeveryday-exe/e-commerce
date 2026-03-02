@@ -2,9 +2,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 32px;
+  gap: 24px;
   padding: 4px;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   border: 1px solid #696969;
   border-radius: 6px;
 
