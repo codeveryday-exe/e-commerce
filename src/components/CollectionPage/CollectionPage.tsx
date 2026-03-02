@@ -1,34 +1,45 @@
-import { useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import styles from './CollectionPage.module.css';
-import { fetchProducts, getCollectionProducts } from '../../services/mock-shop';
+import { getCollectionProducts } from '../../services/mock-shop';
 import { useParams } from 'wouter';
 import { ProductCard } from '../ProductCard/ProductCard';
-import { ProductFilter } from '../ProductFilter/ProductFilter';
 import { useState } from 'react';
+import { useDebounceValue } from 'usehooks-ts';
+import { ListFilter } from 'lucide-react';
+import { ClosePanelButton } from '../ClosePanelButton/ClosePanelButton';
+import { Backdrop } from '../Backdrop/Backdrop';
+import { ScrollLock } from '../ScrollLock/ScrollLock';
+
+const PRICE_DEBOUNCE_MS = 1000;
 
 export function CollectionPage() {
   const { collectionId } = useParams<{ collectionId: string }>();
-  const [filter, setFilter] = useState('');
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [availableOnly, setAvailableOnly] = useState(false);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [minPrice, setMinPrice] = useDebounceValue(0, PRICE_DEBOUNCE_MS);
+  const [maxPrice, setMaxPrice] = useDebounceValue(1000000, PRICE_DEBOUNCE_MS);
+
+  const filters = [
+    {
+      available: availableOnly || undefined,
+      price: { min: minPrice, max: maxPrice },
+    },
+    ...selectedTags.map((tag) => ({ tag })),
+  ];
 
   const {
     data: collection,
-    isLoading,
+    isPlaceholderData,
+    isPending,
     isError,
   } = useQuery({
-    queryKey: ['collection', collectionId],
-    queryFn: () => getCollectionProducts(`gid://shopify/Collection/${collectionId}`),
+    queryKey: ['collection', collectionId, filters],
+    placeholderData: keepPreviousData,
+    queryFn: () => getCollectionProducts(`gid://shopify/Collection/${collectionId}`, filters),
   });
 
-  const {
-    data: filteredProducts,
-    isLoading: isFilteredProductsLoading,
-    isError: isFilteredProductsError,
-  } = useQuery({
-    queryKey: ['filtered-products', filter],
-    queryFn: () => fetchProducts(filter),
-  });
-
-  if (isLoading || isFilteredProductsLoading) {
+  if (isPending) {
     return (
       <div>
         <h1>Loading...</h1>
@@ -44,13 +55,11 @@ export function CollectionPage() {
     );
   }
 
-  if (isFilteredProductsError) {
-    <div>
-      <h1>Filtered Products Not Found</h1>
-    </div>;
-  }
+  const tagFilters = collection.products.filters.find((filter) => filter.id === 'filter.p.tag')?.values ?? [];
 
-  const productIds = collection.products.edges.map((edge) => edge.node.id);
+  console.log('filters', collection.products.filters);
+  console.log('tagFilters: ', selectedTags);
+  console.log(`min: ${minPrice.toString()}, max: ${maxPrice.toString()}`);
 
   return (
     <div className={styles.main_box}>
@@ -60,39 +69,125 @@ export function CollectionPage() {
         <p className={styles.collection_description}>{collection.description}</p>
       </div>
 
-      <ProductFilter
-        onSubmit={(data) => {
-          setFilter(data);
+      {isFilterOpen && (
+        <>
+          <div className={styles.filters_box}>
+            <ScrollLock />
+            <ClosePanelButton
+              onClick={() => {
+                setIsFilterOpen(false);
+              }}
+            />
+            <div className={styles.availability_box}>
+              <h3 className={styles.box_title}>Availability</h3>
+              <label className={styles.input_box}>
+                <input
+                  className={styles.input}
+                  onChange={(e) => {
+                    setAvailableOnly(e.target.checked);
+                  }}
+                  checked={availableOnly}
+                  type="checkbox"
+                />
+                <span className={styles.input_text}>Available only</span>
+              </label>
+            </div>
+
+            {tagFilters.length > 0 && (
+              <fieldset className={styles.tags_box}>
+                <legend className={styles.box_title}>Categories</legend>
+
+                {tagFilters.map((value) => {
+                  return (
+                    <label className={styles.tag_box} key={value.label}>
+                      <input
+                        className={styles.input}
+                        name="tag"
+                        onChange={(e) => {
+                          if (e.target.checked) {
+                            setSelectedTags((prev) => [...prev, value.label]);
+                          } else {
+                            setSelectedTags((prev) => prev.filter((item) => item !== value.label));
+                          }
+                        }}
+                        checked={selectedTags.includes(value.label)}
+                        type="checkbox"
+                      />
+                      <span className={styles.input_text}>
+                        {value.label[0].toUpperCase() + value.label.slice(1)} ({value.count})
+                      </span>
+                    </label>
+                  );
+                })}
+              </fieldset>
+            )}
+
+            <div className={styles.price_range_box}>
+              <h3 className={styles.box_title}>Price Range</h3>
+              <label className={styles.input_box}>
+                <span className={styles.input_text}>Minimum: </span>
+                <input
+                  className={styles.input}
+                  onChange={(e) => {
+                    setMinPrice(parseInt(e.target.value));
+                  }}
+                  defaultValue={minPrice}
+                  type="number"
+                />
+              </label>
+
+              <label className={styles.input_box}>
+                <span className={styles.input_text}>Maximum: </span>
+                <input
+                  className={styles.input}
+                  onChange={(e) => {
+                    setMaxPrice(parseInt(e.target.value));
+                  }}
+                  defaultValue={maxPrice}
+                  type="number"
+                />
+              </label>
+
+              <button
+                onClick={() => {
+                  setMinPrice(0);
+                  setMaxPrice(1000000);
+                }}
+                className={styles.price_reset_btn}
+                type="button"
+              >
+                Reset
+              </button>
+            </div>
+          </div>
+          <Backdrop
+            onClick={() => {
+              setIsFilterOpen(false);
+            }}
+          />
+        </>
+      )}
+
+      <button
+        className={styles.filters_button}
+        onClick={() => {
+          setIsFilterOpen((prev) => !prev);
         }}
-        onReset={() => {
-          setFilter('');
-        }}
-      />
+      >
+        <ListFilter size={16} strokeWidth={1.75} />
+        <span>Filters</span>
+      </button>
+
+      {isPlaceholderData && <p>Filtering...</p>}
 
       <ul className={styles.products_container}>
-        {filter === '' &&
-          collection.products.edges.map((edge) => {
-            console.log('tags: ', edge.node.tags);
-
-            return (
-              <li key={edge.node.id}>
-                <ProductCard product={edge.node} />
-              </li>
-            );
-          })}
-
-        {filter !== '' && (
-          <ul className={styles.products_container}>
-            {filteredProducts?.map(
-              (product) =>
-                productIds.includes(product.id) && (
-                  <li key={product.id}>
-                    <ProductCard product={product} />
-                  </li>
-                ),
-            )}
-          </ul>
-        )}
+        {collection.products.edges.map((edge) => {
+          return (
+            <li key={edge.node.id}>
+              <ProductCard product={edge.node} />
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

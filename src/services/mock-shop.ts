@@ -11,6 +11,7 @@ import {
   ProductsQuerySchema,
   SearchProductsSchema,
 } from '../schemas/shop';
+import type { ProductFilter } from '../types/shopify';
 
 const listProductFragment = `
   id
@@ -119,6 +120,10 @@ const cartFragment = `
         }
         merchandise {
           ... on ProductVariant {
+            product {
+              title
+              id
+            }
             id
             title
             image {
@@ -252,9 +257,9 @@ export async function getCollections() {
   return response.collections;
 }
 
-export async function getCollectionProducts(collectionId: string) {
+export async function getCollectionProducts(collectionId: string, filters?: ProductFilter[]) {
   const query = gql`
-    query Collection($id: ID!) {
+    query Collection($id: ID!, $filters: [ProductFilter!]) {
       collection(id: $id) {
         id
         handle
@@ -264,10 +269,18 @@ export async function getCollectionProducts(collectionId: string) {
           id
           url
         }
-        products(first: 20) {
+        products(first: 20, filters: $filters) {
           edges {
             node {
               ${listProductFragment}
+            }
+          }
+          filters {
+            id
+            values {
+              count
+              input
+              label
             }
           }
         }
@@ -275,7 +288,7 @@ export async function getCollectionProducts(collectionId: string) {
     }
   `;
 
-  const response = await request('https://mock.shop/api', query, { id: collectionId });
+  const response = await request('https://mock.shop/api', query, { id: collectionId, filters });
   const parsedResponse = CollectionProductsSchema.parse(response);
   console.log(parsedResponse.collection);
   return parsedResponse.collection;

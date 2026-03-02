@@ -110,6 +110,10 @@ const ImageSchema = z.object({
 });
 
 const MerchandiseSchema = z.object({
+  product: z.object({
+    title: z.string(),
+    id: z.string(),
+  }),
   id: z.string(),
   title: z.string(),
   image: ImageSchema.nullable(),
@@ -206,6 +210,18 @@ export const CollectionProductsSchema = z.object({
         edges: z.array(
           z.object({
             node: ProductNodeSchema,
+          }),
+        ),
+        filters: z.array(
+          z.object({
+            id: z.string(),
+            values: z.array(
+              z.object({
+                count: z.number(),
+                input: z.unknown(), // GraphQL filter input object
+                label: z.string(),
+              }),
+            ),
           }),
         ),
       }),
