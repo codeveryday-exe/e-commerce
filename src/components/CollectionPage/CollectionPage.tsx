@@ -9,6 +9,7 @@ import { ListFilter } from 'lucide-react';
 import { ClosePanelButton } from '../ClosePanelButton/ClosePanelButton';
 import { Backdrop } from '../Backdrop/Backdrop';
 import { ScrollLock } from '../ScrollLock/ScrollLock';
+import clsx from 'clsx';
 
 const PRICE_DEBOUNCE_MS = 1000;
 
@@ -41,8 +42,8 @@ export function CollectionPage() {
 
   if (isPending) {
     return (
-      <div>
-        <h1>Loading...</h1>
+      <div className={clsx(styles.ring_box, styles.pending)}>
+        <p>Loading...</p>
       </div>
     );
   }
@@ -178,7 +179,12 @@ export function CollectionPage() {
         <span>Filters</span>
       </button>
 
-      {isPlaceholderData && <p>Filtering...</p>}
+      {isPlaceholderData && (
+        <div className={styles.ring_box}>
+          <div className={styles.ring}></div>
+          <p>Filtering...</p>
+        </div>
+      )}
 
       <ul className={styles.products_container}>
         {collection.products.edges.map((edge) => {
