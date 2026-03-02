@@ -148,18 +148,19 @@ export function CollectionPage() {
                   type="number"
                 />
               </label>
-
-              <button
-                onClick={() => {
-                  setMinPrice(0);
-                  setMaxPrice(1000000);
-                }}
-                className={styles.price_reset_btn}
-                type="button"
-              >
-                Reset
-              </button>
             </div>
+            <button
+              onClick={() => {
+                setAvailableOnly(false);
+                setSelectedTags([]);
+                setMinPrice(0);
+                setMaxPrice(1000000);
+              }}
+              className={styles.price_reset_btn}
+              type="button"
+            >
+              Reset all
+            </button>
           </div>
           <Backdrop
             onClick={() => {
