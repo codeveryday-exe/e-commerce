@@ -25,7 +25,7 @@ export function Cart() {
             setIsCartOpen(false);
           }}
         />
-        <h2 className={styles.cart_title}>Cart</h2>
+
         <CartLines closeCart={closeCart} />
         <div className={styles.checkout_btn_box}>
           <SubmitButton
