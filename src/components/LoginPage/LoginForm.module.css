@@ -34,7 +34,13 @@
 }
 
 @media (max-width: 480px) {
-  .password_box a {
-    font-size: 0.64rem;
+  .column_box {
+    .input {
+      height: 35px;
+    }
+
+    a {
+      font-size: 0.64rem;
+    }
   }
 }
