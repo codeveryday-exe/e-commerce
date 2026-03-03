@@ -1,6 +1,7 @@
 .main_box {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  height: 100vh;
 }
 
 .logo_box {
@@ -20,7 +21,7 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  background-color: #f1f0f0;
+  background-color: #f3f3f3;
   padding-bottom: 64px;
 }
 
@@ -39,9 +40,8 @@
   padding: 0 24px;
 }
 
-.cart_lines_box {
-  max-width: 500px;
-  margin: 64px auto;
+.cart_lines_sub_box > div > div {
+  max-width: none;
 }
 
 @media (max-width: 1024px) {
