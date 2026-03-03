@@ -102,11 +102,10 @@
   font-weight: 700;
 }
 
-@media (max-width: 433px) {
+@media (max-width: 400px) {
   .line_box {
     display: flex;
     flex-direction: column;
-    max-width: 280px;
     gap: 0;
   }
 }

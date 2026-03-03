@@ -69,6 +69,12 @@
 
 @media (max-width: 768px) {
   .search_panel {
+    width: 400px;
+  }
+}
+
+@media (max-width: 590px) {
+  .search_panel {
     width: 100%;
   }
 }
