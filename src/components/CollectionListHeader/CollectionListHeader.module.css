@@ -6,11 +6,11 @@
   height: 35px;
   padding: 5px 10px;
   font-size: 0.9rem;
+  font-weight: 600;
   background-color: #f3f3f3;
   color: #121212;
-  border: 1px solid #121212;
+  border: 2px solid #121212;
   border-radius: 6px;
-  box-shadow: 1px 1px 1px;
   transition:
     opacity ease-in-out 0.2s,
     transform ease-in-out 0.2s,
@@ -21,13 +21,8 @@
     opacity: 0.75;
   }
 
-  &:active {
-    transform: translate(1px, 1px);
-    box-shadow: none;
-  }
-
   .arrow {
-    transition: transform ease-in-out 0.3s;
+    transition: transform ease-in-out 0.2s;
     &.rotate {
       transform: rotate(180deg);
     }
@@ -48,7 +43,6 @@
   overflow: auto;
   scrollbar-width: thin;
   scrollbar-color: #696969 transparent;
-  max-width: 540px;
   font-size: 1.125rem;
   font-weight: 400;
   background-color: #ece9e2;
