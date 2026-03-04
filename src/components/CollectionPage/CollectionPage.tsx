@@ -47,7 +47,7 @@ export function CollectionPage() {
     return (
       <div className={styles.main_box}>
         <div>
-          <PlaceholderLine width={120} height={78} borderRadius="48px" />
+          <PlaceholderLine width={420} height={78} borderRadius="48px" />
         </div>
 
         <div>
@@ -183,20 +183,31 @@ export function CollectionPage() {
                 />
               </label>
             </div>
-            <button
-              onClick={() => {
-                setAvailableOnly(false);
-                setSelectedTags([]);
+            <div className={styles.filter_btn_box}>
+              <button
+                onClick={() => {
+                  setAvailableOnly(false);
+                  setSelectedTags([]);
                   setMinPriceValue(0);
                   setMaxPriceValue(1000000);
-                setMinPrice(0);
-                setMaxPrice(1000000);
-              }}
-              className={styles.price_reset_btn}
-              type="button"
-            >
-              Reset all
-            </button>
+                  setMinPrice(0);
+                  setMaxPrice(1000000);
+                }}
+                className={styles.price_reset_btn}
+                type="button"
+              >
+                Reset all
+              </button>
+              <button
+                onClick={() => {
+                  setIsFilterOpen(false);
+                }}
+                className={styles.price_view_btn}
+                type="button"
+              >
+                View
+              </button>
+            </div>
           </div>
           <Backdrop
             onClick={() => {
