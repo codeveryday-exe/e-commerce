@@ -19,6 +19,8 @@ export function CollectionPage() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [availableOnly, setAvailableOnly] = useState(false);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [minPriceValue, setMinPriceValue] = useState(0);
+  const [maxPriceValue, setMaxPriceValue] = useState(1000000);
   const [minPrice, setMinPrice] = useDebounceValue(0, PRICE_DEBOUNCE_MS);
   const [maxPrice, setMaxPrice] = useDebounceValue(1000000, PRICE_DEBOUNCE_MS);
 
@@ -160,9 +162,10 @@ export function CollectionPage() {
                 <input
                   className={styles.input}
                   onChange={(e) => {
+                    setMinPriceValue(parseInt(e.target.value));
                     setMinPrice(parseInt(e.target.value));
                   }}
-                  defaultValue={minPrice}
+                  value={minPriceValue}
                   type="number"
                 />
               </label>
@@ -172,9 +175,10 @@ export function CollectionPage() {
                 <input
                   className={styles.input}
                   onChange={(e) => {
+                    setMaxPriceValue(parseInt(e.target.value));
                     setMaxPrice(parseInt(e.target.value));
                   }}
-                  defaultValue={maxPrice}
+                  value={maxPriceValue}
                   type="number"
                 />
               </label>
@@ -183,6 +187,8 @@ export function CollectionPage() {
               onClick={() => {
                 setAvailableOnly(false);
                 setSelectedTags([]);
+                  setMinPriceValue(0);
+                  setMaxPriceValue(1000000);
                 setMinPrice(0);
                 setMaxPrice(1000000);
               }}
