@@ -1,0 +1,26 @@
+.placeholder_line {
+  background: #e4e1da;
+  margin: 10px 0;
+  overflow: hidden;
+  position: relative;
+
+  &::before {
+    position: absolute;
+    content: '';
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(to right, #e4e1da 0%, #f0ede7 20%, #e4e1da 40%, #e4e1da 100%);
+    background-repeat: no-repeat;
+    background-size: 100vh;
+    animation: shimmer 1.5s ease-in-out infinite;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1440px 0;
+  }
+  100% {
+    background-position: 1440px 0;
+  }
+}

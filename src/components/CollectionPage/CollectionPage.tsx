@@ -9,7 +9,8 @@ import { ListFilter } from 'lucide-react';
 import { ClosePanelButton } from '../ClosePanelButton/ClosePanelButton';
 import { Backdrop } from '../Backdrop/Backdrop';
 import { ScrollLock } from '../ScrollLock/ScrollLock';
-import clsx from 'clsx';
+import { PlaceholderCard } from '../PlaceholderCard/PlaceholderCard';
+import { PlaceholderLine } from '../PlaceholderLine/PlaceholderLine';
 
 const PRICE_DEBOUNCE_MS = 1000;
 
@@ -42,8 +43,37 @@ export function CollectionPage() {
 
   if (isPending) {
     return (
-      <div className={clsx(styles.ring_box, styles.pending)}>
-        <p>Loading...</p>
+      <div className={styles.main_box}>
+        <div>
+          <PlaceholderLine width={120} height={78} borderRadius="48px" />
+        </div>
+
+        <div>
+          <PlaceholderLine width={'35%'} height={16} />
+          <PlaceholderLine width={'95%'} height={16} />
+          <PlaceholderLine width={'70%'} height={16} />
+        </div>
+
+        <button className={styles.filters_button} disabled>
+          <ListFilter size={16} strokeWidth={1.75} />
+          <span>Filters</span>
+        </button>
+
+        <ul className={styles.products_container}>
+          {Array.from({ length: 20 }, (_, i) => {
+            return (
+              <li key={i}>
+                <PlaceholderCard width={'100%'} height={'100%'}>
+                  <PlaceholderLine width={333} aspectRatio={1} borderRadius={'16px 16px 0 0'} />
+                  <div style={{ padding: '8px 16px' }}>
+                    <PlaceholderLine width={246} height={18} />
+                    <PlaceholderLine width={140} height={14} />
+                  </div>
+                </PlaceholderCard>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     );
   }

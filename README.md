@@ -1,32 +1,24 @@
 # Tasks
 
-- [x] add Router (get from first project, Wouter)
-- [x] add Tanstack Query (get from first project)
-- [x] create homepage
+- [x] use Router (Wouter)
+- [x] use Tanstack Query
+- [x] use a font
+- [x] use searchParams
 - [x] add types
-- [x] fetch 20 products
-- [x] print products to the page
-- [x] create ProductCard component, edit & style cards in there
-- [x] get a product with the first 3 variants
-- [x] fix types
-- [x] product detail page => https://demostore.mock.shop/products/hoodie-old
-- [x] use searchParams for selected variant state, don't use useState for selected variant
-- [x] add Header & Footer
-- [x] find a font from fonts.google.com and use it in index.css
+- [x] HomePage
+- [x] ProductCard
+- [x] ProductPage
+- [x] Header & Footer
 - [x] CollectionPage
-- [x] Search
+- [x] SearchPage
 - [x] CheckoutPage
-- [x] add personal information entered at the success section in CheckoutPage
-- [?] Filtering in CollectionPage
-- [x] change Header layout
-- [x] make search component a panel
-- [x] fix style of ProductPage
-- [x] update collections in footer
-- [] Homepage
-- [] add link to product details page in cart
+- [x] add filtering in CollectionPage
+- [x] add skeleton loaders to ProductList, ProductPage & HomePage
 - [] use library for better effects
-- [] add skeleton loaders
 - [] add color palette (https://coolors.co/)
+
+- [] use button in collectionFilter
+- [] Homepage
 
 ---
 
@@ -41,9 +33,8 @@ https://base-ui.com/react/handbook/forms
 
 # Questions
 
-- [] LoginPage firstName lastName input bug
-- [] CheckoutPage payment section responsive bug
-- [] CheckoutPage 4k screen bug
-- [] can we make collection section's style better
-- [] products_list distort in responsive
-- [] cannot fetch title from CartLines
+- [] Move filters to another component?
+- [] CollectionPage skeleton responsive issue
+- [] HomePage skeleton issue
+- [] CollectionListHeader images are not aligning same in responsive
+- [] interview task after the end of the project

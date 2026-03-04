@@ -11,6 +11,8 @@ import { SubmitButton } from '../SubmitButton/SubmitButton';
 import { useCartId } from '../../hooks/useCartId';
 import { cartQuery } from '../CartLines/CartLines';
 import { useCartPanel } from '../../contexts/CartPanelContext';
+import { PlaceholderLine } from '../PlaceholderLine/PlaceholderLine';
+import { PlaceholderImage } from '../PlaceholderImage/PlaceholderImage';
 
 export function ProductPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -39,17 +41,48 @@ export function ProductPage() {
 
   const {
     data: product,
-    isLoading,
+    isPending,
     isError,
   } = useQuery({
     queryKey: ['product', productId],
     queryFn: () => fetchProduct({ productId: `gid://shopify/Product/${productId}` }),
   });
 
-  if (isLoading) {
+  if (isPending) {
     return (
-      <div>
-        <h1>Loading...</h1>
+      <div className={styles.product_details_box}>
+        <PlaceholderImage width={660} height={'100vh'} />
+        <div className={styles.text_box}>
+          <div className={styles.text_sub_box}>
+            <PlaceholderLine width={220} height={40} borderRadius="48px" />
+            <PlaceholderLine width={128} height={26} />
+            <div className={styles.text_info_box}>
+              <div className={styles.size_info_box}>
+                <h2 className={styles.size_title}>SIZES: </h2>
+                <PlaceholderLine width={422} height={40} borderRadius="6px" />
+              </div>
+              <div className={styles.color_info_box}>
+                <h2 className={styles.color_title}>COLORS: </h2>
+                <PlaceholderLine width={422} height={40} borderRadius="6px" />
+              </div>
+              <div className={styles.quantity_box}>
+                <h2>QUANTITY: </h2>
+                <PlaceholderLine width={180} height={50} borderRadius="6px" />
+              </div>
+            </div>
+            <SubmitButton type="button" className={styles.cart_btn} disabled>
+              {createCartMutation.isPending ? 'LOADING' : 'ADD TO CART'}
+            </SubmitButton>
+            <div>
+              <PlaceholderLine width={128} height={20} />
+              <PlaceholderLine width={312} height={20} />
+              <PlaceholderLine width={425} height={20} />
+              <PlaceholderLine width={128} height={20} />
+              <PlaceholderLine width={312} height={20} />
+              <PlaceholderLine width={522} height={20} />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
