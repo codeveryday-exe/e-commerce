@@ -8,6 +8,61 @@
   padding: 36px;
 }
 
+.discount_notifier_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background-color: #f3f3f3;
+  border-radius: 16px;
+
+  .discount_close_btn {
+    transition: opacity ease-in-out 0.2s;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.5;
+    }
+  }
+
+  .discount_icon_text_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    .discount_text_box {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #121212;
+
+      .discount_sign_text {
+        font-size: 0.75rem;
+        color: #696969;
+      }
+    }
+  }
+
+  .discount_notifier_link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    padding: 5px 8px;
+    font-size: 0.9rem;
+    background-color: #121212;
+    color: #f3f3f3;
+    border-radius: 6px;
+    transition: opacity ease-in-out 0.2s;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+  }
+}
+
 .trust_section {
   padding: 64px 24px;
   background-color: #f3f3f3;
@@ -70,8 +125,45 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+@media (max-width: 570px) {
+  .discount_notifier_box {
+    svg {
+      width: 16px;
+      aspect-ratio: 1;
+    }
+
+    .discount_icon_text_box {
+      .discount_text_box {
+        font-size: 0.75rem;
+
+        .discount_sign_text {
+          font-size: 0.65rem;
+        }
+      }
+    }
+
+    .discount_notifier_link {
+      padding: 3px 5px;
+      font-size: 0.75rem;
+    }
+  }
 
 @media (max-width: 480px) {
+  .discount_notifier_box {
+    flex-direction: column;
+    position: relative;
+
+    .discount_close_btn {
+      position: absolute;
+      inset: 0;
+      left: 6px;
+      top: 6px;
+    }
+
+    .discount_notifier_link {
+      height: 25px;
+    }
+  }
   .trust_container {
     display: grid;
     grid-template-columns: 1fr;
