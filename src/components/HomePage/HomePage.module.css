@@ -62,66 +62,6 @@
   }
 }
 
-.collections_box {
-  display: flex;
-  flex-direction: column;
-  padding: 16px;
-  border-radius: 16px;
-
-  .collections_big_title {
-    font-size: 2.25rem;
-    font-weight: 500;
-    color: #121212;
-    padding: 24px;
-  }
-}
-
-.collections_sub_box {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
-
-  .collection_box {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    border-radius: 16px;
-    transition:
-      opacity ease-in-out 0.2s,
-      transform ease-in-out 0.2s;
-
-    &:hover {
-      cursor: pointer;
-      opacity: 0.8;
-      transform: scale(1.03);
-    }
-
-    .collection_image {
-      border-radius: 16px;
-    }
-
-    .collection_title {
-      padding: 0 10px;
-      font-size: 1.25rem;
-      font-weight: 500;
-      background-color: transparent;
-      color: #121212;
-      border-radius: 16px;
-      transition:
-        color ease-in-out 0.2s,
-        border-color ease-in-out 0.2s;
-
-      &::after {
-        position: absolute;
-        content: '';
-        inset: 0;
-      }
-    }
-  }
-}
-
 .trust_section {
   padding: 64px 24px;
   background-color: #f3f3f3;
@@ -158,15 +98,6 @@
   margin: 0;
 }
 
-.products_container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(clamp(180px, 25%, 280px), 1fr));
-  gap: 14px;
-  max-width: 100%;
-  padding-bottom: 24px;
-  margin-top: 48px;
-}
-
 @media (max-width: 768px) {
   .trust_container {
     display: grid;
@@ -176,23 +107,6 @@
 
   .trust_section {
     padding: 50px 20px;
-  }
-}
-
-@media (max-width: 660px) {
-  .collections_box {
-    .collections_big_title {
-      font-size: 1.85rem;
-    }
-
-    .collections_sub_box {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-
-  .products_container {
-    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -218,14 +132,6 @@
       font-size: 0.75rem;
     }
   }
-
-  .collections_box {
-    .collection_box {
-      .collection_title {
-        font-size: 1.15rem;
-      }
-    }
-  }
 }
 
 @media (max-width: 480px) {
@@ -242,22 +148,6 @@
 
     .discount_notifier_link {
       height: 25px;
-    }
-  }
-
-  .collections_box {
-    .collections_big_title {
-      font-size: 1.55rem;
-    }
-
-    .collection_box {
-      .collection_title {
-        font-size: 1rem;
-      }
-
-      .collection_title {
-        font-size: 1rem;
-      }
     }
   }
 
