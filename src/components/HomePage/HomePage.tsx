@@ -19,6 +19,32 @@ export function HomePage() {
   if (isPending) {
     return (
       <div className={styles.main_box}>
+      {isNotifierOpen && (
+        <div className={styles.discount_notifier_box}>
+          <button
+            onClick={() => {
+              setIsNotifierOpen(false);
+            }}
+            type="button"
+            title="Close notifier"
+          >
+            <X className={styles.discount_close_btn} size={24} />
+            <span className="sr-only">Close notifier</span>
+          </button>
+          <div className={styles.discount_icon_text_box}>
+            <BadgePercent size={24} />
+            <div className={styles.discount_text_box}>
+              <p>
+                <b>Enjoy 10% off</b> your first purchase
+              </p>
+              <p className={styles.discount_sign_text}>Stay in the know about our newest collections.</p>
+            </div>
+          </div>
+          <Link className={styles.discount_notifier_link} href="/login">
+            Sign up
+          </Link>
+        </div>
+      )}
         <section className={styles.trust_section}>
           <div className={styles.trust_container}>
             <div className={styles.trust_item}>
