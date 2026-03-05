@@ -232,10 +232,10 @@ export async function editLinesFromCart(variables: { cartId: string; line: { id:
   return parsedResponse.cartLinesUpdate.cart;
 }
 
-export async function getCollections() {
+export async function getCollections(collectionAmount?: number) {
   const query = gql`
-    query Collections {
-      collections(first: 10) {
+    query Collections($first: Int = 10) {
+      collections(first: $first) {
         edges {
           cursor
           node {
@@ -252,7 +252,9 @@ export async function getCollections() {
       }
     }
   `;
-  const response = CollectionsQuerySchema.parse(await request('https://mock.shop/api', query));
+  const response = CollectionsQuerySchema.parse(
+    await request('https://mock.shop/api', query, { first: collectionAmount }),
+  );
   console.log(response.collections);
   return response.collections;
 }
