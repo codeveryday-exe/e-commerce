@@ -13,6 +13,7 @@ import { PlaceholderCard } from '../PlaceholderCard/PlaceholderCard';
 import { PlaceholderLine } from '../PlaceholderLine/PlaceholderLine';
 import { WatchPathname } from '../WatchPathname/WatchPathname';
 import { Spinner } from '../Spinner/Spinner';
+import { PlaceholderImage } from '../PlaceholderImage/PlaceholderImage';
 
 const PRICE_DEBOUNCE_MS = 1000;
 
@@ -52,11 +53,10 @@ export function CollectionPage() {
           <PlaceholderLine width={420} height={78} borderRadius="48px" />
         </div>
 
-        <div>
-          <PlaceholderLine width={'35%'} height={16} />
-          <PlaceholderLine width={'95%'} height={16} />
-          <PlaceholderLine width={'70%'} height={16} />
-        </div>
+        <PlaceholderCard width={'100%'} height={136} padding="48px 36px">
+          <PlaceholderLine width={'100%'} height={22} />
+          <PlaceholderLine width={'40%'} height={22} />
+        </PlaceholderCard>
 
         <button className={styles.filters_button} disabled>
           <ListFilter size={16} strokeWidth={1.75} />
@@ -68,7 +68,7 @@ export function CollectionPage() {
             return (
               <li key={i}>
                 <PlaceholderCard width={'100%'} height={'100%'}>
-                  <PlaceholderLine width={333} aspectRatio={1} borderRadius={'16px 16px 0 0'} />
+                  <PlaceholderImage width={'100%'} aspectRatio={1} variant="brown" borderRadius={'16px 16px 0 0'} />
                   <div style={{ padding: '8px 16px' }}>
                     <PlaceholderLine width={246} height={18} />
                     <PlaceholderLine width={140} height={14} />

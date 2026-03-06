@@ -4,6 +4,7 @@ import { PlaceholderCard } from '../PlaceholderCard/PlaceholderCard';
 import { PlaceholderLine } from '../PlaceholderLine/PlaceholderLine';
 import { ProductCard } from '../ProductCard/ProductCard';
 import styles from './HomeProducts.module.css';
+import { PlaceholderImage } from '../PlaceholderImage/PlaceholderImage';
 
 export function HomeProducts() {
   const {
@@ -22,7 +23,7 @@ export function HomeProducts() {
           return (
             <li key={i}>
               <PlaceholderCard width={'100%'} height={'100%'}>
-                <PlaceholderLine width={333} aspectRatio={1} borderRadius={'16px 16px 0 0'} />
+                <PlaceholderImage width={'100%'} aspectRatio={1} variant="brown" borderRadius={'16px 16px 0 0'} />
                 <div style={{ padding: '8px 16px' }}>
                   <PlaceholderLine width={246} height={18} />
                   <PlaceholderLine width={140} height={14} />

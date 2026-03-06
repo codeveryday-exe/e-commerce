@@ -4,6 +4,7 @@ import { getCollections } from '../../services/mock-shop';
 import { PlaceholderLine } from '../PlaceholderLine/PlaceholderLine';
 import { Link } from 'wouter';
 import styles from './HomeCollections.module.css';
+import { PlaceholderImage } from '../PlaceholderImage/PlaceholderImage';
 
 export function HomeCollections() {
   const {
@@ -23,8 +24,8 @@ export function HomeCollections() {
           {Array.from({ length: 4 }, (_, i) => {
             return (
               <div key={i}>
-                <PlaceholderLine width={350} aspectRatio={1} />
-                <PlaceholderLine width={125} height={40} />
+                <PlaceholderImage width={'100%'} aspectRatio={1} variant="brown" borderRadius={'16px'} />
+                <PlaceholderLine width={125} height={30} margin="0 auto" />
               </div>
             );
           })}

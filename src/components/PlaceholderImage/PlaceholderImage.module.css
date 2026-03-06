@@ -1,8 +1,6 @@
 .placeholder_image {
   aspect-ratio: 1;
-  background: #ededed;
   border-radius: 16px 16px 0 0;
-  margin: 10px 0;
   overflow: hidden;
   position: relative;
 
@@ -11,10 +9,25 @@
     content: '';
     height: 100%;
     width: 100%;
-    background-image: linear-gradient(to right, #ededed 0%, #f6f6f6 20%, #ededed 40%, #ededed 100%);
     background-repeat: no-repeat;
     background-size: 100vh;
     animation: shimmer 1.5s ease-in-out infinite;
+  }
+
+  &[data-variant='white'] {
+    background: #ededed;
+
+    &::before {
+      background-image: linear-gradient(to right, #ededed 0%, #f6f6f6 20%, #ededed 40%, #ededed 100%);
+    }
+  }
+
+  &[data-variant='brown'] {
+    background: #e4e1da;
+
+    &::before {
+      background-image: linear-gradient(to right, #e4e1da 0%, #f0ede7 20%, #e4e1da 40%, #e4e1da 100%);
+    }
   }
 }
 
