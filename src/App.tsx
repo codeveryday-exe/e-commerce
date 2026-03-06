@@ -18,6 +18,7 @@ import { TermsPage } from './components/Footer/PlaceholderPages/TermsPage';
 import { CookiePolicyPage } from './components/Footer/PlaceholderPages/CookiePolicyPage';
 import { CheckoutPage } from './components/CheckoutPage/CheckoutPage';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
+import { NotFoundPage } from './components/NotFoundPage/NotFoundPage';
 
 export function App() {
   const [location] = useLocation();
@@ -43,7 +44,7 @@ export function App() {
           <Route path="/terms" component={TermsPage} />
           <Route path="/cookies" component={CookiePolicyPage} />
           <Route path="/about" component={AboutPage} />
-          <Route path="*" component={() => <h1>Page Not Found</h1>} />
+          <Route path="*" component={NotFoundPage} />
         </Switch>
       </main>
       {location !== '/checkout' && <Footer />}
