@@ -1,8 +1,15 @@
+.placeholder_line_box {
+  display: flex;
+  flex-direction: column;
+  padding: 3px 0;
+}
+
 .placeholder_line {
   background: #e4e1da;
-  margin: 10px 0;
   overflow: hidden;
   position: relative;
+  flex-grow: 1;
+  width: 100%;
 
   &::before {
     position: absolute;
@@ -13,6 +20,10 @@
     background-repeat: no-repeat;
     background-size: 100vh;
     animation: shimmer 1.5s ease-in-out infinite;
+
+    @media (prefers-reduced-motion) {
+      animation: none;
+    }
   }
 }
 
