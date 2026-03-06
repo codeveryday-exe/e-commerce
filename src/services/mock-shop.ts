@@ -29,6 +29,16 @@ const listProductFragment = `
       currencyCode
     }
   }
+  priceRange {
+    maxVariantPrice {
+      amount
+      currencyCode
+    }
+    minVariantPrice {
+      amount
+      currencyCode
+    }
+  }
 `;
 
 export async function fetchProducts(filterQuery?: string) {

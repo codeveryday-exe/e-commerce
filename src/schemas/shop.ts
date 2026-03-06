@@ -1,5 +1,20 @@
 import { z } from 'zod';
 
+const PriceRangeSchema = z.object({
+  minVariantPrice: z
+    .object({
+      amount: z.string(),
+      currencyCode: z.string(),
+    })
+    .optional(),
+  maxVariantPrice: z
+    .object({
+      amount: z.string(),
+      currencyCode: z.string(),
+    })
+    .optional(),
+});
+
 export const ProductNodeSchema = z.object({
   id: z.string(),
   tags: z.array(z.string()),
@@ -19,6 +34,7 @@ export const ProductNodeSchema = z.object({
       }),
     })
     .nullable(),
+  priceRange: PriceRangeSchema,
 });
 
 export const ProductsQuerySchema = z.object({
@@ -249,21 +265,6 @@ const CollectionSchema = z.object({
   id: z.string(),
   title: z.string(),
   image: SearchImageSchema.nullable().optional(),
-});
-
-const PriceRangeSchema = z.object({
-  minVariantPrice: z
-    .object({
-      amount: z.string(),
-      currencyCode: z.string(),
-    })
-    .optional(),
-  maxVariantPrice: z
-    .object({
-      amount: z.string(),
-      currencyCode: z.string(),
-    })
-    .optional(),
 });
 
 const ProductSchema = z.object({

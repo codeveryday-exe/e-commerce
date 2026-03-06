@@ -12,7 +12,11 @@ export function ProductCard({ product }: Props) {
     amount: '?',
     currencyCode: '?',
   };
+  const maxVariantPriceArr = product.priceRange.maxVariantPrice;
+  const minVariantPriceArr = product.priceRange.minVariantPrice;
   const productId = product.id.slice(product.id.lastIndexOf('/') + 1);
+
+  // console.log('minVariant', minVariantPriceArr, 'maxVariant', maxVariantPriceArr);
 
   return (
     <div className={styles.product_card_box}>
@@ -28,7 +32,15 @@ export function ProductCard({ product }: Props) {
           {product.title.toUpperCase()}
         </Link>
         <div className={styles.price}>
-          {firstVariantPrice.amount} {firstVariantPrice.currencyCode}
+          {maxVariantPriceArr?.amount === minVariantPriceArr?.amount ? (
+            <p>
+              {firstVariantPrice.amount} {firstVariantPrice.currencyCode}
+            </p>
+          ) : (
+            <p>
+              {minVariantPriceArr?.amount} - {maxVariantPriceArr?.amount} {minVariantPriceArr?.currencyCode}
+            </p>
+          )}
         </div>
       </div>
     </div>
