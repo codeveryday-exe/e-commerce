@@ -2,14 +2,9 @@ import { Link } from 'wouter';
 import styles from './CollectionListHeader.module.css';
 import { useQuery } from '@tanstack/react-query';
 import { getCollections } from '../../services/mock-shop';
-import { ChevronDown } from 'lucide-react';
-import { useState } from 'react';
 import { ScrollLock } from '../ScrollLock/ScrollLock';
-import clsx from 'clsx';
 
 export function CollectionListHeader() {
-  const [isCollectionsOpen, setIsCollectionsOpen] = useState(false);
-
   const {
     data: collections,
     isLoading,
@@ -37,24 +32,7 @@ export function CollectionListHeader() {
 
   return (
     <>
-      <button
-        className={styles.discover_button}
-        onClick={() => {
-          setIsCollectionsOpen((prev) => !prev);
-        }}
-        onTouchStart={() => {
-          setIsCollectionsOpen((prev) => !prev);
-        }}
-        type="button"
-      >
-        <span>Discover</span>
-        <ChevronDown
-          className={clsx(styles.arrow, { [styles.rotate]: isCollectionsOpen })}
-          size={14}
-          strokeWidth={2.75}
-        />
-      </button>
-      {isCollectionsOpen && (
+      {
         <ul className={styles.collection_box}>
           {collections.edges.map((edge) => {
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -66,13 +44,7 @@ export function CollectionListHeader() {
                   <img className={styles.collection_image} src={edge.node.image?.url} alt={edge.node.title} />
                 </div>
                 <div className={styles.description_box}>
-                  <Link
-                    onClick={() => {
-                      setIsCollectionsOpen(false);
-                    }}
-                    className={styles.collection_title}
-                    href={`/collection/${collectionId}`}
-                  >
+                  <Link className={styles.collection_title} href={`/collection/${collectionId}`}>
                     {edge.node.title.toUpperCase()}
                   </Link>
                   <p className={styles.description}>
@@ -86,7 +58,7 @@ export function CollectionListHeader() {
             );
           })}
         </ul>
-      )}
+      }
     </>
   );
 }

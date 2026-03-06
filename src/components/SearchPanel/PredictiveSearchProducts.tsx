@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { PlaceholderLine } from '../PlaceholderLine/PlaceholderLine';
 import clsx from 'clsx';
 
-export function PredictiveSearchResults({ searchValue, closePanel }: { searchValue: string; closePanel: () => void }) {
+export function PredictiveSearchResults({ searchValue }: { searchValue: string }) {
   const [isProductsOpen, setIsProductsOpen] = useState(true);
   const [isCollectionsOpen, setIsCollectionsOpen] = useState(true);
   const {
@@ -58,11 +58,7 @@ export function PredictiveSearchResults({ searchValue, closePanel }: { searchVal
                       alt={product.featuredImage?.altText ?? product.title}
                     />
                     <div className={styles.product_text_box}>
-                      <Link
-                        onClick={closePanel}
-                        className={styles.product_title}
-                        href={`/product/${product.id.split('/').at(-1) ?? ''}`}
-                      >
+                      <Link className={styles.product_title} href={`/product/${product.id.split('/').at(-1) ?? ''}`}>
                         {product.title.toUpperCase()}
                       </Link>
                       <p className={styles.product_price}>
@@ -104,7 +100,6 @@ export function PredictiveSearchResults({ searchValue, closePanel }: { searchVal
                         alt={collection.image?.altText ?? collection.title}
                       />
                       <Link
-                        onClick={closePanel}
                         className={styles.collection_title}
                         href={`/collection/${collection.id.split('/').at(-1) ?? ''}`}
                       >

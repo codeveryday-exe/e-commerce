@@ -11,6 +11,7 @@ import { Backdrop } from '../Backdrop/Backdrop';
 import { ScrollLock } from '../ScrollLock/ScrollLock';
 import { PlaceholderCard } from '../PlaceholderCard/PlaceholderCard';
 import { PlaceholderLine } from '../PlaceholderLine/PlaceholderLine';
+import { WatchPathname } from '../WatchPathname/WatchPathname';
 
 const PRICE_DEBOUNCE_MS = 1000;
 
@@ -101,6 +102,12 @@ export function CollectionPage() {
       <div className={styles.description_box}>
         <p className={styles.collection_description}>{collection.description}</p>
       </div>
+
+      <WatchPathname
+        onPathChange={() => {
+          setIsFilterOpen(false);
+        }}
+      />
 
       {isFilterOpen && (
         <>

@@ -1,12 +1,11 @@
-import { useEffect } from 'react';
-import { useLocation } from 'wouter';
+import { WatchPathname } from '../WatchPathname/WatchPathname';
 
 export default function ScrollToTop() {
-  const [pathname] = useLocation();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-
-  return null;
+  return (
+    <WatchPathname
+      onPathChange={() => {
+        window.scrollTo(0, 0);
+      }}
+    />
+  );
 }

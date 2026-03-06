@@ -8,20 +8,41 @@ import { useQuery } from '@tanstack/react-query';
 import { useCartPanel } from '../../contexts/CartPanelContext';
 import { CollectionListHeader } from '../CollectionListHeader/CollectionListHeader';
 import { Cart } from '../Cart/Cart';
-import { Search } from 'lucide-react';
+import { ChevronDown, Search } from 'lucide-react';
 import { useState } from 'react';
 import { SearchPanel } from '../SearchPanel/SearchPanel';
+import { WatchPathname } from '../WatchPathname/WatchPathname';
+import clsx from 'clsx';
 
 export function Header() {
   const [cartId] = useCartId();
   useQuery(cartQuery(cartId));
   const { isCartOpen, setIsCartOpen } = useCartPanel();
   const [isSearchPanelOpen, setIsSearchPanelOpen] = useState(false);
+  const [isCollectionsOpen, setIsCollectionsOpen] = useState(false);
 
   return (
     <header className={styles.header}>
       <nav className={styles.navbar}>
-        <CollectionListHeader />
+        <button
+          className={styles.discover_button}
+          onClick={() => {
+            setIsCollectionsOpen((prev) => !prev);
+          }}
+          onTouchStart={() => {
+            setIsCollectionsOpen((prev) => !prev);
+          }}
+          type="button"
+        >
+          <span>Discover</span>
+          <ChevronDown
+            className={clsx(styles.arrow, { [styles.rotate]: isCollectionsOpen })}
+            size={14}
+            strokeWidth={2.75}
+          />
+        </button>
+
+        {isCollectionsOpen && <CollectionListHeader />}
       </nav>
       <div className={styles.logo_box}>
         <Link href="/">allShop</Link>
@@ -46,6 +67,13 @@ export function Header() {
         />
       </div>
       {isCartOpen && <Cart />}
+      <WatchPathname
+        onPathChange={() => {
+          setIsSearchPanelOpen(false);
+          setIsCartOpen(false);
+          setIsCollectionsOpen(false);
+        }}
+      />
       {isSearchPanelOpen && (
         <SearchPanel
           isSearchPanelOpen={isSearchPanelOpen}
