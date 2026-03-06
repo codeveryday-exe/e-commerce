@@ -22,6 +22,14 @@ export default defineConfig([
     ],
     rules: {
       '@eslint-react/no-use-context': 'off',
+      '@typescript-eslint/restrict-template-expressions': [
+        'error',
+        {
+          allowAny: false,
+          allowNullish: false,
+          allowNumber: true,
+        },
+      ],
     },
     languageOptions: {
       ecmaVersion: 2020,

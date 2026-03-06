@@ -32,33 +32,31 @@ export function CollectionListHeader() {
 
   return (
     <>
-      {
-        <ul className={styles.collection_box}>
-          {collections.edges.map((edge) => {
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-            const collectionId = edge.node.id.split('/').at(-1)!;
-            return (
-              <li className={styles.collection_list} key={edge.node.id}>
-                <ScrollLock />
-                <div className={styles.image_box}>
-                  <img className={styles.collection_image} src={edge.node.image?.url} alt={edge.node.title} />
-                </div>
-                <div className={styles.description_box}>
-                  <Link className={styles.collection_title} href={`/collection/${collectionId}`}>
-                    {edge.node.title.toUpperCase()}
-                  </Link>
-                  <p className={styles.description}>
-                    {edge.node.description === ''
-                      ? `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam, accusantium enim
+      <ScrollLock />
+      <ul className={styles.collection_box}>
+        {collections.edges.map((edge) => {
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          const collectionId = edge.node.id.split('/').at(-1)!;
+          return (
+            <li className={styles.collection_list} key={edge.node.id}>
+              <div className={styles.image_box}>
+                <img className={styles.collection_image} src={edge.node.image?.url} alt={edge.node.title} />
+              </div>
+              <div className={styles.description_box}>
+                <Link className={styles.collection_title} href={`/collection/${collectionId}`}>
+                  {edge.node.title.toUpperCase()}
+                </Link>
+                <p className={styles.description}>
+                  {edge.node.description === ''
+                    ? `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam, accusantium enim
                      ipsam ratione deserunt sed ipsa vero deleniti eos! Rerum, ullam! A possimus consectetur consequuntur.`
-                      : edge.node.description}
-                  </p>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
-      }
+                    : edge.node.description}
+                </p>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
     </>
   );
 }
