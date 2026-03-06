@@ -12,6 +12,7 @@ import { ScrollLock } from '../ScrollLock/ScrollLock';
 import { PlaceholderCard } from '../PlaceholderCard/PlaceholderCard';
 import { PlaceholderLine } from '../PlaceholderLine/PlaceholderLine';
 import { WatchPathname } from '../WatchPathname/WatchPathname';
+import { Spinner } from '../Spinner/Spinner';
 
 const PRICE_DEBOUNCE_MS = 1000;
 
@@ -234,12 +235,7 @@ export function CollectionPage() {
         <span>Filters</span>
       </button>
 
-      {isPlaceholderData && (
-        <div className={styles.ring_box}>
-          <div className={styles.ring}></div>
-          <p>Filtering...</p>
-        </div>
-      )}
+      {isPlaceholderData && <Spinner text="Filtering..." />}
 
       <ul className={styles.products_container}>
         {collection.products.edges.map((edge) => {

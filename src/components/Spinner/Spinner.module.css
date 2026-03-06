@@ -1,0 +1,39 @@
+.ring_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999;
+  color: #121212;
+  background-color: rgba(243, 243, 243, 0.2);
+
+  &.pending {
+    position: static;
+    inset: unset;
+  }
+
+  .ring {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 10px solid #d3d3d3;
+    border-top-color: #000;
+    border-right-color: #000;
+    animation: ringSpin 0.8s linear infinite;
+  }
+
+  p {
+    font-size: 1.225rem;
+    font-weight: 500;
+  }
+}
+
+@keyframes ringSpin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
