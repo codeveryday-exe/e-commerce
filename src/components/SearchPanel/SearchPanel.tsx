@@ -5,6 +5,8 @@ import { Search } from 'lucide-react';
 import { ScrollLock } from '../ScrollLock/ScrollLock';
 import { ClosePanelButton } from '../ClosePanelButton/ClosePanelButton';
 import { Backdrop } from '../Backdrop/Backdrop';
+import { useDebounceValue } from 'usehooks-ts';
+import { PredictiveSearchResults } from './PredictiveSearchProducts';
 
 export function SearchPanel({
   isSearchPanelOpen,
@@ -13,8 +15,9 @@ export function SearchPanel({
   isSearchPanelOpen: boolean;
   closeSearchPanel: () => void;
 }) {
-  const [searchValue, setSearchValue] = useState('');
   const [, setLocation] = useLocation();
+  const [searchValue, setSearchValue] = useState('');
+  const debouncedSearchValue = useDebounceValue(searchValue, 250);
 
   const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -32,11 +35,11 @@ export function SearchPanel({
         <ClosePanelButton onClick={closeSearchPanel} />
         <h2 className={styles.title}>Search</h2>
         <div className={styles.content_box}>
-          <button className={styles.search_btn} type={searchValue !== '' ? 'submit' : 'button'} title="Search">
-            <Search strokeWidth={1.25} className={styles.search_btn} size={24} />
-            <span className="sr-only">Search</span>
-          </button>
           <form action="/search" className={styles.form} onSubmit={handleSubmit}>
+            <button className={styles.search_btn} type={searchValue !== '' ? 'submit' : 'button'} title="Search">
+              <Search strokeWidth={1.25} className={styles.search_btn} size={24} />
+              <span className="sr-only">Search</span>
+            </button>
             {isSearchPanelOpen && (
               <input
                 name="q"
@@ -54,6 +57,7 @@ export function SearchPanel({
             )}
           </form>
         </div>
+        <PredictiveSearchResults closePanel={closeSearchPanel} searchValue={debouncedSearchValue[0]} />
       </div>
     </>
   );

@@ -7,6 +7,7 @@ import {
   CartQueryResponseSchema,
   CollectionProductsSchema,
   CollectionsQuerySchema,
+  PredictiveSearchSchema,
   ProductQuerySchema,
   ProductsQuerySchema,
   SearchProductsSchema,
@@ -315,4 +316,45 @@ export async function getSearchProducts(searchInput: string) {
   const parsedResponse = SearchProductsSchema.parse(response);
   console.log(parsedResponse.search);
   return parsedResponse.search;
+}
+
+export async function getPredictiveSearch(searchInput: string) {
+  const query = gql`
+    query PredictiveSearch($query: String!, $limit: Int) {
+      predictiveSearch(query: $query, limit: $limit) {
+        products {
+          id
+          title
+          featuredImage {
+            id
+            url
+            altText
+          }
+          priceRange {
+            minVariantPrice {
+              amount
+              currencyCode
+            }
+            maxVariantPrice {
+              amount
+              currencyCode
+            }
+          }
+        }
+        collections {
+          id
+          title
+          image {
+            id
+            url
+            altText
+          }
+        }
+      }
+    }
+  `;
+
+  const response = await request('https://mock.shop/api', query, { query: searchInput });
+  const parsedResponse = PredictiveSearchSchema.parse(response);
+  return parsedResponse.predictiveSearch;
 }

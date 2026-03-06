@@ -238,3 +238,44 @@ export const SearchProductsSchema = z.object({
     ),
   }),
 });
+
+const SearchImageSchema = z.object({
+  id: z.string(),
+  url: z.url(),
+  altText: z.string().nullable().optional(),
+});
+
+const CollectionSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  image: SearchImageSchema.nullable().optional(),
+});
+
+const PriceRangeSchema = z.object({
+  minVariantPrice: z
+    .object({
+      amount: z.string(),
+      currencyCode: z.string(),
+    })
+    .optional(),
+  maxVariantPrice: z
+    .object({
+      amount: z.string(),
+      currencyCode: z.string(),
+    })
+    .optional(),
+});
+
+const ProductSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  featuredImage: SearchImageSchema.nullable().optional(),
+  priceRange: PriceRangeSchema.optional(),
+});
+
+export const PredictiveSearchSchema = z.object({
+  predictiveSearch: z.object({
+    products: z.array(ProductSchema),
+    collections: z.array(CollectionSchema),
+  }),
+});

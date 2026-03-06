@@ -8,7 +8,7 @@
   width: 480px;
   z-index: 999;
   padding: 16px 0 16px 16px;
-  background-color: #f3f3f3;
+  background-color: #ece9e2;
   box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
   transform: translateX(0);
   transition: transform ease 0.3s;
