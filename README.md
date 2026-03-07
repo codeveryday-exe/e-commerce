@@ -20,15 +20,6 @@
 - [x] SearchPage
 - [x] CheckoutPage
 
-- [x] print collectionDescription if collectionDescription is not empty
-- [x] add not found page
-- [x] Move filters to another component
-- [x] use data-transition-state instead of styles in panel
-- [x] use transition to other panels
-- [x] CollectionListHeader images are not aligning same in responsive => image_box => flex-shrink: 0;
-- [x] add skeleton to PredictiveSearch
-- [x] change styles of products in PredictiveSearch => use 'hoodie' word
-- [] make a better Panel style
 - [] CollectionListHeader => {bottom: 100%; transition: bottom ease-in-out 0.1s;}
 - [] use prefers-reduced-motion in ALL of your animations
 - [] when going from a collection page to another, filter spinner on pending is visible?
