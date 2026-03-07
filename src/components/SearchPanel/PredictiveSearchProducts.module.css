@@ -16,9 +16,10 @@
 
       .product_box {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
+        align-items: center;
         gap: 8px;
-        padding: 16px;
+        padding: 8px;
         position: relative;
         background-color: #f3f3f3;
         border-radius: 16px;
@@ -29,11 +30,11 @@
 
         &:hover {
           box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-          transform: translateY(-4px);
+          transform: translateY(-1px);
         }
 
         .product_image {
-          width: 120px;
+          width: 90px;
           aspect-ratio: 1;
           border-radius: 16px;
 
@@ -46,8 +47,8 @@
           display: flex;
           flex-direction: column;
           align-items: center;
+          flex-grow: 1;
           gap: 16px;
-          padding-top: 16px;
 
           .product_title {
             font-size: 0.9rem;
@@ -71,7 +72,7 @@
   .collections {
     .collections_box {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       padding: 24px 12px;
 
       .collection_box {
