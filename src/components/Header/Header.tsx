@@ -42,7 +42,13 @@ export function Header() {
           />
         </button>
 
-        {isCollectionsOpen && <CollectionListHeader />}
+        {isCollectionsOpen && (
+          <CollectionListHeader
+            closeCollections={() => {
+              setIsCollectionsOpen(false);
+            }}
+          />
+        )}
       </nav>
       <div className={styles.logo_box}>
         <Link href="/">allShop</Link>

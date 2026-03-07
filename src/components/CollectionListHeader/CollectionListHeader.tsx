@@ -3,8 +3,9 @@ import styles from './CollectionListHeader.module.css';
 import { useQuery } from '@tanstack/react-query';
 import { getCollections } from '../../services/mock-shop';
 import { ScrollLock } from '../ScrollLock/ScrollLock';
+import { WatchPathname } from '../WatchPathname/WatchPathname';
 
-export function CollectionListHeader() {
+export function CollectionListHeader({ closeCollections }: { closeCollections: () => void }) {
   const {
     data: collections,
     isLoading,
@@ -32,11 +33,11 @@ export function CollectionListHeader() {
 
   return (
     <>
+      <WatchPathname onPathChange={closeCollections} />
       <ScrollLock />
       <ul className={styles.collection_box}>
         {collections.edges.map((edge) => {
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          const collectionId = edge.node.id.split('/').at(-1)!;
+          const collectionId = edge.node.id.split('/').at(-1) ?? '';
           return (
             <li className={styles.collection_list} key={edge.node.id}>
               <div className={styles.image_box}>
