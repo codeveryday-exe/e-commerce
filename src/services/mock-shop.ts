@@ -56,8 +56,6 @@ export async function fetchProducts(filterQuery?: string) {
 
   const response = await request('https://mock.shop/api', query, { query: filterQuery });
   const parsedResponse = ProductsQuerySchema.parse(response);
-
-  console.log(parsedResponse.products.edges);
   return parsedResponse.products.edges.map((edge) => edge.node);
 }
 
@@ -109,8 +107,6 @@ export async function fetchProduct(variables: { productId: string }) {
 
   const response = await request('https://mock.shop/api', query, variables);
   const parsedResponse = ProductQuerySchema.parse(response);
-  console.log(parsedResponse.product);
-
   return parsedResponse.product;
 }
 
@@ -239,7 +235,6 @@ export async function editLinesFromCart(variables: { cartId: string; line: { id:
 
   const response = await request('https://mock.shop/api', query, variables);
   const parsedResponse = CartLinesUpdateSchema.parse(response);
-  console.log('edit line response: ', parsedResponse);
   return parsedResponse.cartLinesUpdate.cart;
 }
 
@@ -263,10 +258,10 @@ export async function getCollections(collectionAmount?: number) {
       }
     }
   `;
+
   const response = CollectionsQuerySchema.parse(
     await request('https://mock.shop/api', query, { first: collectionAmount }),
   );
-  console.log(response.collections);
   return response.collections;
 }
 
@@ -303,7 +298,6 @@ export async function getCollectionProducts(collectionId: string, filters?: Prod
 
   const response = await request('https://mock.shop/api', query, { id: collectionId, filters });
   const parsedResponse = CollectionProductsSchema.parse(response);
-  console.log(parsedResponse.collection);
   return parsedResponse.collection;
 }
 
@@ -324,7 +318,6 @@ export async function getSearchProducts(searchInput: string) {
 
   const response = await request('https://mock.shop/api', query, { query: searchInput, first: 12 });
   const parsedResponse = SearchProductsSchema.parse(response);
-  console.log(parsedResponse.search);
   return parsedResponse.search;
 }
 
