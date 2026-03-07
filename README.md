@@ -2,39 +2,34 @@
 
 - [x] use Router (Wouter)
 - [x] use Tanstack Query
+- [x] use animation library (React Transition Group)
+- [x] use skeleton loaders
+- [x] use color palette
+- [x] use GraphQL
+- [x] use Zod
+- [] use Playwright
 - [x] use a font
 - [x] use searchParams
-- [x] add types
+- [x] use types
 - [x] HomePage
+- [x] Header & Footer
+- [x] LoginPage
 - [x] ProductCard
 - [x] ProductPage
-- [x] Header & Footer
 - [x] CollectionPage
 - [x] SearchPage
 - [x] CheckoutPage
-- [x] add filtering in CollectionPage
-- [x] add skeleton loaders to ProductList, ProductPage & HomePage
-- [] use library for better effects
-- [] add color palette (https://coolors.co/)
 
-- [] use button in collectionFilter
-- [] Homepage
-
----
-
-# Notes
-
-look grid, auto-fill, auto-fit => https://css-tricks.com/auto-sizing-columns-css-grid-auto-fill-vs-auto-fit/
-
-https://base-ui.com/react/overview/quick-start
-https://base-ui.com/react/handbook/forms
-
----
-
-# Questions
-
-- [] Move filters to another component?
-- [] CollectionPage skeleton responsive issue
-- [] HomePage skeleton issue
-- [] CollectionListHeader images are not aligning same in responsive
-- [] interview task after the end of the project
+- [x] print collectionDescription if collectionDescription is not empty
+- [x] add not found page
+- [x] Move filters to another component
+- [x] use data-transition-state instead of styles in panel
+- [x] use transition to other panels
+- [x] CollectionListHeader images are not aligning same in responsive => image_box => flex-shrink: 0;
+- [x] add skeleton to PredictiveSearch
+- [x] change styles of products in PredictiveSearch => use 'hoodie' word
+- [] make a better Panel style
+- [] CollectionListHeader => {bottom: 100%; transition: bottom ease-in-out 0.1s;}
+- [] use prefers-reduced-motion in ALL of your animations
+- [] when going from a collection page to another, filter spinner on pending is visible?
+- [] add one playwright test

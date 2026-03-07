@@ -6,6 +6,7 @@ import { ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { PlaceholderLine } from '../PlaceholderLine/PlaceholderLine';
 import clsx from 'clsx';
+import { PlaceholderImage } from '../PlaceholderImage/PlaceholderImage';
 
 export function PredictiveSearchResults({ searchValue }: { searchValue: string }) {
   const [isProductsOpen, setIsProductsOpen] = useState(true);
@@ -25,7 +26,45 @@ export function PredictiveSearchResults({ searchValue }: { searchValue: string }
   }
 
   if (isPending) {
-    return <PlaceholderLine width={'95%'} height={900} />;
+    return (
+      <div className={styles.search_items_box}>
+        <div className={styles.products}>
+          <PlaceholderLine width={125} height={33} />
+          <ul className={styles.products_box}>
+            {Array.from({ length: 2 }, (_, i) => {
+              return (
+                <li className={styles.product_box} key={i}>
+                  {/* <PlaceholderCard width={'100%'} height={90}> */}
+                  <PlaceholderImage width={90} aspectRatio={1} variant="white" borderRadius="16px" />
+                  <div className={styles.product_text_box}>
+                    <PlaceholderLine width={267} height={28} />
+                    <PlaceholderLine width={106} height={24} />
+                  </div>
+                  {/* </PlaceholderCard> */}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+
+        <>
+          <hr className={styles.separator} />
+          <div className={styles.collections}>
+            <PlaceholderLine width={125} height={33} />
+            <ul className={styles.collections_box}>
+              {Array.from({ length: 2 }, (_, i) => {
+                return (
+                  <li className={styles.collection_box} key={i}>
+                    <PlaceholderImage width={'100%'} borderRadius="16px" aspectRatio={1} variant="brown" />
+                    <PlaceholderLine width={112} height={37} margin="0 auto" />
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </>
+      </div>
+    );
   }
 
   if (isError) {
