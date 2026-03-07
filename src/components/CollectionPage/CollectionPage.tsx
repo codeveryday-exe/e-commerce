@@ -97,9 +97,11 @@ export function CollectionPage() {
     <div className={styles.main_box}>
       <h2 className={styles.collection_title}>{collection.title.toUpperCase()}</h2>
 
-      <div className={styles.description_box}>
-        <p className={styles.collection_description}>{collection.description}</p>
-      </div>
+      {collection.description !== '' && (
+        <div className={styles.description_box}>
+          <p className={styles.collection_description}>{collection.description}</p>
+        </div>
+      )}
 
       <Panel
         isOpen={isFilterOpen}
