@@ -20,6 +20,10 @@ export function PredictiveSearchResults({ searchValue }: { searchValue: string }
     enabled: searchValue.length > 0,
   });
 
+  if (searchValue.length === 0) {
+    return null;
+  }
+
   if (isPending) {
     return <PlaceholderLine width={'95%'} height={900} />;
   }
