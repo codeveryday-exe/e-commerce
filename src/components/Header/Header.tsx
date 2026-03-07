@@ -10,9 +10,9 @@ import { CollectionListHeader } from '../CollectionListHeader/CollectionListHead
 import { Cart } from '../Cart/Cart';
 import { ChevronDown, Search } from 'lucide-react';
 import { useState } from 'react';
-import { SearchPanel } from '../SearchPanel/SearchPanel';
-import { WatchPathname } from '../WatchPathname/WatchPathname';
 import clsx from 'clsx';
+import { Panel } from '../Panel/Panel';
+import { SearchPanel } from '../SearchPanel/SearchPanel';
 
 export function Header() {
   const [cartId] = useCartId();
@@ -66,22 +66,26 @@ export function Header() {
           }}
         />
       </div>
-      {isCartOpen && <Cart />}
-      <WatchPathname
-        onPathChange={() => {
-          setIsSearchPanelOpen(false);
+
+      <Panel
+        position="right"
+        isOpen={isCartOpen}
+        closePanel={() => {
           setIsCartOpen(false);
-          setIsCollectionsOpen(false);
         }}
-      />
-      {isSearchPanelOpen && (
-        <SearchPanel
-          isSearchPanelOpen={isSearchPanelOpen}
-          closeSearchPanel={() => {
-            setIsSearchPanelOpen(false);
-          }}
-        />
-      )}
+      >
+        <Cart />
+      </Panel>
+
+      <Panel
+        isOpen={isSearchPanelOpen}
+        closePanel={() => {
+          setIsSearchPanelOpen(false);
+        }}
+        position="right"
+      >
+        <SearchPanel />
+      </Panel>
     </header>
   );
 }

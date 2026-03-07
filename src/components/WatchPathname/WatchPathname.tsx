@@ -1,4 +1,4 @@
-import { useEffect, useEffectEvent } from 'react';
+import { useEffect, useEffectEvent, useRef } from 'react';
 import { useLocation } from 'wouter';
 
 /**
@@ -7,12 +7,20 @@ import { useLocation } from 'wouter';
  *
  */
 
-export function WatchPathname({ onPathChange }: { onPathChange: () => void }) {
+export function WatchPathname({
+  onPathChange,
+}: {
+  onPathChange: (currentPathname: string, prevPathname: string) => void;
+}) {
   const [pathname] = useLocation();
+  const prevPathnameRef = useRef(pathname);
   const onChange = useEffectEvent(onPathChange);
 
   useEffect(() => {
-    onChange();
+    if (pathname !== prevPathnameRef.current) {
+      onChange(pathname, prevPathnameRef.current);
+      prevPathnameRef.current = pathname;
+    }
   }, [pathname]);
 
   return null;

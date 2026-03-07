@@ -6,14 +6,11 @@ import { ProductCard } from '../ProductCard/ProductCard';
 import { useState } from 'react';
 import { useDebounceValue } from 'usehooks-ts';
 import { ListFilter } from 'lucide-react';
-import { ClosePanelButton } from '../ClosePanelButton/ClosePanelButton';
-import { Backdrop } from '../Backdrop/Backdrop';
-import { ScrollLock } from '../ScrollLock/ScrollLock';
 import { PlaceholderCard } from '../PlaceholderCard/PlaceholderCard';
 import { PlaceholderLine } from '../PlaceholderLine/PlaceholderLine';
-import { WatchPathname } from '../WatchPathname/WatchPathname';
 import { Spinner } from '../Spinner/Spinner';
 import { PlaceholderImage } from '../PlaceholderImage/PlaceholderImage';
+import { Panel } from '../Panel/Panel';
 
 const PRICE_DEBOUNCE_MS = 1000;
 
@@ -104,126 +101,111 @@ export function CollectionPage() {
         <p className={styles.collection_description}>{collection.description}</p>
       </div>
 
-      <WatchPathname
-        onPathChange={() => {
+      <Panel
+        isOpen={isFilterOpen}
+        position="left"
+        closePanel={() => {
           setIsFilterOpen(false);
         }}
-      />
-
-      {isFilterOpen && (
-        <>
-          <div className={styles.filters_box}>
-            <ScrollLock />
-            <ClosePanelButton
-              onClick={() => {
-                setIsFilterOpen(false);
+      >
+        <div className={styles.availability_box}>
+          <h3 className={styles.box_title}>Availability</h3>
+          <label className={styles.input_box}>
+            <input
+              className={styles.input}
+              onChange={(e) => {
+                setAvailableOnly(e.target.checked);
               }}
+              checked={availableOnly}
+              type="checkbox"
             />
-            <div className={styles.availability_box}>
-              <h3 className={styles.box_title}>Availability</h3>
-              <label className={styles.input_box}>
-                <input
-                  className={styles.input}
-                  onChange={(e) => {
-                    setAvailableOnly(e.target.checked);
-                  }}
-                  checked={availableOnly}
-                  type="checkbox"
-                />
-                <span className={styles.input_text}>Available only</span>
-              </label>
-            </div>
+            <span className={styles.input_text}>Available only</span>
+          </label>
+        </div>
 
-            {tagFilters.length > 0 && (
-              <fieldset className={styles.tags_box}>
-                <legend className={styles.box_title}>Categories</legend>
+        {tagFilters.length > 0 && (
+          <fieldset className={styles.tags_box}>
+            <legend className={styles.box_title}>Categories</legend>
 
-                {tagFilters.map((value) => {
-                  return (
-                    <label className={styles.tag_box} key={value.label}>
-                      <input
-                        className={styles.input}
-                        name="tag"
-                        onChange={(e) => {
-                          if (e.target.checked) {
-                            setSelectedTags((prev) => [...prev, value.label]);
-                          } else {
-                            setSelectedTags((prev) => prev.filter((item) => item !== value.label));
-                          }
-                        }}
-                        checked={selectedTags.includes(value.label)}
-                        type="checkbox"
-                      />
-                      <span className={styles.input_text}>
-                        {value.label[0].toUpperCase() + value.label.slice(1)} ({value.count})
-                      </span>
-                    </label>
-                  );
-                })}
-              </fieldset>
-            )}
+            {tagFilters.map((value) => {
+              return (
+                <label className={styles.tag_box} key={value.label}>
+                  <input
+                    className={styles.input}
+                    name="tag"
+                    onChange={(e) => {
+                      if (e.target.checked) {
+                        setSelectedTags((prev) => [...prev, value.label]);
+                      } else {
+                        setSelectedTags((prev) => prev.filter((item) => item !== value.label));
+                      }
+                    }}
+                    checked={selectedTags.includes(value.label)}
+                    type="checkbox"
+                  />
+                  <span className={styles.input_text}>
+                    {value.label[0].toUpperCase() + value.label.slice(1)} ({value.count})
+                  </span>
+                </label>
+              );
+            })}
+          </fieldset>
+        )}
 
-            <div className={styles.price_range_box}>
-              <h3 className={styles.box_title}>Price Range</h3>
-              <label className={styles.input_box}>
-                <span className={styles.input_text}>Minimum: </span>
-                <input
-                  className={styles.input}
-                  onChange={(e) => {
-                    setMinPriceValue(parseInt(e.target.value));
-                    setMinPrice(parseInt(e.target.value));
-                  }}
-                  value={minPriceValue}
-                  type="number"
-                />
-              </label>
+        <div className={styles.price_range_box}>
+          <h3 className={styles.box_title}>Price Range</h3>
+          <label className={styles.input_box}>
+            <span className={styles.input_text}>Minimum: </span>
+            <input
+              className={styles.input}
+              onChange={(e) => {
+                setMinPriceValue(parseInt(e.target.value));
+                setMinPrice(parseInt(e.target.value));
+              }}
+              value={minPriceValue}
+              type="number"
+            />
+          </label>
 
-              <label className={styles.input_box}>
-                <span className={styles.input_text}>Maximum: </span>
-                <input
-                  className={styles.input}
-                  onChange={(e) => {
-                    setMaxPriceValue(parseInt(e.target.value));
-                    setMaxPrice(parseInt(e.target.value));
-                  }}
-                  value={maxPriceValue}
-                  type="number"
-                />
-              </label>
-            </div>
-            <div className={styles.filter_btn_box}>
-              <button
-                onClick={() => {
-                  setAvailableOnly(false);
-                  setSelectedTags([]);
-                  setMinPriceValue(0);
-                  setMaxPriceValue(1000000);
-                  setMinPrice(0);
-                  setMaxPrice(1000000);
-                }}
-                className={styles.price_reset_btn}
-                type="button"
-              >
-                Reset all
-              </button>
-              <button
-                onClick={() => {
-                  setIsFilterOpen(false);
-                }}
-                className={styles.price_view_btn}
-                type="button"
-              >
-                View
-              </button>
-            </div>
-          </div>
-          <Backdrop
+          <label className={styles.input_box}>
+            <span className={styles.input_text}>Maximum: </span>
+            <input
+              className={styles.input}
+              onChange={(e) => {
+                setMaxPriceValue(parseInt(e.target.value));
+                setMaxPrice(parseInt(e.target.value));
+              }}
+              value={maxPriceValue}
+              type="number"
+            />
+          </label>
+        </div>
+        <div className={styles.filter_btn_box}>
+          <button
+            onClick={() => {
+              setAvailableOnly(false);
+              setSelectedTags([]);
+              setMinPriceValue(0);
+              setMaxPriceValue(1000000);
+              setMinPrice(0);
+              setMaxPrice(1000000);
+            }}
+            className={styles.price_reset_btn}
+            type="button"
+          >
+            Reset all
+          </button>
+          <button
             onClick={() => {
               setIsFilterOpen(false);
             }}
-          />
-        </>
-      )}
+            className={styles.price_view_btn}
+            type="button"
+          >
+            View
+          </button>
+        </div>
+      </Panel>
 
       <button
         className={styles.filters_button}

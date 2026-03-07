@@ -12,7 +12,7 @@ export const cartQuery = (id: string | null) =>
     queryFn: id ? () => getCart(id) : skipToken,
   });
 
-export function CartLines({ isReadOnly = false, closeCart }: { isReadOnly?: boolean; closeCart?: () => void }) {
+export function CartLines({ isReadOnly = false }: { isReadOnly?: boolean }) {
   const [cartId] = useCartId();
   const { data: cart, isLoading } = useQuery(cartQuery(cartId));
 
@@ -48,9 +48,7 @@ export function CartLines({ isReadOnly = false, closeCart }: { isReadOnly?: bool
                   </div>
                   <div className={styles.line_details_box}>
                     <div className={styles.title_box}>
-                      <Link onClick={closeCart} href={`/product/${productId}`}>
-                        {line.node.merchandise.product.title.toUpperCase()}
-                      </Link>
+                      <Link href={`/product/${productId}`}>{line.node.merchandise.product.title.toUpperCase()}</Link>
                     </div>
                     <div className={styles.text_info_box}>
                       <div className={styles.variant_box}>
