@@ -5,8 +5,7 @@
   gap: 14px;
   position: absolute;
   inset: 66px 0 0 0;
-  max-width: 540px;
-  min-width: 220px;
+  width: 480px;
   z-index: 999;
   padding: 16px;
   overflow: auto;
@@ -38,6 +37,7 @@
       justify-content: center;
       align-items: center;
       max-width: 220px;
+      flex-shrink: 0;
 
       .collection_image {
         aspect-ratio: 1;
@@ -73,7 +73,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .collection_box {
     width: 100%;
     max-width: none;
