@@ -25,8 +25,8 @@ export function HomeProducts() {
               <PlaceholderCard width={'100%'} height={'100%'}>
                 <PlaceholderImage width={'100%'} aspectRatio={1} variant="brown" borderRadius={'16px 16px 0 0'} />
                 <div style={{ padding: '8px 16px' }}>
-                  <PlaceholderLine width={246} height={18} />
-                  <PlaceholderLine width={140} height={14} />
+                  <PlaceholderLine width={'90%'} height={18} />
+                  <PlaceholderLine width={'50%'} height={14} />
                 </div>
               </PlaceholderCard>
             </li>
