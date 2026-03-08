@@ -33,9 +33,9 @@ export function App() {
           <Route path="/" component={HomePage} />
           <Route path="/login" component={LoginPage} />
           <Route path="/reset-password" component={ResetPasswordPage} />
-          <Route path="/collection/:collectionId" component={CollectionPage} />
+          <Route path="/collection/:collectionId">{(params) => <CollectionPage key={params.collectionId} />}</Route>
           <Route path="/search" component={SearchPage} />
-          <Route path="/product/:productId" component={ProductPage} />
+          <Route path="/product/:productId">{(params) => <ProductPage key={params.productId} />}</Route>
           <Route path="/checkout" component={CheckoutPage} />
           <Route path="/shipping" component={ShippingPage} />
           <Route path="/returns" component={ExchangeAndReturnsPage} />

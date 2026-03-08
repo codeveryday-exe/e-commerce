@@ -14,6 +14,24 @@
   font-size: 1.125rem;
   font-weight: 400;
   background-color: #ece9e2;
+  transition:
+    bottom ease-in-out var(--animation-duration),
+    padding ease-in-out var(--animation-duration);
+
+  @media (prefers-reduced-motion) {
+    transition: none;
+  }
+
+  &[data-transition-state='entering'],
+  &[data-transition-state='entered'] {
+    bottom: 0;
+  }
+
+  &[data-transition-state='exiting'],
+  &[data-transition-state='exited'] {
+    padding: 0 16pxx;
+    bottom: 100%;
+  }
 
   .collection_list {
     display: flex;
