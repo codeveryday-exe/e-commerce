@@ -20,6 +20,12 @@ export function Header() {
   const [isSearchPanelOpen, setIsSearchPanelOpen] = useState(false);
   const [isCollectionsOpen, setIsCollectionsOpen] = useState(false);
 
+  useEffect(() => {
+    return () => {
+      setIsCartOpen(false);
+    };
+  }, [setIsCartOpen]);
+
   return (
     <header className={styles.header}>
       <nav className={styles.navbar}>
