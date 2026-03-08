@@ -111,6 +111,10 @@
 }
 
 @media (max-width: 570px) {
+  .main_box {
+    padding: 36px 24px;
+  }
+
   .discount_notifier_box {
     svg {
       width: 16px;

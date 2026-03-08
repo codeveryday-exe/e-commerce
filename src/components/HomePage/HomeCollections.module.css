@@ -4,11 +4,19 @@
   padding: 16px;
   border-radius: 16px;
 
-  .collections_big_title {
-    font-size: 2.25rem;
-    font-weight: 500;
-    color: #121212;
-    padding: 24px;
+  .collections_title_box {
+    padding-bottom: 24px;
+
+    .collections_big_title {
+      font-size: 2.25rem;
+      font-weight: 500;
+      color: #121212;
+    }
+
+    p {
+      color: #696969 !important;
+      padding-left: 16px;
+    }
   }
 }
 
@@ -58,6 +66,16 @@
   }
 }
 
+@media (max-width: 768px) {
+  .collections_box {
+    .collections_title_box {
+      .collections_big_title {
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
 @media (max-width: 660px) {
   .collections_box {
     .collections_big_title {
@@ -81,6 +99,16 @@
   }
 }
 
+@media (max-width: 500px) {
+  .collections_box {
+    .collections_title_box {
+      .collections_big_title {
+        font-size: 1.55rem;
+      }
+    }
+  }
+}
+
 @media (max-width: 480px) {
   .collections_box {
     .collections_big_title {
@@ -94,6 +122,16 @@
 
       .collection_title {
         font-size: 1rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 412px) {
+  .collections_box {
+    .collections_title_box {
+      .collections_big_title {
+        font-size: 1.25rem;
       }
     }
   }

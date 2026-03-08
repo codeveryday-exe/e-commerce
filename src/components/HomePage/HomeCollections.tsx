@@ -19,7 +19,10 @@ export function HomeCollections() {
   if (isPending) {
     return (
       <div className={styles.collections_box}>
-        <h2 className={styles.collections_big_title}>Best Collections For You</h2>
+        <div className={styles.collections_title_box}>
+          <h2 className={styles.collections_big_title}>Best Collections For You,</h2>
+          <p className={styles.collections_big_title}>Selected Nicely.</p>
+        </div>
         <div className={styles.collections_sub_box}>
           {Array.from({ length: 4 }, (_, i) => {
             return (
@@ -44,7 +47,10 @@ export function HomeCollections() {
 
   return (
     <div className={styles.collections_box}>
-      <h2 className={styles.collections_big_title}>Best Collections For You</h2>
+      <div className={styles.collections_title_box}>
+        <h2 className={styles.collections_big_title}>Best Collections For You,</h2>
+        <p className={styles.collections_big_title}>Selected Nicely.</p>
+      </div>
       <div className={styles.collections_sub_box}>
         {collections.edges.map((edge) => {
           return (
