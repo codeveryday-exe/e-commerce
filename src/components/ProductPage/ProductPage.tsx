@@ -9,7 +9,7 @@ import { MinusIcon, PlusIcon } from 'lucide-react';
 import { toast } from 'sonner';
 import { SubmitButton } from '../SubmitButton/SubmitButton';
 import { useCartId } from '../../hooks/useCartId';
-import { cartQuery } from '../CartLines/CartLines';
+import { cartQuery } from '../Cart/Cart';
 import { useCartPanel } from '../../contexts/CartPanelContext';
 import { PlaceholderLine } from '../PlaceholderLine/PlaceholderLine';
 import { PlaceholderImage } from '../PlaceholderImage/PlaceholderImage';

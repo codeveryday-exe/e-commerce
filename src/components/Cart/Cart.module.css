@@ -1,4 +1,148 @@
+.empty_cart_box {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  font-size: 1.75rem;
+  font-weight: 500;
+  padding: 48px 36px;
+}
+
+.cart_title {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.lines_box {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 16px 16px 0;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #121212 transparent;
+}
+
+.line_box {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 520px;
+  position: relative;
+  background-color: #f3f3f3;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+  }
+
+  @media (prefers-reduced-motion) {
+    transition: none;
+  }
+}
+
+.line_image_box {
+  margin: auto;
+
+  img {
+    width: 180px;
+    border-radius: 16px;
+  }
+}
+
+.line_details_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  margin: 0 auto;
+  padding: 16px 16px 16px 0;
+}
+
+.title_box {
+  a {
+    font-size: 0.85rem;
+    font-weight: 600;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+    }
+  }
+}
+
+.text_info_box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.variant_box,
+.quantity_box,
+.line_price_box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-left: 16px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.remove_line_box {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  z-index: 1000;
+}
+
+.total_price_box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24px;
+  padding: 0 36px 0 24px;
+  font-weight: 700;
+}
+
 .checkout_btn_box {
   display: grid;
   padding: 0 36px 0 24px;
+}
+
+.link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f3f3f3;
+  background-color: #121212;
+  height: 46px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: background-color ease-in-out 0.2s;
+  border-radius: 6px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #2f2f2f;
+  }
+}
+
+@media (max-width: 480px) {
+  .link {
+    height: 35px;
+  }
+}
+
+@media (max-width: 400px) {
+  .line_box {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
 }

@@ -1,5 +1,5 @@
 import { Link } from 'wouter';
-import { CartLines } from '../CartLines/CartLines';
+import { Cart } from '../Cart/Cart';
 import styles from './CheckoutPage.module.css';
 import { useEffect, useState } from 'react';
 import { CheckoutAddressForm } from './CheckoutAddressForm/CheckoutAddressForm';
@@ -44,7 +44,7 @@ export function CheckoutPage() {
       <div className={styles.cart_lines_box}>
         <div className={styles.cart_lines_sub_box}>
           <h2 className={styles.cart_lines_title}>Summary</h2>
-          <CartLines isReadOnly={step === 'success'} />
+          <Cart isReadOnly={step === 'success'} />
         </div>
       </div>
     </div>
