@@ -5,6 +5,8 @@ import styles from './Cart.module.css';
 import { getCart } from '../../services/mock-shop';
 import { useCartId } from '../../hooks/useCartId';
 import { Link, useLocation } from 'wouter';
+import { usePanel } from '../Panel/Panel';
+import { SubmitButton } from '../SubmitButton/SubmitButton';
 
 export const cartQuery = (id: string | null) =>
   queryOptions({
@@ -16,6 +18,7 @@ export function Cart({ isReadOnly = false }: { isReadOnly?: boolean }) {
   const [cartId] = useCartId();
   const { data: cart, isLoading } = useQuery(cartQuery(cartId));
   const [location] = useLocation();
+  const { closePanel } = usePanel();
 
   const hasItems = !!cart && cart.lines.edges.length > 0;
 
@@ -32,9 +35,7 @@ export function Cart({ isReadOnly = false }: { isReadOnly?: boolean }) {
       {!hasItems && (
         <div className={styles.empty_cart_box}>
           <p>Your cart is empty</p>
-          <Link className={styles.link} href="/">
-            Continue Shopping
-          </Link>
+          <SubmitButton onClick={closePanel}>Continue Shopping</SubmitButton>
         </div>
       )}
       {hasItems && (
