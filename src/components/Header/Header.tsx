@@ -29,9 +29,6 @@ export function Header() {
           onClick={() => {
             setIsCollectionsOpen((prev) => !prev);
           }}
-          onTouchStart={() => {
-            setIsCollectionsOpen((prev) => !prev);
-          }}
           type="button"
         >
           <span>Discover</span>
