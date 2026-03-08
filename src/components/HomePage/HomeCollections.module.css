@@ -36,6 +36,10 @@
       opacity ease-in-out 0.2s,
       transform ease-in-out 0.2s;
 
+    @media (prefers-reduced-motion) {
+      transition: none;
+    }
+
     &:hover {
       cursor: pointer;
       opacity: 0.8;
@@ -61,6 +65,10 @@
         position: absolute;
         content: '';
         inset: 0;
+      }
+
+      @media (prefers-reduced-motion) {
+        transition: none;
       }
     }
   }

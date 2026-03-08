@@ -91,3 +91,13 @@
     }
   }
 }
+
+@media (prefers-reduced-motion) {
+  .discover_button {
+    transition: none;
+
+    .arrow {
+      transition: none;
+    }
+  }
+}

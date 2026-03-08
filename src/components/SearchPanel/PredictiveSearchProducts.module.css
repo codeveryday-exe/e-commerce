@@ -33,6 +33,10 @@
           transform: translateY(-1px);
         }
 
+        @media (prefers-reduced-motion) {
+          transition: none;
+        }
+
         .product_image {
           width: 90px;
           aspect-ratio: 1;
@@ -86,6 +90,10 @@
           transform: scale(1.03);
         }
 
+        @media (prefers-reduced-motion) {
+          transition: none;
+        }
+
         .collection_image {
           border-radius: 16px;
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -128,6 +136,10 @@
 
   svg {
     transition: transform ease-in-out 0.2s;
+
+    @media (prefers-reduced-motion) {
+      transition: none;
+    }
   }
 }
 

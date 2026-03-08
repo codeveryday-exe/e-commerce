@@ -35,6 +35,10 @@
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     transform: translateY(-1px);
   }
+
+  @media (prefers-reduced-motion) {
+    transition: none;
+  }
 }
 
 .line_image_box {

@@ -43,3 +43,9 @@
   font-weight: 700;
   font-size: 0.85rem;
 }
+
+@media (prefers-reduced-motion) {
+  .product_card_box {
+    transition: none;
+  }
+}
