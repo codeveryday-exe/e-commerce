@@ -7,7 +7,7 @@
 - [x] use color palette
 - [x] use GraphQL
 - [x] use Zod
-- [] use Playwright
+- [x] use render prop
 - [x] use a font
 - [x] use searchParams
 - [x] use types
@@ -20,7 +20,9 @@
 - [x] SearchPage
 - [x] CheckoutPage
 
-- [] CollectionListHeader => {bottom: 100%; transition: bottom ease-in-out 0.1s;}
-- [] use prefers-reduced-motion in ALL of your animations
-- [] when going from a collection page to another, filter spinner on pending is visible?
-- [] add one playwright test
+- [x] SPA is not working => added vercel.json
+- [x] fix discover on mobile => removed onTouchStart and worked
+- [x] fix skeletons in mobile
+- [x] cart stays open every single time
+- [x] CollectionListHeader => {bottom: 100%; transition: bottom ease-in-out 0.1s;} => then
+- [x] when going from a collection page to another, filter spinner on pending is visible?
