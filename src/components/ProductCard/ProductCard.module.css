@@ -44,6 +44,16 @@
   font-size: 0.85rem;
 }
 
+@media (max-width: 480px) {
+  .title {
+    font-size: 0.85rem;
+  }
+
+  .price {
+    font-size: 0.8rem;
+  }
+}
+
 @media (prefers-reduced-motion) {
   .product_card_box {
     transition: none;

@@ -9,11 +9,21 @@
 }
 
 .title {
-  font-size: 3.2rem;
+  font-size: 3.25rem;
   font-weight: 500;
 }
 
 .info_text {
   font-size: 1.2rem;
   padding: 0 16px;
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.55rem;
+  }
+
+  .info_text {
+    font-size: 0.85rem;
+  }
 }

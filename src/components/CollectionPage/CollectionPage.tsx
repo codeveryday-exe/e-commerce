@@ -46,9 +46,7 @@ export function CollectionPage() {
   if (isPending) {
     return (
       <div className={styles.main_box}>
-        <div>
-          <PlaceholderLine width={'35%'} height={78} borderRadius="48px" />
-        </div>
+        <PlaceholderLine width={'35%'} isTitle height={78} borderRadius="48px" />
 
         <PlaceholderCard width={'100%'} height={136} padding="48px 36px">
           <PlaceholderLine width={'100%'} height={22} />

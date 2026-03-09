@@ -9,7 +9,7 @@
 }
 
 .title {
-  font-size: 3.2rem;
+  font-size: 3.25rem;
   font-weight: 500;
   margin-bottom: 16px;
 }
@@ -35,5 +35,15 @@
 @media (max-width: 660px) {
   .products_container {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.55rem;
+  }
+
+  .info_text {
+    font-size: 1.15rem;
   }
 }

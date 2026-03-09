@@ -57,8 +57,9 @@
 
 @media (max-width: 480px) {
   .title {
-    font-size: 1.8rem;
+    font-size: 1.25rem;
   }
+
   .checkout_info_btn {
     font-size: 0.8rem;
     height: 40px;

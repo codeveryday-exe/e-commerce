@@ -35,3 +35,11 @@
     background-position: 1440px 0;
   }
 }
+
+@media (max-width: 480px) {
+  .placeholder_line_box {
+    &.title {
+      height: 37px !important;
+    }
+  }
+}

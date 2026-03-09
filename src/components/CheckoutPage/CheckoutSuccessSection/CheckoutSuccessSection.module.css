@@ -82,11 +82,21 @@
   }
 }
 
-@media (max-width: 410px) {
+@media (max-width: 480px) {
   .title {
-    font-size: 1.8rem;
+    font-size: 1.65rem;
   }
 
+  .info_text {
+    font-size: 1rem;
+  }
+
+  .email_info_text {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 410px) {
   .info_text {
     font-size: 0.9rem;
   }

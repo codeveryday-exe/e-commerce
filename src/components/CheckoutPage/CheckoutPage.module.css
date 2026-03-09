@@ -55,6 +55,10 @@
 }
 
 @media (max-width: 480px) {
+  .title {
+    font-size: 1.65rem;
+  }
+
   .cart_lines_title {
     font-size: 1.8rem;
   }
